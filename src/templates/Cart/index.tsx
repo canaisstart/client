@@ -45,7 +45,7 @@ const Cart = ({ session, recommendedTitle, recommendedCourses }: CartProps) => {
             </a>
           </Link>
           . Ao comprar em nossa loja você concorda com nossos{' '}
-          <a href="/terms">termos de uso</a>.
+          <Link href="/terms">termos de uso</Link>.
         </S.Text>
         <Divider />
       </Container>
