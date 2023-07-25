@@ -46,7 +46,7 @@ const Menu = ({ username, loading }: MenuProps) => {
             <S.MenuLink>Cursos</S.MenuLink>
           </Link>
 
-          <Link href="/for_business" passHref>
+          <Link href="/corporate" passHref>
             <S.MenuLink>Para Empresas</S.MenuLink>
           </Link>
         </S.MenuNav>
@@ -102,7 +102,7 @@ const Menu = ({ username, loading }: MenuProps) => {
                 <S.MenuLink>Cursos</S.MenuLink>
               </Link>
 
-              <Link href="/for_business" passHref>
+              <Link href="/corporate" passHref>
                 <S.MenuLink>Para Empresas</S.MenuLink>
               </Link>
 
