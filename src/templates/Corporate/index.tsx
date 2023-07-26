@@ -15,7 +15,7 @@ const ForBusiness = () => {
       <Container>
         <S.Wrapper>
           <Logo src="/img/start-corporate.png" />
-          <MenuLink href="/">Home</MenuLink>
+          <MenuLink href="/">START Plus</MenuLink>
         </S.Wrapper>
       </Container>
       <FormBusiness />
