@@ -1,4 +1,4 @@
-import Logo from 'components/Logo'
+import Image from 'next/image'
 import * as S from './styles'
 import { Container } from 'components/Container'
 import { MenuLink } from 'components/Menu/styles'
@@ -14,7 +14,12 @@ const ForBusiness = () => {
     <main>
       <Container>
         <S.Wrapper>
-          <Logo src="/img/start-corporate.png" />
+          <Image
+            src="/img/start-corporate.png"
+            width={130}
+            height={45}
+            alt="Logo START"
+          />
           <MenuLink href="/">START Plus</MenuLink>
         </S.Wrapper>
       </Container>
