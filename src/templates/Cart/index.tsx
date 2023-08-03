@@ -41,12 +41,18 @@ const Cart = ({ session, recommendedTitle, recommendedCourses }: CartProps) => {
           plataforma{' '}
           <Link href="https://www.stripe.com">
             <a target="_blank" rel="noreferrer">
-              Stripe
+              Stripe . Ao comprar em nossa loja você concorda com nossos{' '}
             </a>
           </Link>
-          . Ao comprar em nossa loja você concorda com nossos{' '}
-          <Link href="/terms">termos de uso</Link>.
-        </S.Text>
+          <Link href="/terms" passHref>
+            <a>termos de uso</a>
+          </Link>
+          . Clique
+          <Link href="/" passHref>
+            <a> aqui </a>
+          </Link>
+          para voltar à página inicial.
+        </S.Text>{' '}
         <Divider />
       </Container>
 

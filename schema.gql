@@ -402,6 +402,7 @@ type Course {
   instructor: Instructor
   course_type: CourseType
   curriculum: [ComponentCourseCurriculum]
+  available: Boolean!
   published_at: DateTime
 }
 
@@ -456,6 +457,7 @@ type CourseGroupBy {
   category: [CourseConnectionCategory]
   instructor: [CourseConnectionInstructor]
   course_type: [CourseConnectionCourse_type]
+  available: [CourseConnectionAvailable]
   published_at: [CourseConnectionPublished_at]
 }
 
@@ -534,6 +536,11 @@ type CourseConnectionCourse_type {
   connection: CourseConnection
 }
 
+type CourseConnectionAvailable {
+  key: Boolean
+  connection: CourseConnection
+}
+
 type CourseConnectionPublished_at {
   key: DateTime
   connection: CourseConnection
@@ -553,6 +560,7 @@ input CourseInput {
   instructor: ID
   course_type: ID
   curriculum: [ComponentCourseCurriculumInput!]
+  available: Boolean
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -572,6 +580,7 @@ input editCourseInput {
   instructor: ID
   course_type: ID
   curriculum: [editComponentCourseCurriculumInput]
+  available: Boolean
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -1495,6 +1504,8 @@ type ComponentCourseVideos {
   name: String!
   description: String
   file: UploadFile
+  link: String
+  classtime: String
   video(sort: String, limit: Int, start: Int, where: JSON): [UploadFile!]!
 }
 
@@ -1503,6 +1514,8 @@ input ComponentCourseVideoInput {
   video: [ID]
   description: String
   file: ID
+  link: String
+  classtime: String
 }
 
 input editComponentCourseVideoInput {
@@ -1511,6 +1524,8 @@ input editComponentCourseVideoInput {
   video: [ID]
   description: String
   file: ID
+  link: String
+  classtime: String
 }
 
 type ComponentPageButton {
@@ -1634,7 +1649,24 @@ input editComponentPageSectionInput {
   highlight: editComponentPageHighlightInput
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Banner | BannerConnection | BannerAggregator | BannerGroupBy | BannerConnectionId | BannerConnectionCreated_at | BannerConnectionUpdated_at | BannerConnectionImage | BannerConnectionTitle | BannerConnectionSubtitle | BannerConnectionButton | BannerConnectionRibbon | BannerConnectionPublished_at | createBannerPayload | updateBannerPayload | deleteBannerPayload | Category | CategoryConnection | CategoryAggregator | CategoryGroupBy | CategoryConnectionId | CategoryConnectionCreated_at | CategoryConnectionUpdated_at | CategoryConnectionName | CategoryConnectionSlug | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | CourseType | CourseTypeConnection | CourseTypeAggregator | CourseTypeGroupBy | CourseTypeConnectionId | CourseTypeConnectionCreated_at | CourseTypeConnectionUpdated_at | CourseTypeConnectionName | CourseTypeConnectionSlug | createCourseTypePayload | updateCourseTypePayload | deleteCourseTypePayload | Course | CourseConnection | CourseAggregator | CourseAggregatorSum | CourseAggregatorAvg | CourseAggregatorMin | CourseAggregatorMax | CourseGroupBy | CourseConnectionId | CourseConnectionCreated_at | CourseConnectionUpdated_at | CourseConnectionName | CourseConnectionSlug | CourseConnectionShort_description | CourseConnectionPrice | CourseConnectionDescription | CourseConnectionDuration | CourseConnectionLesson | CourseConnectionCover | CourseConnectionDate_course | CourseConnectionCategory | CourseConnectionInstructor | CourseConnectionCourse_type | CourseConnectionPublished_at | createCoursePayload | updateCoursePayload | deleteCoursePayload | Home | updateHomePayload | deleteHomePayload | Instructor | InstructorConnection | InstructorAggregator | InstructorGroupBy | InstructorConnectionId | InstructorConnectionCreated_at | InstructorConnectionUpdated_at | InstructorConnectionName | InstructorConnectionSlug | InstructorConnectionEmail | InstructorConnectionPhone | createInstructorPayload | updateInstructorPayload | deleteInstructorPayload | Order | OrderConnection | OrderAggregator | OrderGroupBy | OrderConnectionId | OrderConnectionCreated_at | OrderConnectionUpdated_at | OrderConnectionUser | OrderConnectionPayment_intent_id | OrderConnectionCard_brand | OrderConnectionCard_last4 | OrderConnectionTotal_in_cents | createOrderPayload | updateOrderPayload | deleteOrderPayload | Recommended | updateRecommendedPayload | deleteRecommendedPayload | Wishlist | WishlistConnection | WishlistAggregator | WishlistGroupBy | WishlistConnectionId | WishlistConnectionCreated_at | WishlistConnectionUpdated_at | WishlistConnectionUser | createWishlistPayload | updateWishlistPayload | deleteWishlistPayload | EmailDesignerEmailTemplate | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentCourseCurriculum | ComponentCourseVideos | ComponentPageButton | ComponentPageHighlight | ComponentPagePopularGames | ComponentPageRibbon | ComponentPageSection
+type ComponentStaticpageStaticPage {
+  id: ID!
+  title: String!
+  content: String!
+}
+
+input ComponentStaticpageStaticPageInput {
+  title: String!
+  content: String!
+}
+
+input editComponentStaticpageStaticPageInput {
+  id: ID
+  title: String
+  content: String
+}
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Banner | BannerConnection | BannerAggregator | BannerGroupBy | BannerConnectionId | BannerConnectionCreated_at | BannerConnectionUpdated_at | BannerConnectionImage | BannerConnectionTitle | BannerConnectionSubtitle | BannerConnectionButton | BannerConnectionRibbon | BannerConnectionPublished_at | createBannerPayload | updateBannerPayload | deleteBannerPayload | Category | CategoryConnection | CategoryAggregator | CategoryGroupBy | CategoryConnectionId | CategoryConnectionCreated_at | CategoryConnectionUpdated_at | CategoryConnectionName | CategoryConnectionSlug | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | CourseType | CourseTypeConnection | CourseTypeAggregator | CourseTypeGroupBy | CourseTypeConnectionId | CourseTypeConnectionCreated_at | CourseTypeConnectionUpdated_at | CourseTypeConnectionName | CourseTypeConnectionSlug | createCourseTypePayload | updateCourseTypePayload | deleteCourseTypePayload | Course | CourseConnection | CourseAggregator | CourseAggregatorSum | CourseAggregatorAvg | CourseAggregatorMin | CourseAggregatorMax | CourseGroupBy | CourseConnectionId | CourseConnectionCreated_at | CourseConnectionUpdated_at | CourseConnectionName | CourseConnectionSlug | CourseConnectionShort_description | CourseConnectionPrice | CourseConnectionDescription | CourseConnectionDuration | CourseConnectionLesson | CourseConnectionCover | CourseConnectionDate_course | CourseConnectionCategory | CourseConnectionInstructor | CourseConnectionCourse_type | CourseConnectionAvailable | CourseConnectionPublished_at | createCoursePayload | updateCoursePayload | deleteCoursePayload | Home | updateHomePayload | deleteHomePayload | Instructor | InstructorConnection | InstructorAggregator | InstructorGroupBy | InstructorConnectionId | InstructorConnectionCreated_at | InstructorConnectionUpdated_at | InstructorConnectionName | InstructorConnectionSlug | InstructorConnectionEmail | InstructorConnectionPhone | createInstructorPayload | updateInstructorPayload | deleteInstructorPayload | Order | OrderConnection | OrderAggregator | OrderGroupBy | OrderConnectionId | OrderConnectionCreated_at | OrderConnectionUpdated_at | OrderConnectionUser | OrderConnectionPayment_intent_id | OrderConnectionCard_brand | OrderConnectionCard_last4 | OrderConnectionTotal_in_cents | createOrderPayload | updateOrderPayload | deleteOrderPayload | Recommended | updateRecommendedPayload | deleteRecommendedPayload | Wishlist | WishlistConnection | WishlistAggregator | WishlistGroupBy | WishlistConnectionId | WishlistConnectionCreated_at | WishlistConnectionUpdated_at | WishlistConnectionUser | createWishlistPayload | updateWishlistPayload | deleteWishlistPayload | EmailDesignerEmailTemplate | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentCourseCurriculum | ComponentCourseVideos | ComponentPageButton | ComponentPageHighlight | ComponentPagePopularGames | ComponentPageRibbon | ComponentPageSection | ComponentStaticpageStaticPage
 
 input InputID {
   id: ID!

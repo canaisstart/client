@@ -1,20 +1,21 @@
 import Learning from 'templates/Learning'
 import { initializeApollo } from 'utils/apollo'
 import {
-  QUERY_COURSES,
-  QUERY_COURSES_BY_SLUB_VIDEO
+  QUERY_COURSES_BY_SLUB_VIDEO,
+  USER_HAS_COURSES
 } from 'graphql/queries/courses'
 import {
   QueryCourseBySlug,
   QueryCourseBySlugVariables
 } from 'graphql/generated/QueryCourseBySlug'
 import {
-  QueryCourses,
-  QueryCoursesVariables
-} from 'graphql/generated/QueryCourses'
-import { GetStaticProps } from 'next'
+  UserHasCourse,
+  UserHasCourseVariables
+} from 'graphql/generated/UserHasCourse'
+import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
 import { CourseTemplatePropsVideo } from 'templates/Learning'
+import protectedRoutes from 'utils/protected-routes'
 
 const apolloClient = initializeApollo()
 
@@ -25,64 +26,97 @@ export default function Index(props: CourseTemplatePropsVideo) {
   return <Learning {...props} />
 }
 
-export async function getStaticPaths() {
-  const { data } = await apolloClient.query<
-    QueryCourses,
-    QueryCoursesVariables
+// export async function getStaticPaths() {
+//   const { data } = await apolloClient.query<
+//     QueryCourses,
+//     QueryCoursesVariables
+//   >({
+//     query: QUERY_COURSES
+//   })
+
+//   const paths = data.courses.map(({ slug }) => ({
+//     params: { slug }
+//   }))
+
+//   return { paths, fallback: true }
+// }
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const session = await protectedRoutes(context)
+
+  if (!session) {
+    return { props: {} }
+  }
+
+  const { data: verifyUser } = await apolloClient.query<
+    UserHasCourse,
+    UserHasCourseVariables
   >({
-    query: QUERY_COURSES
+    query: USER_HAS_COURSES,
+    variables: {
+      userId: session.id as string,
+      slug: context.params?.slug as string
+    },
+    fetchPolicy: 'no-cache'
   })
 
-  const paths = data.courses.map(({ slug }) => ({
-    params: { slug }
-  }))
+  console.log(verifyUser.orders[0]?.courses[0])
+  if (!verifyUser.orders[0]?.courses[0]) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    }
+  }
 
-  return { paths, fallback: true }
-}
-export const getStaticProps: GetStaticProps = async ({ params }) => {
   // Get course data
   const { data } = await apolloClient.query<
     QueryCourseBySlug,
     QueryCourseBySlugVariables
   >({
     query: QUERY_COURSES_BY_SLUB_VIDEO,
-    variables: { slug: `${params?.slug}` },
+    variables: { slug: `${context.params?.slug}` },
     fetchPolicy: 'no-cache'
   })
 
-  if (!data.courses.length) {
+  if (!data) {
     return { notFound: true }
   }
 
-  const course = data.courses[0]
+  const course = data?.courses[0]
+
+  const courseInfo = {
+    name: course.name,
+    category: course.category?.name || null,
+    description: course.description,
+    modules: course.curriculum?.map((module) => {
+      return {
+        id: module?.id,
+        name: module?.module,
+        lessons: module?.content?.map((lesson) => {
+          return {
+            id: lesson?.id,
+            name: lesson?.name,
+            videoUrl: lesson?.link,
+            classtime: lesson?.classtime,
+            completed: false,
+            description: lesson?.description,
+            fileUrl: lesson?.file?.url || null,
+            module: {
+              name: module.module,
+              id: module.id
+            }
+          }
+        })
+      }
+    })
+  }
+
   return {
-    revalidate: 60,
     props: {
-      slug: params?.slug,
-      courseInfo: {
-        id: course.id,
-        title: course.name,
-        price: course.price || null,
-        description: course.short_description
-      },
-      description: course.description,
-      details: {
-        category: course.category?.name,
-        courseType: course.course_type?.name,
-        instructor: course.instructor?.name,
-        duration: course.duration,
-        lesson: course.lesson,
-        updatedAt: course.updated_at
-      },
-      videoDetails: course?.curriculum?.map((video) => ({
-        module: video?.module,
-        content: video?.content?.map((content) => ({
-          name: content?.name,
-          description: content?.description,
-          video: content?.video,
-          file: content?.file
-        }))
-      }))
+      courseInfo,
+      slug: context.params?.slug
     }
   }
 }

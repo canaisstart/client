@@ -23,10 +23,14 @@ const ModuleCard: React.FC<IModuleCard> = ({
   useEffect(() => {
     const updateHeight = () => {
       if (cardRef.current) {
-        const cardsQtd = cardRef.current.children.length
-        const cardHeight = cardRef.current.children[0]?.scrollHeight
+        const cards = cardRef.current.children
+        let cardsHeight = 0
 
-        setMaxHeightContainer(cardsQtd * cardHeight + cardsQtd * 2 + 8)
+        for (let i = 0; i < cards.length; i++) {
+          cardsHeight += cards[i].scrollHeight
+        }
+
+        setMaxHeightContainer(cardsHeight + cards.length * 2 + 8)
       }
     }
 

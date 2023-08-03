@@ -31,4 +31,5 @@ export interface CourseFragment {
   instructor: CourseFragment_instructor | null;
   category: CourseFragment_category | null;
   price: number;
+  available: boolean;
 }

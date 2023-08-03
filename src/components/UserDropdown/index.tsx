@@ -7,7 +7,7 @@ import {
   ExitToApp
 } from '@styled-icons/material-outlined'
 import { ChevronDown } from '@styled-icons/boxicons-regular/ChevronDown'
-
+import { Book } from '@styled-icons/boxicons-regular/Book'
 import Dropdown from 'components/Dropdown'
 
 import * as S from './styles'
@@ -40,6 +40,12 @@ const UserDropdown = ({ username }: UserDropdownProps) => {
           <S.Link title="Wishlist">
             <FavoriteBorder />
             <span>Favoritos</span>
+          </S.Link>
+        </Link>
+        <Link href="/profile/courses" passHref>
+          <S.Link title="Courses">
+            <Book />
+            <span>Meus cursos</span>
           </S.Link>
         </Link>
 

@@ -12,7 +12,7 @@ import LogoAbsolute from 'components/LogoAbsolute'
 import Slider from 'components/Slider'
 import { settings } from './sliderConfig'
 
-const ForBusiness = () => {
+const Corporate = () => {
   const scrollToElement = (elementId: string) => {
     const element = document.getElementById(elementId)
 
@@ -96,7 +96,7 @@ const ForBusiness = () => {
       <S.View>
         <S.Accreditations>
           <Container css={{ position: 'relative' }}>
-            <h3>Nossos credenciamentos</h3>
+            <h3>Credenciamentos</h3>
             <S.Relative>
               <Slider settings={settings}>
                 {cred.map((cred) => (
@@ -122,4 +122,4 @@ const ForBusiness = () => {
   )
 }
 
-export default ForBusiness
+export default Corporate

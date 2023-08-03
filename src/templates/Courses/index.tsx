@@ -71,10 +71,11 @@ const CoursesTemplate = ({ filterItems }: CoursesTemplateProps) => {
                     id={course.id}
                     key={course.slug}
                     title={course.name}
-                    slug={course.slug}
-                    category={course.category.name}
+                    slug={course.slug as string}
+                    category={course?.category?.name as string}
                     img={`${getImageUrl(course.cover!.url)}`}
                     price={course.price}
+                    available={course.available}
                   />
                 ))}
               </Grid>

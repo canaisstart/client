@@ -102,7 +102,7 @@ const Menu = ({ username, loading }: MenuProps) => {
                 <S.MenuLink>Cursos</S.MenuLink>
               </Link>
 
-              <Link href="/corporate" passHref>
+              <Link href="/for_business" passHref>
                 <S.MenuLink>Para Empresas</S.MenuLink>
               </Link>
 
@@ -113,6 +113,9 @@ const Menu = ({ username, loading }: MenuProps) => {
                   </Link>
                   <Link href="/wishlist" passHref>
                     <S.MenuLink>Favoritos</S.MenuLink>
+                  </Link>
+                  <Link href="/profile/courses" passHref>
+                    <S.MenuLink>Meus cursos</S.MenuLink>
                   </Link>
                 </>
               )}

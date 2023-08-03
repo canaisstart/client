@@ -52,7 +52,6 @@ export const Info = styled.a`
   max-width: calc(100% - 2.5rem);
   text-decoration: none;
 `
-
 export const Title = styled.h3`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.medium};
@@ -61,7 +60,6 @@ export const Title = styled.h3`
     color: ${theme.colors.black};
   `}
 `
-
 export const Developer = styled.h4`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.small};
@@ -69,7 +67,6 @@ export const Developer = styled.h4`
     color: ${theme.colors.gray};
   `}
 `
-
 export const FavButton = styled.div`
   ${({ theme }) => css`
     color: ${theme.colors.primary};
@@ -123,4 +120,13 @@ export const Price = styled.div<PriceProps>`
     ${!isPromotional && priceModifiers.default(theme)};
     ${isPromotional && priceModifiers.promotional(theme)};
   `}
+`
+
+export const Unavailable = styled.div`
+  cursor: not-allowed;
+  padding: 0.8rem;
+  font-size: 1.2rem;
+  color: rgba(250, 250, 250);
+  background-color: #757575;
+  border-radius: calc(0.8rem / 2);
 `

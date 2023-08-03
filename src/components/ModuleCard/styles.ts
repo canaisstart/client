@@ -21,6 +21,7 @@ export const Flex = styled.div`
 export const Container = styled.div<IContainer>`
   .open {
     max-height: ${({ maxHeight }) => `${maxHeight}px`};
+    margin-bottom: 10px;
   }
 `
 
@@ -28,12 +29,7 @@ export const List = styled.ul`
   display: flex;
   flex-direction: column;
   max-height: 0;
-  transition: max-height 1s ease;
+  transition: max-height 1s ease, margin 0.5s ease;
   overflow: hidden;
   gap: 2px;
-
-  li:last-child,
-  li + li {
-    margin-bottom: 10px;
-  }
 `

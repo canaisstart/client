@@ -60,6 +60,7 @@ export interface QueryHome_freeCourses {
   instructor: QueryHome_freeCourses_instructor | null;
   category: QueryHome_freeCourses_category | null;
   price: number;
+  available: boolean;
 }
 
 export interface QueryHome_sections_popularCourses_highlight_background {
@@ -107,6 +108,7 @@ export interface QueryHome_sections_popularCourses_courses {
   instructor: QueryHome_sections_popularCourses_courses_instructor | null;
   category: QueryHome_sections_popularCourses_courses_category | null;
   price: number;
+  available: boolean;
 }
 
 export interface QueryHome_sections_popularCourses {

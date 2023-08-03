@@ -16,6 +16,15 @@ const ProgressCircle = ({ percent, course }: ProgressCircle) => {
     setOffset(progressOffset)
   }, [percent])
 
+  const simplyfyString = (texto: string, maxCaracteres: number) => {
+    if (texto.length <= maxCaracteres) {
+      return texto
+    } else {
+      const limiteAbreviacao = maxCaracteres - 3
+      return texto.substring(0, limiteAbreviacao) + '...'
+    }
+  }
+
   return (
     <S.Container>
       <S.Loader>
@@ -39,7 +48,9 @@ const ProgressCircle = ({ percent, course }: ProgressCircle) => {
         <h2>Seu Progresso</h2>
         <div>
           <p>{percent}%</p>
-          <span>{course}</span>
+          <span>
+            {simplyfyString(course, 40)} <strong>&gt;</strong>
+          </span>
         </div>
       </S.Content>
     </S.Container>

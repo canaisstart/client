@@ -31,6 +31,7 @@ export interface QueryOrders_orders_courses {
   instructor: QueryOrders_orders_courses_instructor | null;
   category: QueryOrders_orders_courses_category | null;
   price: number;
+  available: boolean;
 }
 
 export interface QueryOrders_orders {
