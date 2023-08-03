@@ -10,9 +10,9 @@ export const company = [
 ]
 
 export const cred = [
-  { label: 'abed', src: '/cred/abed.png' },
   { label: 'cra', src: '/cred/cra.png' },
+  { label: 'crp', src: '/cred/crp.png' },
+  { label: 'abed', src: '/cred/abed.png' },
   { label: 'crea', src: '/cred/crea.png' },
-  { label: 'ipma', src: '/cred/ipma.png' },
-  { label: 'crp', src: '/cred/crp.png' }
+  { label: 'ipma', src: '/cred/ipma.svg' }
 ]

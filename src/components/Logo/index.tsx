@@ -7,6 +7,9 @@ export type LogoProps = {
   hideOnMobile?: boolean
   id?: string
   src?: string
+  width?: number
+  height?: number
+  onClick?: () => void
 }
 
 const Logo = ({
@@ -14,13 +17,16 @@ const Logo = ({
   // color = 'white',
   // size = 'normal',
   hideOnMobile = false,
-  src
+  src,
+  width,
+  height,
+  onClick
 }: LogoProps) => (
-  <S.Wrapper hideOnMobile={hideOnMobile}>
+  <S.Wrapper hideOnMobile={hideOnMobile} onClick={onClick}>
     <Image
       src={src ? src : '/img/logo-start-white-02.png'}
-      width={130}
-      height={50}
+      width={width ? width : 130}
+      height={height ? height : 50}
       alt="Logo START"
     />
   </S.Wrapper>

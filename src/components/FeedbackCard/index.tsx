@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 interface IUser {
   name: string
-  avatar: string
+  avatar: string | null
 }
 
 interface IFeedbackCard {
@@ -19,12 +19,16 @@ const FeedbackCard = ({ user, stars, message, course }: IFeedbackCard) => {
     <S.CardContainer>
       <S.CardHead>
         <S.Avatar>
-          <Image
-            src={user.avatar}
-            alt="Avatar"
-            layout="fill"
-            objectFit="contain"
-          />
+          {user.avatar ? (
+            <Image
+              src={user.avatar}
+              alt="Avatar"
+              layout="fill"
+              objectFit="contain"
+            />
+          ) : (
+            user.name[0]
+          )}
         </S.Avatar>
         <S.InfoWrapper>
           <p>{user.name}</p>

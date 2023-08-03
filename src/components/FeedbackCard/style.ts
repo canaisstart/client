@@ -3,7 +3,10 @@ import theme from 'styles/theme'
 
 export const CardContainer = styled.div`
   min-width: clamp(268.8px, 25vw, 400px);
-  min-height: 459px;
+  height: 340px;
+  max-height: 375px;
+  border-radius: 8px;
+  overflow: hidden;
   background-color: white;
   padding: 2rem;
   display: flex;
@@ -32,11 +35,19 @@ export const CardBody = styled.div`
 
 export const Avatar = styled.div`
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 75px;
   height: 75px;
+  max-width: 75px;
+  max-height: 75px;
   border-radius: 100%;
   background-color: #d2d4ff;
   overflow: hidden;
+
+  font-size: 42px;
+  color: rgba(250, 250, 250, 1);
 `
 
 export const InfoWrapper = styled.div`
@@ -52,5 +63,8 @@ export const InfoWrapper = styled.div`
   > span {
     color: #7d7d7d;
     font-weight: 400;
+    font-size: ${theme.font.sizes.xsmall};
   }
 `
+
+export const AvatarName = styled.h3``

@@ -1,59 +1,58 @@
 import Logo from 'components/Logo'
 import * as S from './style'
 import Heading from 'components/Heading'
-import TextField from 'components/TextField'
-import { Email } from '@styled-icons/material-outlined'
-import { FacebookCircle } from '@styled-icons/remix-fill'
-import { Instagram } from '@styled-icons/fa-brands'
+import { FacebookSquare, InstagramSquare } from '@styled-icons/fa-brands'
 import Link from 'next/link'
+import FormBusiness from 'components/FormBusiness'
+import { Container } from 'components/Container'
 
 const FooterCorporate = () => {
   return (
     <S.FooterContainer>
-      <S.FooterHead>
-        <Logo src="/img/start-corporate.png" />
-      </S.FooterHead>
-      <S.FooterBody>
-        <S.LeftSection>
-          <Heading size="small">Sobre</Heading>
-          <span>
-            É uma escola de capacitação profissional, mas muito ALÉM disso, É
-            uma FÁBRICA DE EDUCAÇÃO. Com 8 anos de história, nossa missão é
-            auxiliar estudantes e trabalhadores à aprimorar suas habilidades,
-            (softs e hards skills).
-          </span>
-        </S.LeftSection>
-        <S.Divider />
-        <S.RightSection>
-          <S.FooterForm>
-            <Heading size="small">
-              Cadastre-se e receba novidades e ofertas especiais
-            </Heading>
-            <S.FooterInput>
-              <TextField placeholder="e-mail" icon={<Email />} />
-              <button type="submit">Inscreva-se</button>
-            </S.FooterInput>
-          </S.FooterForm>
-        </S.RightSection>
-      </S.FooterBody>
-      <S.Copyright>
-        <span>Copyright © Escola START | Todos os direitos reservados</span>
-        <span>
-          Siga as nossas redes sociais:
-          <S.Anchors>
-            <Link href="https://www.instagram.com/_escolastart/" passHref>
-              <a target="_blank">
-                <Instagram />
-              </a>
-            </Link>
-            <Link href="https://www.facebook.com/canaisstart" passHref={true}>
-              <a target="_blank">
-                <FacebookCircle />
-              </a>
-            </Link>
-          </S.Anchors>
-        </span>
-      </S.Copyright>
+      <Container css={{ position: 'relative' }}>
+        <S.FooterHead>
+          <Logo src="/img/start-corporate.png" />
+        </S.FooterHead>
+        <S.FooterBody>
+          <S.LeftSection>
+            <Heading size="medium">Sobre</Heading>
+            <p>
+              É uma escola de capacitação profissional, mas muito ALÉM disso, É
+              uma <strong>FÁBRICA DE EDUCAÇÃO.</strong>
+            </p>
+            <p>
+              Com <strong>8 anos de história</strong>, nossa missão é auxiliar
+              estudantes e trabalhadores à aprimorar suas habilidades, (softs e
+              hards skills).
+            </p>
+            <br></br>
+            <span>
+              Siga as nossas redes sociais:
+              <S.Anchors>
+                <Link href="https://www.instagram.com/_escolastart/" passHref>
+                  <a target="_blank">
+                    <InstagramSquare />
+                  </a>
+                </Link>
+                <Link
+                  href="https://www.facebook.com/canaisstart"
+                  passHref={true}
+                >
+                  <a target="_blank">
+                    <FacebookSquare />
+                  </a>
+                </Link>
+              </S.Anchors>
+            </span>
+          </S.LeftSection>
+          <S.RightSection>
+            <FormBusiness />
+          </S.RightSection>
+        </S.FooterBody>
+        <S.Copyright>
+          <span>Copyright © STARTech. Todos os direitos reservados</span>
+        </S.Copyright>
+      </Container>
     </S.FooterContainer>
   )
 }
