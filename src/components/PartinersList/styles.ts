@@ -14,7 +14,7 @@ export const Title = styled.div`
 
   font-size: clamp(8px, 2.22vw, 28px);
   font-weight: 600;
-  line-height: 48px;
+  line-height: 45px;
   color: white;
 
   padding: 0 6rem;

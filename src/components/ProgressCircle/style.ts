@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import media from 'styled-media-query'
 
 export const Container = styled.div`
   display: flex;
@@ -7,8 +8,13 @@ export const Container = styled.div`
 `
 
 export const Loader = styled.div`
-  width: 84px;
-  height: 84px;
+  width: 50px;
+  height: 50px;
+
+  ${media.greaterThan('medium')`
+    width: 83px;
+    height: 83px;
+  `}
   position: relative;
 `
 
@@ -37,14 +43,21 @@ export const Circle = styled.circle`
 `
 
 export const Icon = styled.div`
-  width: 100%;
-  height: 100%;
+  ${media.greaterThan('medium')`
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  `}
+  width: 50%;
+  height: 50%;
 
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 0;
+  top: 25%;
+  left: 25%;
 `
 
 export const Content = styled.div`
@@ -53,20 +66,46 @@ export const Content = styled.div`
   > div {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
   }
 
   > h2 {
+    font-size: 16px;
+    display: none;
+    ${media.greaterThan('medium')`
+      display: block
+    `}
   }
 
   > div > p {
+    width: 3ch;
+    display: none;
     font-size: 16px;
     font-weight: 600;
     color: #00cd08;
+    ${media.greaterThan('medium')`
+      display: block
+    `}
   }
 
   > div > span {
+    max-width: 115px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
     text-align: center;
     font-size: 12px;
     font-weight: 400;
+  }
+
+  > div > span > strong {
+    color: #00cd08;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transform: rotate(90deg);
   }
 `

@@ -11,14 +11,15 @@ import * as S from './styles'
 
 export type CourseCardProps = {
   id: string
-  slug: string
+  slug: string | null
   title: string
-  category: string
+  category: string | null
   img: string
   price: number
   ribbon?: React.ReactNode
   ribbonColor?: RibbonColors
   ribbonSize?: RibbonSizes
+  available: boolean
 }
 
 const CourseCard = ({
@@ -30,7 +31,8 @@ const CourseCard = ({
   price,
   ribbon,
   ribbonColor = 'primary',
-  ribbonSize = 'small'
+  ribbonSize = 'small',
+  available
 }: CourseCardProps) => (
   <S.Wrapper data-cy="course-card">
     {!!ribbon && (
@@ -54,8 +56,12 @@ const CourseCard = ({
         <WishlistButton id={id} />
       </S.FavButton>
       <S.BuyBox>
-        <S.Price>{price === 0 ? 'FREE' : `${formatPrice(price)}`}</S.Price>
-        <CartButton id={id} />
+        <S.Price>{price === 0 ? 'Grátis' : `${formatPrice(price)}`}</S.Price>
+        {available ? (
+          <CartButton id={id} />
+        ) : (
+          <S.Unavailable>Indisponível</S.Unavailable>
+        )}
       </S.BuyBox>
     </S.Content>
   </S.Wrapper>

@@ -31,6 +31,7 @@ export interface QueryWishlist_wishlists_courses {
   instructor: QueryWishlist_wishlists_courses_instructor;
   category: QueryWishlist_wishlists_courses_category;
   price: number;
+  available: boolean;
 }
 
 export interface QueryWishlist_wishlists {

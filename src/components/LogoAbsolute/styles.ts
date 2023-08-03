@@ -17,6 +17,6 @@ export const LogoContainer = styled.div<LogoAbsoluteProps>`
   `}
 
   ${media.lessThan('medium')`
-    display: none !important;
+    display: none !important; 
   `}
 `

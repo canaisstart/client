@@ -245,7 +245,6 @@ export const SectionClients = styled.div`
     `}
 
     ${media.lessThan('medium')`
-      height: 135rem;
       padding-left: 1rem;
       padding-right: 1rem;
       background-color: ${theme.colors.mainBg};
@@ -311,6 +310,12 @@ export const CImages = styled(Container)`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: ${theme.grid.gutter};
+    `}
+
+    ${media.lessThan('medium')`
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-gap: 5px;
     `}
   `}
 `

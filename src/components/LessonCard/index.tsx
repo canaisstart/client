@@ -1,31 +1,33 @@
 import * as S from './styles'
-import { useState } from 'react'
 
 export interface ILessonCard {
   name: string
   duration: string
   isFinished: boolean
+  onClick: () => void
+  onCompleted: (isSelected: boolean) => void
+  current: boolean
 }
 
-const LessonCard = ({ name, duration, isFinished }: ILessonCard) => {
-  const [selected, setSelected] = useState(isFinished)
-
-  const onSelect = () => {
-    setSelected(!selected)
-
-    //Make your api request here
-  }
-
-  const onChangeVideo = () => {
-    //Make your script to change the lesson video here
-  }
-
+const LessonCard = ({
+  name,
+  duration,
+  isFinished,
+  onClick,
+  onCompleted,
+  current
+}: ILessonCard) => {
   return (
-    <S.Flex onClick={() => onChangeVideo}>
+    <S.Flex onClick={onClick} current={current}>
       <h3>{name}</h3>
       <S.RowGap>
         <p>{duration}</p>
-        <S.InputRadio isSelected={selected} onClick={() => onSelect()} />
+        <S.InputRadio
+          isSelected={isFinished}
+          onClick={() => {
+            onCompleted(!isFinished)
+          }}
+        />
       </S.RowGap>
     </S.Flex>
   )

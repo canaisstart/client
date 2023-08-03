@@ -3,7 +3,7 @@ import theme from 'styles/theme'
 
 export const CardContainer = styled.div`
   min-width: clamp(268.8px, 25vw, 400px);
-  height: 340px;
+  height: 325px;
   max-height: 375px;
   border-radius: 8px;
   overflow: hidden;
@@ -66,5 +66,3 @@ export const InfoWrapper = styled.div`
     font-size: ${theme.font.sizes.xsmall};
   }
 `
-
-export const AvatarName = styled.h3``

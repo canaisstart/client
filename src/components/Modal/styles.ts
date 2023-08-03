@@ -4,10 +4,12 @@ export const ModalContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-y: scroll;
 
-  width: 100%;
-  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
 
+  z-index: 10000000;
   background-color: #0b0a0ad9;
   position: fixed;
   top: 0;

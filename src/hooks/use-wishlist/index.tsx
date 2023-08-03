@@ -210,7 +210,8 @@ const WishlistProvider = ({ children }: WishlistProviderProps) => {
           slug: course.slug,
           category: course.category?.name,
           img: `${getImageUrl(course.cover?.url)}`,
-          price: course.price
+          price: course.price,
+          available: course.available
         })),
         isInWishlist,
         addToWishlist,

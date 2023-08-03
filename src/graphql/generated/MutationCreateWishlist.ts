@@ -33,6 +33,7 @@ export interface MutationCreateWishlist_createWishlist_wishlist_courses {
   instructor: MutationCreateWishlist_createWishlist_wishlist_courses_instructor | null;
   category: MutationCreateWishlist_createWishlist_wishlist_courses_category | null;
   price: number;
+  available: boolean;
 }
 
 export interface MutationCreateWishlist_createWishlist_wishlist {

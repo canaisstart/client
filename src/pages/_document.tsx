@@ -1,4 +1,5 @@
 import Analytics from 'components/Analytics'
+import RDStation from 'components/RDStation'
 import Document, {
   Html,
   Head,
@@ -39,10 +40,15 @@ export default class MyDocument extends Document {
     return (
       <Html lang="pt-BR">
         <Head />
+
         <body>
           <Main />
+
           <NextScript />
+
           <Analytics />
+
+          <RDStation />
         </body>
       </Html>
     )

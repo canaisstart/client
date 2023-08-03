@@ -32,13 +32,12 @@ const AboutUs = () => (
               </AccordionItemHeading>
               <AccordionItemPanel>
                 <p>
-                  You can contact a school by filling out a{' '}
-                  <Link href="/contact-us">
-                    <a>“Contact Us”</a>
-                  </Link>{' '}
-                  form. This form can be found to the right of both the
-                  institute and education program profiles and also at the
-                  bottom of these profiles.
+                  A Escola START é uma instituição de capacitação profissional
+                  com o diferencial de ser uma verdadeira fábrica de educação.
+                  Com uma trajetória de 8 anos, nossa missão é auxiliar
+                  estudantes e trabalhadores a aprimorar suas habilidades, tanto
+                  as técnicas (hard skills) quanto as habilidades sociais e
+                  emocionais (soft skills).
                 </p>
               </AccordionItemPanel>
             </AccordionItem>
@@ -46,42 +45,29 @@ const AboutUs = () => (
             <AccordionItem uuid="b">
               <AccordionItemHeading>
                 <AccordionItemButton>
-                  <strong>
-                    Por que e por quanto tempo tenho acesso ao conteúdo?
-                  </strong>
+                  <strong>Por quanto tempo tenho acesso ao conteúdo?</strong>
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                <p>
-                  You can contact a school by filling out a{' '}
-                  <Link href="/contact-us">
-                    <a>“Contact Us”</a>
-                  </Link>{' '}
-                  form. This form can be found to the right of both the
-                  institute and education program profiles and also at the
-                  bottom of these profiles.
-                </p>
+                Você terá acesso completo ao conteúdo por 1 ano! Durante esse
+                período, você terá a oportunidade de aprimorar suas habilidades,
+                desenvolver competências , e transformar sua trajetória
+                profissional e pessoal de forma significativa.
               </AccordionItemPanel>
             </AccordionItem>
 
             <AccordionItem uuid="c">
               <AccordionItemHeading>
                 <AccordionItemButton>
-                  <strong>
-                    São quantas horas de conteúdo? Tem certificado?
-                  </strong>
+                  <strong>Tem certificado?</strong>
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                <p>
-                  You can contact a school by filling out a{' '}
-                  <Link href="/contact-us">
-                    <a>“Contact Us”</a>
-                  </Link>{' '}
-                  form. This form can be found to the right of both the
-                  institute and education program profiles and also at the
-                  bottom of these profiles.
-                </p>
+                Sim, ao completar o curso online da Escola START, você será
+                recompensado(a) com um certificado de conclusão. Esse
+                certificado é o símbolo do seu esforço e dedicação ao longo do
+                período de estudos. Ele comprova suas novas habilidades
+                adquiridas.
               </AccordionItemPanel>
             </AccordionItem>
 
@@ -92,15 +78,11 @@ const AboutUs = () => (
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                <p>
-                  You can contact a school by filling out a{' '}
-                  <Link href="/contact-us">
-                    <a>“Contact Us”</a>
-                  </Link>{' '}
-                  form. This form can be found to the right of both the
-                  institute and education program profiles and also at the
-                  bottom of these profiles.
-                </p>
+                Possuimos diversas opções de pagamento. Aceitamos boleto
+                bancário, pix, além de cartões de débito e crédito. E o melhor é
+                que você pode parcelar o valor do curso no cartão de crédito,
+                facilitando ainda mais o acesso ao conteúdo de excelência que
+                temos a oferecer.
               </AccordionItemPanel>
             </AccordionItem>
 
@@ -111,15 +93,13 @@ const AboutUs = () => (
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                <p>
-                  You can contact a school by filling out a{' '}
-                  <Link href="/contact-us">
-                    <a>“Contact Us”</a>
-                  </Link>{' '}
-                  form. This form can be found to the right of both the
-                  institute and education program profiles and also at the
-                  bottom of these profiles.
-                </p>
+                Sim, você tem a liberdade de ampliar seus horizontes e aprimorar
+                suas habilidades em diferentes áreas. Com a possibilidade de
+                fazer mais de um curso ao mesmo tempo, você pode explorar
+                diversas temáticas e adquirir conhecimentos variados para
+                impulsionar sua carreira e desenvolvimento pessoal. Basta
+                adquirir os cursos desejados em nossa loja virtual e iniciar os
+                estudos imediatamente.
               </AccordionItemPanel>
             </AccordionItem>
 
@@ -133,15 +113,11 @@ const AboutUs = () => (
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                <p>
-                  You can contact a school by filling out a{' '}
-                  <Link href="/contact-us">
-                    <a>“Contact Us”</a>
-                  </Link>{' '}
-                  form. This form can be found to the right of both the
-                  institute and education program profiles and also at the
-                  bottom of these profiles.
-                </p>
+                Conforme o Art. 49 do Código de Defesa do Consumidor, é
+                assegurado ao aluno da Escola START o direito de desistir do
+                contrato de curso online no prazo de 7 dias, contados a partir
+                da data de assinatura do contrato ou do recebimento do acesso ao
+                curso.
               </AccordionItemPanel>
             </AccordionItem>
           </Accordion>

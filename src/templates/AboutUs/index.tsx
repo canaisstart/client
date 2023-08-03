@@ -15,11 +15,6 @@ const AboutUs = () => (
       <Container>
         <S.LandingText>
           <Heading size="huge">EDUCAÇÃO AO ALCANCE DE TODOS</Heading>
-          <span>
-            Lorem Ipsum é. simplesmente uma simulação de texto da indústria
-            tipográfica e de impressos, e vem sendo utilizado desde o século
-            XVI, quando um impressor
-          </span>
         </S.LandingText>
       </Container>
     </S.Landing>

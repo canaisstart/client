@@ -27,6 +27,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     return { props: {} }
   }
 
+  console.log(session?.id, 'a')
+
   const { data } = await apolloClient.query<QueryOrders, QueryOrdersVariables>({
     query: QUERY_ORDERS,
     variables: {
@@ -35,7 +37,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     fetchPolicy: 'no-cache'
   })
 
-  console.log(data.orders[0].courses[0].slug)
   return {
     props: {
       items: ordersMapper(data.orders),

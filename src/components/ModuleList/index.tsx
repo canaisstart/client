@@ -1,40 +1,19 @@
-import ModuleCard from 'components/ModuleCard'
 import * as S from './styles'
-import LessonCard from 'components/LessonCard'
-import { modules } from './mocks'
-import { useState } from 'react'
 
-const ModuleList = () => {
-  const [openedIndex, setOpenedIndex] = useState<null | number>(null)
+interface IModuleList {
+  category: string | null
+  name: string
+  children: React.ReactNode
+}
 
-  const handleItemClick = (index: number) => {
-    if (openedIndex === index) {
-      setOpenedIndex(Infinity)
-    } else {
-      setOpenedIndex(index)
-    }
-  }
-
+const ModuleList = ({ name, category, children }: IModuleList) => {
   return (
     <S.ModuleListContainer onClick={(e) => e.stopPropagation()}>
       <S.Heading>
-        <h3>Informática</h3>
-        <p>HTML</p>
+        {category && <h3>{category}</h3>}
+        <p>{name || 'Carregando'}</p>
       </S.Heading>
-      <ul>
-        {modules?.map((module, index) => (
-          <ModuleCard
-            name={module.name}
-            key={index}
-            className={index === openedIndex ? 'open' : ''}
-            onClick={() => handleItemClick(index)}
-          >
-            {module.lessons?.map((lesson, index) => (
-              <LessonCard {...lesson} key={index} />
-            ))}
-          </ModuleCard>
-        ))}
-      </ul>
+      <ul>{children}</ul>
     </S.ModuleListContainer>
   )
 }

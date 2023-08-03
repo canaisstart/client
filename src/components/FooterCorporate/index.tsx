@@ -5,6 +5,7 @@ import { FacebookSquare, InstagramSquare } from '@styled-icons/fa-brands'
 import Link from 'next/link'
 import FormBusiness from 'components/FormBusiness'
 import { Container } from 'components/Container'
+import LogoAbsolute from 'components/LogoAbsolute'
 
 const FooterCorporate = () => {
   return (
@@ -50,7 +51,7 @@ const FooterCorporate = () => {
           </S.RightSection>
         </S.FooterBody>
         <S.Copyright>
-          <span>Copyright © STARTech. Todos os direitos reservados</span>
+          <span>Copyright © Escola START. Todos os Direitos Reservados</span>
         </S.Copyright>
       </Container>
     </S.FooterContainer>

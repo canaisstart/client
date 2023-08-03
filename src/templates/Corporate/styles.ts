@@ -39,7 +39,7 @@ export const MenuLinkBtn = styled.div`
 export const Heading = styled.h2`
   color: ${themeCorporate.colors.white};
   line-height: clamp(30px, 4.3vw, 66px);
-  font-size: clamp(16px, 4.17vw, 40px);
+  font-size: clamp(16px, 4.17vw, 38px);
   font-weight: 500;
 `
 
@@ -148,7 +148,7 @@ export const LandingText = styled(Container)`
   div > button {
     ${button}
     ${media.greaterThan('medium')`
-      font-size: 22px;
+      font-size: 24px;
     `}
     font-size: 28px;
     margin-top: 20px;
@@ -157,7 +157,7 @@ export const LandingText = styled(Container)`
 
   ${media.greaterThan('medium')`
     div > p {
-      margin-top: 3rem;
+      margin-top: 2rem;
       margin-bottom: 2rem;
       display: flex;
       font-size: clamp(16px, 1.67vw, 22px);
@@ -207,7 +207,7 @@ export const Accreditations = styled.div`
 
     > h3 {
       color: rgba(0, 68, 183, 1);
-      font-size: clamp(32px, 3vw, 30px);
+      font-size: clamp(32px, 3vw, 35px);
       font-weight: 700;
       line-height: 55px;
       letter-spacing: 0em;

@@ -1,10 +1,8 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import theme from 'styles/theme'
 
 export const FeedbackListContainer = styled.div`
-  ${({ theme }) => css`
-    padding: ${theme.spacings.small} 0;
-  `}
+  padding: ${theme.spacings.small} 0;
 `
 
 export const FeedbackHeading = styled.div`
@@ -15,9 +13,8 @@ export const FeedbackHeading = styled.div`
   }
 
   > p {
-    ${({ theme }) => css`
-      color: ${theme.colors.lightBg};
-    `}
+    /*color: rgba(76, 139, 245, 1);*/
+    color: ${theme.colors.lightBg};
   }
 `
 

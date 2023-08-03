@@ -28,9 +28,10 @@ export interface QueryCourses_courses {
   name: string;
   slug: string;
   cover: QueryCourses_courses_cover;
-  instructor: QueryCourses_courses_instructor ;
+  instructor: QueryCourses_courses_instructor;
   category: QueryCourses_courses_category;
   price: number;
+  available: boolean;
 }
 
 export interface QueryCourses_coursesConnection_values {
