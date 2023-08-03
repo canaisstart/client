@@ -164,7 +164,9 @@ const Home = ({
               <S.Title>
                 <b>+20.000</b>
               </S.Title>
-              <S.SubTitle>alunos</S.SubTitle>
+              <S.SubTitle>
+                alunos {'(Educação básica e profissionalizante)'}
+              </S.SubTitle>
             </S.NSingleBox>
             <S.NSingleBox>
               <S.NIcon>
