@@ -39,9 +39,9 @@ const Corporate = () => {
                 <MenuLink href="/about-us">Quem somos</MenuLink>
               </S.FlexGap>
             </span>
-            <S.MenuLinkBtn onClick={() => scrollToElement('formBusiness')}>
+            <S.Button onClick={() => scrollToElement('formBusiness')}>
               Vem pra START
-            </S.MenuLinkBtn>
+            </S.Button>
           </S.Wrapper>
         </Container>
       </S.HeaderCorporate>
@@ -55,24 +55,23 @@ const Corporate = () => {
           />
           <S.BackgroundGradient />
         </S.LandingImage>
-        <Container>
-          <S.LandingText>
-            <div>
-              <S.Heading css={{ maxWidth: '70%' }}>
-                Invista no desenvolvimento da sua equipe e impulsione o{' '}
-                <strong>sucesso da sua empresa.</strong>
-              </S.Heading>
-              <p>
-                Nossos cursos especializados são projetados para aprimorar as
-                habilidades e conhecimentos dos seus colaboradores,
-                capacitando-os a enfrentar os desafios do mercado atual.
-              </p>
-              <button onClick={() => scrollToElement('formBusiness')}>
-                Quero saber mais
-              </button>
-            </div>
-          </S.LandingText>
-        </Container>
+        <S.Flex>
+          <S.Heading css={{ maxWidth: '832px' }}>
+            Invista no desenvolvimento da sua equipe e impulsione o{' '}
+            <strong>sucesso da sua empresa.</strong>
+          </S.Heading>
+          <p>
+            Nossos cursos especializados são projetados para aprimorar as
+            habilidades e conhecimentos dos seus colaboradores, capacitando-os
+            a enfrentar os desafios do mercado atual.
+          </p>
+          <S.Button
+            onClick={() => scrollToElement('formBusiness')}
+            css={{ marginTop: '20px', padding: '12px 32px' }}
+          >
+            Quero saber mais
+          </S.Button>
+        </S.Flex>
         <LogoAbsolute posX="70%" posY="40%" rotate="260" />
       </S.View>
       <S.View>

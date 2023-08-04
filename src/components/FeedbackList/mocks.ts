@@ -13,16 +13,6 @@ interface IFeedback {
 export const feedbacks: IFeedback[] = [
   {
     user: {
-      name: 'A',
-      avatar: '/clients/rio_prefeitura.png'
-    },
-    stars: 1,
-    course: 'Designer',
-    message:
-      'dd an excerpt from your personal biography, or simply let the world know who you are and what you have to offer. Connect with your site visitor’s on a personal level and make sure that your site.'
-  },
-  {
-    user: {
       name: 'Valéria Paulo - Programa Rio Liderança Feminina',
       avatar: null
     },

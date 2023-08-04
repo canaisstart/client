@@ -95,7 +95,7 @@ export const LeftSection = styled.div`
 
 export const RightSection = styled.div`
   width: 100%;
-  z-index: 1;
+  z-index: 2;
 
   ${media.greaterThan('medium')`
     width: 48%;

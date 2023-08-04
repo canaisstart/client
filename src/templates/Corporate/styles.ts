@@ -14,7 +14,7 @@ export const themeCorporate = {
   }
 }
 
-const button = css`
+export const Button = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -27,16 +27,35 @@ const button = css`
   width: fit-content;
 `
 
-export const MenuLinkBtn = styled.div`
-  ${button}
-  padding: 12px 24px;
-  font-size: 16px;
-  ${media.greaterThan('medium')`
-    font-size: 16px;
+export const Flex = styled(Container)`
+  width: 100%;
+  display: flex;
+  z-index: 2;
+  flex-direction: column;
+  gap: 12px;
+  position: absolute;
+  bottom: calc(3.2rem / 2);
+
+
+  ${media.lessThan('medium')`
+    > p {
+      display: none;
+    }
   `}
+
+  > p {
+    font-family: Ubuntu;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 35px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(76, 139, 245, 1);
+  }
 `
 
 export const Heading = styled.h2`
+  z-index: 1;
   color: ${themeCorporate.colors.white};
   line-height: clamp(30px, 4.3vw, 66px);
   font-size: clamp(16px, 4.17vw, 38px);
@@ -54,10 +73,9 @@ export const View = styled.div<View>`
   justify-content: ${({ gap }) => (gap ? 'center' : 'space-between')};
   gap: ${({ gap }) => (gap ? gap : 0)}rem;
 
-  width: 100vw;
+  width: 100%;
   max-width: 100vw;
-  max-height: 100vh;
-  height: 100vh;
+  min-height: 100vh;
 `
 
 export const ViewContainer = styled(View)`
@@ -100,11 +118,13 @@ export const FlexGap = styled.div`
 `
 
 export const LandingImage = styled.div`
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
   top: 3rem;
   z-index: 1;
   width: 100%;
-  height: 80%;
+  height: 80vh;
   margin-bottom: 1rem;
 `
 
@@ -121,53 +141,7 @@ export const BackgroundGradient = styled.div`
   top: -2px;
   left: 0;
 `
-
-export const LandingText = styled(Container)`
-  position: absolute;
-  bottom: 4%;
-  z-index: 1;
-
-  > div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    color: white;
-  }
-
-  div > h2 {
-    line-height: 50px;
-    font-size: 48px;
-    max-width: 832px;
-    font-weight: 500;
-  }
-
-  div > p {
-    display: none;
-  }
-
-  div > button {
-    ${button}
-    ${media.greaterThan('medium')`
-      font-size: 24px;
-    `}
-    font-size: 28px;
-    margin-top: 20px;
-    padding: 12px 32px;
-  }
-
-  ${media.greaterThan('medium')`
-    div > p {
-      margin-top: 2rem;
-      margin-bottom: 2rem;
-      display: flex;
-      font-size: clamp(16px, 1.67vw, 22px);
-      color: ${themeCorporate.colors.white};
-      max-width: 63%;
-    }
-  `}
-`
-
-export const PartinersContainer = styled(Container)`
+export const PartinersContainer = styled.div`
   margin-top: 0;
 `
 
@@ -207,7 +181,7 @@ export const Accreditations = styled.div`
 
     > h3 {
       color: rgba(0, 68, 183, 1);
-      font-size: clamp(32px, 3vw, 35px);
+      font-size: clamp(24px, 3vw, 28px);
       font-weight: 700;
       line-height: 55px;
       letter-spacing: 0em;
@@ -225,8 +199,8 @@ export const Relative = styled.div`
 export const SliderImage = styled.div`
   position: relative;
 
-  width: 180px;
-  height: 180px;
+  width: 82px;
+  height: 82pxx;
 
   margin: 2rem;
 `

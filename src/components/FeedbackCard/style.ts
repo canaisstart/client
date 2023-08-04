@@ -16,6 +16,8 @@ export const CardContainer = styled.div`
   -moz-box-shadow: 10px 10px 11px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 10px 10px 11px -10px rgba(0, 0, 0, 0.75);
   margin: 1rem;
+  position: relative;
+  z-index: 2;
 `
 
 export const CardHead = styled.div`
