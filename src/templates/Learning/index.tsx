@@ -12,9 +12,14 @@ import { ArrowDropDown } from '@styled-icons/material-outlined'
 import { Download } from '@styled-icons/remix-fill'
 import Image from 'next/image'
 import ReactPlayer from 'react-player'
+import { useMutation } from '@apollo/client'
+import {
+  CREATE_USERS_LESSON,
+  DELETE_USERS_LESSON
+} from 'graphql/mutations/lessons'
 
 interface ILesson {
-  id: string
+  id: number
   name: string
   videoUrl: string
   completed: boolean
@@ -40,9 +45,10 @@ interface ICourseInfo {
 export type CourseTemplatePropsVideo = {
   slug: string
   courseInfo: ICourseInfo
+  userId: string
 }
 
-const Learning = ({ courseInfo, slug }: CourseTemplatePropsVideo) => {
+const Learning = ({ courseInfo, slug, userId }: CourseTemplatePropsVideo) => {
   const [modules, setModules] = useState<IModule[]>([...courseInfo.modules])
   const [viewPort, setViewPort] = useState(0)
   const [selectedLesson, setSelectedLesson] = useState<ILesson | undefined>(
@@ -58,6 +64,9 @@ const Learning = ({ courseInfo, slug }: CourseTemplatePropsVideo) => {
   )
   const [modalIsOpen, setModalIsOpen] = useState(false)
 
+  const [createUsersLesson] = useMutation(CREATE_USERS_LESSON)
+  const [deleteUsersLesson] = useMutation(DELETE_USERS_LESSON)
+
   const completedTasks = courseInfo.modules.reduce(
     (acc, cur) =>
       acc +
@@ -65,12 +74,39 @@ const Learning = ({ courseInfo, slug }: CourseTemplatePropsVideo) => {
     0
   )
 
-  const handleConcluited = (status: boolean, id: string) => {
+  const handleConcluited = async (
+    status: boolean,
+    id: number,
+    userId: string
+  ) => {
     setModules((oldModules) =>
       oldModules.map((module) => {
         module.lessons.map((lesson) => {
           if (lesson.id == id) {
             lesson.completed = status
+
+            if (status) {
+              createUsersLesson({
+                variables: {
+                  input: {
+                    data: {
+                      userId: userId,
+                      lesson_id: id
+                    }
+                  }
+                }
+              }).catch((error: Error) => {
+                console.error(error)
+              })
+            } else {
+              deleteUsersLesson({
+                variables: {
+                  input: { where: { userId: userId, lesson_id: id } }
+                }
+              }).catch((error: Error) => {
+                console.error(error)
+              })
+            }
           }
           return lesson
         })
@@ -173,7 +209,7 @@ const Learning = ({ courseInfo, slug }: CourseTemplatePropsVideo) => {
                         setModalIsOpen(false)
                       }}
                       onCompleted={(status) =>
-                        handleConcluited(status, lesson.id)
+                        handleConcluited(status, lesson.id, userId)
                       }
                     />
                   ))}
@@ -204,7 +240,7 @@ const Learning = ({ courseInfo, slug }: CourseTemplatePropsVideo) => {
                         setModalIsOpen(false)
                       }}
                       onCompleted={(status) =>
-                        handleConcluited(status, lesson.id)
+                        handleConcluited(status, lesson.id, userId)
                       }
                     />
                   ))}
@@ -225,7 +261,7 @@ const Learning = ({ courseInfo, slug }: CourseTemplatePropsVideo) => {
                   playIcon={<button>Play</button>}
                   onProgress={(e) =>
                     e.played > 0.8 &&
-                    handleConcluited(true, selectedLesson?.id as string)
+                    handleConcluited(true, selectedLesson?.id, userId)
                   }
                 />
               </S.VideoBox>
@@ -255,7 +291,7 @@ const Learning = ({ courseInfo, slug }: CourseTemplatePropsVideo) => {
                   onClick={() => {
                     changeVideo()?.next &&
                       selectedLesson &&
-                      handleConcluited(true, selectedLesson?.id)
+                      handleConcluited(true, selectedLesson?.id, userId)
                     changeVideo()?.next &&
                       setSelectedLesson(changeVideo()?.next)
                   }}
