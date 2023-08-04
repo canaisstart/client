@@ -11,6 +11,7 @@ import Partiners from 'components/PartinersList'
 import LogoAbsolute from 'components/LogoAbsolute'
 import Slider from 'components/Slider'
 import { settings } from './sliderConfig'
+import Carousel from 'components/Carousel'
 
 const Corporate = () => {
   const scrollToElement = (elementId: string) => {
@@ -56,21 +57,23 @@ const Corporate = () => {
           <S.BackgroundGradient />
         </S.LandingImage>
         <S.Flex>
-          <S.Heading css={{ maxWidth: '832px' }}>
-            Invista no desenvolvimento da sua equipe e impulsione o{' '}
-            <strong>sucesso da sua empresa.</strong>
-          </S.Heading>
-          <p>
-            Nossos cursos especializados são projetados para aprimorar as
-            habilidades e conhecimentos dos seus colaboradores, capacitando-os
-            a enfrentar os desafios do mercado atual.
-          </p>
-          <S.Button
-            onClick={() => scrollToElement('formBusiness')}
-            css={{ marginTop: '20px', padding: '12px 32px' }}
-          >
-            Quero saber mais
-          </S.Button>
+          <Container>
+            <S.Heading css={{ maxWidth: '832px' }}>
+              Invista no desenvolvimento da sua equipe e impulsione o{' '}
+              <strong>sucesso da sua empresa.</strong>
+            </S.Heading>
+            <p>
+              Nossos cursos especializados são projetados para aprimorar as
+              habilidades e conhecimentos dos seus colaboradores, capacitando-os
+              a enfrentar os desafios do mercado atual.
+            </p>
+            <S.Button
+              onClick={() => scrollToElement('formBusiness')}
+              css={{ marginTop: '20px', padding: '12px 32px' }}
+            >
+              Quero saber mais
+            </S.Button>
+          </Container>
         </S.Flex>
         <LogoAbsolute posX="70%" posY="40%" rotate="260" />
       </S.View>
@@ -97,18 +100,18 @@ const Corporate = () => {
           <Container css={{ position: 'relative' }}>
             <h3>Credenciamentos</h3>
             <S.Relative>
-              <Slider settings={settings}>
-                {cred.map((cred) => (
-                  <S.SliderImage key={cred.label}>
-                    <Image
-                      src={cred.src}
-                      layout="fill"
-                      objectFit="contain"
-                      objectPosition="center"
-                    />
-                  </S.SliderImage>
+              <Carousel
+                items={cred.map((cred, index) => (
+                  <Image
+                    key={index}
+                    src={cred.src}
+                    width={82}
+                    height={82}
+                    objectFit="contain"
+                    objectPosition="center"
+                  />
                 ))}
-              </Slider>
+              />
             </S.Relative>
           </Container>
         </S.Accreditations>

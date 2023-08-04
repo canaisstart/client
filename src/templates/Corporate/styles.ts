@@ -27,7 +27,7 @@ export const Button = styled.div`
   width: fit-content;
 `
 
-export const Flex = styled(Container)`
+export const Flex = styled.div`
   width: 100%;
   display: flex;
   z-index: 2;
@@ -36,14 +36,13 @@ export const Flex = styled(Container)`
   position: absolute;
   bottom: calc(3.2rem / 2);
 
-
   ${media.lessThan('medium')`
-    > p {
+    p {
       display: none;
     }
   `}
 
-  > p {
+  p {
     font-family: Ubuntu;
     font-size: 24px;
     font-weight: 500;

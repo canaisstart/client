@@ -52,6 +52,10 @@ export const FlexGap = styled.div`
   .slick-dots li.slick-active {
     background: rgba(76, 139, 245, 1);
   }
+
+  .slick-slider {
+    z-index: 4;
+  }
 `
 
 export const Gradient = styled.div`
@@ -69,6 +73,7 @@ export const Gradient = styled.div`
   position: absolute;
   top: 0;
   left: -1%;
+  z-index: 4;
 `
 
 export const Relative = styled.div`
