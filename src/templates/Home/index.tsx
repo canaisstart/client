@@ -64,12 +64,12 @@ const Home = ({
             <WorkspacePremium />
           </S.FIcon>
           <S.FTitle>
-            Educação básica e capacitação profissional de qualidade
+            Educação técnica com capacitação profissional de qualidade
           </S.FTitle>
           <S.FDescription>
-            Desenvolvimento educacional para alunos de instituições públicas do
-            Brasil. Contamos com um time de Professores que trazem conhecimento
-            prático vivencial para sala de aula.
+            Desenvolvimento educacional para alunos de instituições públicas e
+            privadas de todo o Brasil. Contamos com um time de Professores que
+            trazem conhecimento prático vivencial para sala de aula.
           </S.FDescription>
         </S.FContent>
 
@@ -98,8 +98,9 @@ const Home = ({
     </S.SectionBeneficts>
     <S.SectionClients>
       <S.CTitle>
-        A <strong>Escola START</strong> também leva capacitação profissional
-        para os alunos através das <strong>maiores empresas do país</strong>
+        A <strong>Escola START</strong> leva capacitação profissional para
+        alunos nos níveis fundamental e técnico espalhados{' '}
+        <strong>por todo o Brasil</strong>
       </S.CTitle>
       <S.CSubtitle>Nosso principais clientes e parceiros:</S.CSubtitle>
       <S.CImages>
@@ -162,7 +163,7 @@ const Home = ({
                 <Group />
               </S.NIcon>
               <S.Title>
-                <b>+20.000</b>
+                <b>+22.000</b>
               </S.Title>
               <S.SubTitle>
                 alunos {'(Educação básica e profissionalizante)'}
@@ -173,7 +174,7 @@ const Home = ({
                 <BusinessCenter />
               </S.NIcon>
               <S.Title>
-                <b>+5.000</b>
+                <b>+6.000</b>
               </S.Title>
               <S.SubTitle>inseridos no mercado de trabalho</S.SubTitle>
             </S.NSingleBox>
@@ -196,7 +197,9 @@ const Home = ({
               <S.Title>
                 <b>+300</b>
               </S.Title>
-              <S.SubTitle>back-offices e colaboradores</S.SubTitle>
+              <S.SubTitle css={{ width: 200 }}>
+                back-office e professores
+              </S.SubTitle>
             </S.NSingleBox>
           </S.NBox>
         </S.NContent>
