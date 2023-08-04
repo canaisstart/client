@@ -74,7 +74,7 @@ const Footer = () => (
 
       <S.Column aria-labelledby="social-media">
         <Heading color="black" lineColor="secondary" lineBottom size="small">
-          Intitucional
+          Institucional
         </Heading>
 
         <nav id="institutional">
