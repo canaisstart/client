@@ -35,12 +35,12 @@ const Corporate = () => {
                 onClick={() => scrollToElement('top')}
               />
               <S.FlexGap>
-                <MenuLink href="/">Home</MenuLink>
-                <MenuLink href="/about-us">Quem somos</MenuLink>
+                <MenuLink href="/corporate#about-us">Sobre Nós</MenuLink>
+                <MenuLink href="/">START Plus</MenuLink>
               </S.FlexGap>
             </span>
             <S.MenuLinkBtn onClick={() => scrollToElement('formBusiness')}>
-              Vem pra START
+              Vem para a START
             </S.MenuLinkBtn>
           </S.Wrapper>
         </Container>
