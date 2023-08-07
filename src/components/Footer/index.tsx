@@ -78,7 +78,7 @@ const Footer = () => (
         </Heading>
 
         <nav id="institutional">
-          <Link href="/about-us">Sobre a Escola START</Link>
+          <Link href="/about-us">Sobre Nós</Link>
           <Link href="/about-us#our-time">Nosso Time</Link>
         </nav>
       </S.Column>

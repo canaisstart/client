@@ -5,7 +5,6 @@ import { FacebookSquare, InstagramSquare } from '@styled-icons/fa-brands'
 import Link from 'next/link'
 import FormBusiness from 'components/FormBusiness'
 import { Container } from 'components/Container'
-import LogoAbsolute from 'components/LogoAbsolute'
 
 const FooterCorporate = () => {
   return (
@@ -16,10 +15,10 @@ const FooterCorporate = () => {
         </S.FooterHead>
         <S.FooterBody>
           <S.LeftSection>
-            <Heading size="medium">Sobre</Heading>
-            <p>
-              É uma escola de capacitação profissional, mas muito ALÉM disso, É
-              uma <strong>FÁBRICA DE EDUCAÇÃO.</strong>
+            <Heading size="medium">Sobre Nós</Heading>
+            <p id="about-us">
+              Somos uma escola de capacitação profissional, mas muito além
+              disso, somos uma <strong>FÁBRICA DE EDUCAÇÃO.</strong>
             </p>
             <p>
               Com <strong>8 anos de história</strong>, nossa missão é auxiliar
