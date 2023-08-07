@@ -64,12 +64,12 @@ const Home = ({
             <WorkspacePremium />
           </S.FIcon>
           <S.FTitle>
-            Educação técnica com capacitação profissional de qualidade
+            Educação básica e capacitação profissional de qualidade
           </S.FTitle>
           <S.FDescription>
-            Desenvolvimento educacional para alunos de instituições públicas e
-            privadas de todo o Brasil. Contamos com um time de Professores que
-            trazem conhecimento prático vivencial para sala de aula.
+            Desenvolvimento educacional para alunos de instituições públicas do
+            Brasil. Contamos com um time de Professores que trazem conhecimento
+            prático vivencial para sala de aula.
           </S.FDescription>
         </S.FContent>
 
@@ -166,7 +166,7 @@ const Home = ({
                 <b>+22.000</b>
               </S.Title>
               <S.SubTitle>
-                alunos {'(Educação básica e profissionalizante)'}
+                alunos (educação básica e profissionalizante)
               </S.SubTitle>
             </S.NSingleBox>
             <S.NSingleBox>
