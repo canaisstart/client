@@ -60,7 +60,7 @@ const CourseCard = ({
         {available ? (
           <CartButton id={id} />
         ) : (
-          <S.Unavailable>Indisponível</S.Unavailable>
+          <S.Unavailable>Em breve</S.Unavailable>
         )}
       </S.BuyBox>
     </S.Content>

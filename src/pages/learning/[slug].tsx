@@ -26,21 +26,6 @@ export default function Index(props: CourseTemplatePropsVideo) {
   return <Learning {...props} />
 }
 
-// export async function getStaticPaths() {
-//   const { data } = await apolloClient.query<
-//     QueryCourses,
-//     QueryCoursesVariables
-//   >({
-//     query: QUERY_COURSES
-//   })
-
-//   const paths = data.courses.map(({ slug }) => ({
-//     params: { slug }
-//   }))
-
-//   return { paths, fallback: true }
-// }
-
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await protectedRoutes(context)
 
@@ -60,7 +45,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     fetchPolicy: 'no-cache'
   })
 
-  console.log(verifyUser.orders[0]?.courses[0])
   if (!verifyUser.orders[0]?.courses[0]) {
     return {
       redirect: {
@@ -70,7 +54,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     }
   }
 
-  // Get course data
   const { data } = await apolloClient.query<
     QueryCourseBySlug,
     QueryCourseBySlugVariables
@@ -116,7 +99,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   return {
     props: {
       courseInfo,
-      slug: context.params?.slug
+      slug: context.params?.slug,
+      userId: session.id
     }
   }
 }
