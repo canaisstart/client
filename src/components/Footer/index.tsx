@@ -78,8 +78,8 @@ const Footer = () => (
         </Heading>
 
         <nav id="institutional">
-          <Link href="/about-us">Sobre Nós</Link>
-          <Link href="/about-us#our-time">Nosso Time</Link>
+          <Link href="/">Sobre Nós</Link>
+          <Link href="/">Nosso Time</Link>
         </nav>
       </S.Column>
 
@@ -92,7 +92,7 @@ const Footer = () => (
           <Link href="/">
             <a>Home</a>
           </Link>
-          <Link href="/courses">
+          <Link href="/">
             <a>Cursos</a>
           </Link>
         </nav>
@@ -103,7 +103,7 @@ const Footer = () => (
           Informações
         </Heading>
 
-        <Link href="/faq">
+        <Link href="/">
           <a>Dúvidas Frequentes</a>
         </Link>
         <Link href="/policies">

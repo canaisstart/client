@@ -63,10 +63,13 @@ const Home = ({
           <S.FIcon>
             <WorkspacePremium />
           </S.FIcon>
-          <S.FTitle>Capacitação Profissional que cabe no seu bolso.</S.FTitle>
+          <S.FTitle>
+            Educação básica e capacitação profissional de qualidade
+          </S.FTitle>
           <S.FDescription>
-            Contamos com um time de Professores que trazem conhecimento prático
-            vivencial do mercado de trabalho para sala de aula.
+            Desenvolvimento educacional para alunos de instituições públicas do
+            Brasil. Contamos com um time de Professores que trazem conhecimento
+            prático vivencial para sala de aula.
           </S.FDescription>
         </S.FContent>
 
@@ -161,7 +164,9 @@ const Home = ({
               <S.Title>
                 <b>+20.000</b>
               </S.Title>
-              <S.SubTitle>alunos</S.SubTitle>
+              <S.SubTitle>
+                alunos (educação básica e profissionalizante)
+              </S.SubTitle>
             </S.NSingleBox>
             <S.NSingleBox>
               <S.NIcon>
