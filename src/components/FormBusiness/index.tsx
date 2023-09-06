@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import * as S from './styles'
 declare global {
   interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     RDStationForms: any
   }
 }
