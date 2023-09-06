@@ -9,6 +9,7 @@ import {
   LinkedinBox,
   Youtube
 } from '@styled-icons/remix-fill'
+import { links } from 'configs'
 
 const currentYear = new Date().getFullYear()
 
@@ -35,7 +36,7 @@ const Footer = () => (
         <ul>
           <li>
             <a
-              href="https://www.instagram.com/escolastart"
+              href={links.instagram}
               target="_blank"
               rel="noopenner, noreferrer"
             >
@@ -44,7 +45,7 @@ const Footer = () => (
           </li>
           <li>
             <a
-              href="https://www.facebook.com/escolastart"
+              href={links.facebook}
               target="_blank"
               rel="noopenner, noreferrer"
             >
@@ -52,17 +53,13 @@ const Footer = () => (
             </a>
           </li>
           <li>
-            <a
-              href="https://www.youtube.com/escolastart"
-              target="_blank"
-              rel="noopenner, noreferrer"
-            >
+            <a href={links.youtube} target="_blank" rel="noopenner, noreferrer">
               <Youtube size={24} />
             </a>
           </li>
           <li>
             <a
-              href="https://www.linkedin.com/escolastart"
+              href={links.linkedin}
               target="_blank"
               rel="noopenner, noreferrer"
             >

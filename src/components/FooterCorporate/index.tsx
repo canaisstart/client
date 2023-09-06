@@ -5,6 +5,7 @@ import { FacebookSquare, InstagramSquare } from '@styled-icons/fa-brands'
 import Link from 'next/link'
 import FormBusiness from 'components/FormBusiness'
 import { Container } from 'components/Container'
+import { links } from 'configs'
 
 const FooterCorporate = () => {
   return (
@@ -29,15 +30,12 @@ const FooterCorporate = () => {
             <span>
               Siga as nossas redes sociais:
               <S.Anchors>
-                <Link href="https://www.instagram.com/_escolastart/" passHref>
+                <Link href={links.instagram} passHref>
                   <a target="_blank">
                     <InstagramSquare />
                   </a>
                 </Link>
-                <Link
-                  href="https://www.facebook.com/canaisstart"
-                  passHref={true}
-                >
+                <Link href={links.facebook} passHref={true}>
                   <a target="_blank">
                     <FacebookSquare />
                   </a>

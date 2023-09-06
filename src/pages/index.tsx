@@ -20,7 +20,7 @@ export async function getStaticProps() {
   })
 
   return {
-    revalidate: 10,
+    revalidate: 3600,
     props: {
       banners: bannerMapper(banners),
       mostPopularCoursesTitle: sections?.popularCourses?.title,
@@ -44,7 +44,18 @@ export async function getStaticProps() {
         img: `${getImageUrl(course.cover?.url)}`,
         price: course.price
       })),
-      freeHighlight: highlightMapper(sections?.freeCourses?.highlight)
+      freeHighlight: highlightMapper(sections?.freeCourses?.highlight),
+      formationCourses: {
+        courses: sections?.formationCourses?.courses.map((course) => ({
+          id: course.id,
+          title: course.name,
+          slug: course.slug,
+          instructor: course.instructor?.name,
+          img: `${getImageUrl(course.cover?.url)}`,
+          price: null
+        })),
+        title: sections?.formationCourses?.title || null
+      }
     }
   }
 }

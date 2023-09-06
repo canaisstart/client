@@ -61,6 +61,7 @@ export interface QueryHome_freeCourses {
   category: QueryHome_freeCourses_category | null;
   price: number;
   available: boolean;
+  date_course: any | null;
 }
 
 export interface QueryHome_sections_popularCourses_highlight_background {
@@ -109,6 +110,7 @@ export interface QueryHome_sections_popularCourses_courses {
   category: QueryHome_sections_popularCourses_courses_category | null;
   price: number;
   available: boolean;
+  date_course: any | null;
 }
 
 export interface QueryHome_sections_popularCourses {
@@ -145,10 +147,45 @@ export interface QueryHome_sections_freeCourses {
   highlight: QueryHome_sections_freeCourses_highlight | null;
 }
 
+export interface QueryHome_sections_formationCourses_courses_cover {
+  __typename: "UploadFile";
+  url: string;
+}
+
+export interface QueryHome_sections_formationCourses_courses_instructor {
+  __typename: "Instructor";
+  name: string;
+}
+
+export interface QueryHome_sections_formationCourses_courses_category {
+  __typename: "Category";
+  name: string;
+}
+
+export interface QueryHome_sections_formationCourses_courses {
+  __typename: "Course";
+  id: string;
+  name: string;
+  slug: string | null;
+  cover: QueryHome_sections_formationCourses_courses_cover | null;
+  instructor: QueryHome_sections_formationCourses_courses_instructor | null;
+  category: QueryHome_sections_formationCourses_courses_category | null;
+  price: number;
+  available: boolean;
+  date_course: any | null;
+}
+
+export interface QueryHome_sections_formationCourses {
+  __typename: "ComponentPageFormation";
+  title: string | null;
+  courses: QueryHome_sections_formationCourses_courses[];
+}
+
 export interface QueryHome_sections {
   __typename: "Home";
   popularCourses: QueryHome_sections_popularCourses | null;
   freeCourses: QueryHome_sections_freeCourses | null;
+  formationCourses: QueryHome_sections_formationCourses | null;
 }
 
 export interface QueryHome {

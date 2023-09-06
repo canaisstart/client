@@ -42,7 +42,7 @@ const Menu = ({ username, loading }: MenuProps) => {
           <Link href="/" passHref>
             <S.MenuLink>Home</S.MenuLink>
           </Link>
-          <Link href="/" passHref>
+          <Link href="/courses" passHref>
             <S.MenuLink>Cursos</S.MenuLink>
           </Link>
 
@@ -98,11 +98,11 @@ const Menu = ({ username, loading }: MenuProps) => {
               <Link href="/" passHref>
                 <S.MenuLink>Home</S.MenuLink>
               </Link>
-              <Link href="/" passHref>
+              <Link href="/courses" passHref>
                 <S.MenuLink>Cursos</S.MenuLink>
               </Link>
 
-              {/* <Link href="/for_business" passHref>
+              {/* <Link href="/corporate" passHref>
                 <S.MenuLink>Para Empresas</S.MenuLink>
               </Link> */}
 

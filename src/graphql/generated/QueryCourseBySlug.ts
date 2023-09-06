@@ -72,6 +72,7 @@ export interface QueryCourseBySlug_courses {
   instructor: QueryCourseBySlug_courses_instructor;
   curriculum: (QueryCourseBySlug_courses_curriculum | null)[] | null;
   updated_at: any;
+  date_course: any | null;
 }
 
 export interface QueryCourseBySlug {

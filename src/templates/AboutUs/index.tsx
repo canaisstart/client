@@ -9,6 +9,7 @@ import {
   YoutubeSquare
 } from '@styled-icons/fa-brands'
 import Image from 'next/image'
+import { links } from 'configs'
 
 const AboutUs = () => (
   <Base>
@@ -42,17 +43,17 @@ const AboutUs = () => (
         através da educação.
       </p>
       <S.SocialMedia>
-        <Link passHref href="https://www.instagram.com/_escolastart/">
+        <Link passHref href={links.instagram}>
           <a target="_blank">
             <InstagramSquare />
           </a>
         </Link>
-        <Link passHref href="https://www.facebook.com/canaisstart">
+        <Link passHref href={links.facebook}>
           <a target="_blank">
             <FacebookSquare />
           </a>
         </Link>
-        <Link passHref href="https://www.youtube.com/@_escolastart">
+        <Link passHref href={links.youtube}>
           <a target="_blank">
             <YoutubeSquare />
           </a>

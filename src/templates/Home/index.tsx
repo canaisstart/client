@@ -26,6 +26,10 @@ export type HomeTemplateProps = {
   freeCoursesTitle: string
   freeCourses: CourseCardProps[]
   freeHighlight: HighlightProps
+  formationCourses: {
+    title: string
+    courses: CourseCardProps[]
+  }
 }
 
 const Home = ({
@@ -34,7 +38,8 @@ const Home = ({
   mostPopularHighlight,
   mostPopularCourses,
   freeCoursesTitle,
-  freeCourses
+  freeCourses,
+  formationCourses
 }: HomeTemplateProps) => (
   <Base>
     <S.Cover>
@@ -206,33 +211,32 @@ const Home = ({
 
         <S.NContent>
           <S.CredBox>
-            <S.CredSingleBox>
-              <Image src="/cred/crea.png" width={140} height={80} />
-            </S.CredSingleBox>
-
-            <S.CredSingleBox>
-              <Image src="/cred/crp.png" width={160} height={50} />
-            </S.CredSingleBox>
-
-            <S.CredSingleBox>
-              <Image src="/cred/cra.png" width={170} height={40} />
-            </S.CredSingleBox>
-          </S.CredBox>
-
-          <S.CredBox>
-            <S.CredSingleBox>
-              <Image src="/cred/crc.png" width={120} height={100} />
-            </S.CredSingleBox>
-
-            <S.CredSingleBox>
-              <Image src="/cred/abed.png" width={130} height={60} />
-            </S.CredSingleBox>
+            {[
+              '/cred/crea.png',
+              '/cred/crp.png',
+              '/cred/cra.png',
+              '/cred/crc.png',
+              '/cred/abed.png'
+            ].map((cred) => (
+              <S.CredSingleBox key={cred}>
+                <Image
+                  src={cred}
+                  objectFit="contain"
+                  width="170px"
+                  height="180px"
+                />
+              </S.CredSingleBox>
+            ))}
           </S.CredBox>
         </S.NContent>
       </S.NWrapper>
     </S.SectionNumbers>
 
     <Showcase title={freeCoursesTitle} courses={freeCourses} />
+    <Showcase
+      title={formationCourses.title}
+      courses={formationCourses.courses}
+    />
   </Base>
 )
 

@@ -32,4 +32,5 @@ export interface CourseFragment {
   category: CourseFragment_category | null;
   price: number;
   available: boolean;
+  date_course: any;
 }

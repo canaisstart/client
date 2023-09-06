@@ -64,6 +64,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 
   const course = data.courses[0]
+  console.log(course)
 
   // get recommended courses
   const { data: recommended } = await apolloClient.query<QueryRecommended>({

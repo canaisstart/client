@@ -16,5 +16,6 @@ export const CourseFragment = gql`
     }
     price
     available
+    date_course
   }
 `

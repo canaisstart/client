@@ -55,6 +55,7 @@ export interface QueryRecommended_recommended_section_courses {
   category: QueryRecommended_recommended_section_courses_category | null;
   price: number;
   available: boolean;
+  date_course: any | null;
 }
 
 export interface QueryRecommended_recommended_section {

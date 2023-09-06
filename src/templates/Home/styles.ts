@@ -58,7 +58,6 @@ export const SectionBeneficts = styled.div`
     `}
 
     ${media.lessThan('medium')`
-      height: 95rem;
       padding-left: 1rem;
       padding-right: 1rem;
       background-color: ${theme.colors.lightBg};
@@ -343,7 +342,6 @@ export const SectionNumbers = styled.div`
 
     ${media.lessThan('medium')`
       margin-bottom: 5rem;
-      height: 135rem;
       padding-left: 1rem;
       padding-right: 1rem;
       background-color: ${theme.colors.lightBg};

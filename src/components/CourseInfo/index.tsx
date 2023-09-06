@@ -30,7 +30,11 @@ const CourseInfo = ({
       <Ribbon color="secondary">{formatPrice(promotionalPrice)}</Ribbon>
     ) : (
       <Ribbon color="secondary">
-        {price === 0 ? 'FREE' : `${formatPrice(promotionalPrice || price)}`}
+        {price != null
+          ? price === 0
+            ? 'FREE'
+            : `${formatPrice(promotionalPrice || price)}`
+          : 'Em breve'}
       </Ribbon>
     )}
 

@@ -35,6 +35,13 @@ export const QUERY_HOME = gql`
           ...HighlightFragment
         }
       }
+
+      formationCourses {
+        title
+        courses {
+          ...CourseFragment
+        }
+      }
     }
   }
 
