@@ -46,14 +46,15 @@ export async function getStaticProps() {
       })),
       freeHighlight: highlightMapper(sections?.freeCourses?.highlight),
       formationCourses: {
-        courses: sections?.formationCourses?.courses.map((course) => ({
-          id: course.id,
-          title: course.name,
-          slug: course.slug,
-          instructor: course.instructor?.name,
-          img: `${getImageUrl(course.cover?.url)}`,
-          price: null
-        })),
+        courses:
+          sections?.formationCourses?.courses.map((course) => ({
+            id: course.id,
+            title: course.name,
+            slug: course.slug,
+            instructor: course.instructor?.name,
+            img: `${getImageUrl(course.cover?.url)}`,
+            price: null
+          })) || null,
         title: sections?.formationCourses?.title || null
       }
     }
