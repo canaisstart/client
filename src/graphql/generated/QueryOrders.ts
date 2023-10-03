@@ -30,7 +30,7 @@ export interface QueryOrders_orders_courses {
   cover: QueryOrders_orders_courses_cover | null;
   instructor: QueryOrders_orders_courses_instructor | null;
   category: QueryOrders_orders_courses_category | null;
-  price: number;
+  price: number | null;
   available: boolean;
 }
 
@@ -38,8 +38,8 @@ export interface QueryOrders_orders {
   __typename: "Order";
   id: string;
   created_at: any;
-  card_brand: string | null;
-  card_last4: string | null;
+  status: string | null;
+  checkout_url: string | null;
   courses: QueryOrders_orders_courses[];
 }
 

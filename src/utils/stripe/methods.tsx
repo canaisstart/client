@@ -5,17 +5,19 @@ type FetcherParams = {
   url: string
   body: string
   token: string
+  method?: string
 }
 
-const fetcher = async ({ url, body, token }: FetcherParams) => {
+export const fetcher = async ({ url, body, token, method }: FetcherParams) => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${url}`, {
-    method: 'POST',
+    method: method || 'POST',
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json'
     },
     body
   })
+  console.log(response.body)
 
   return await response.json()
 }

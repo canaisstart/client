@@ -13,6 +13,10 @@ import Base from 'templates/Base'
 import { Info } from '@styled-icons/material-outlined/Info'
 import * as S from './styles'
 import Link from 'next/dist/client/link'
+import Button from 'components/Button'
+import { useCart } from 'hooks/use-cart'
+import { useRouter } from 'next/router'
+import { Payment } from 'components/Payment'
 
 export type CartProps = {
   session: Session
@@ -31,10 +35,8 @@ const Cart = ({ session, recommendedTitle, recommendedCourses }: CartProps) => {
         </Heading>
         <S.Content>
           <CartList />
-
-          <Elements stripe={stripe}>
-            <PaymentForm session={session} />
-          </Elements>
+          <Payment session={session} />
+          {/* <Button onClick={() => handleSubmit()}>Comprar agora</Button> */}
         </S.Content>
         <S.Text>
           <Info size={18} /> Sua compra é protegida por uma conexão segura da

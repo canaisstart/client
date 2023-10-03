@@ -23,3 +23,11 @@ export const DELETE_USERS_LESSON = gql`
     }
   }
 `
+
+export const CREATE_PROGRESSION_LESSON = gql`
+  mutation CreteProgressionLesson($input: ComponentCourseVideoInput!) {
+    users_permissions_users {
+      id
+    }
+  }
+`

@@ -6,8 +6,8 @@ export const QUERY_ORDERS = gql`
     orders(where: { user: { id: $identifier } }, sort: "created_at:desc") {
       id
       created_at
-      card_brand
-      card_last4
+      status
+      checkout_url
       courses {
         ...CourseFragment
       }

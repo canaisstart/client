@@ -59,7 +59,7 @@ export interface QueryHome_freeCourses {
   cover: QueryHome_freeCourses_cover | null;
   instructor: QueryHome_freeCourses_instructor | null;
   category: QueryHome_freeCourses_category | null;
-  price: number;
+  price: number | null;
   available: boolean;
 }
 
@@ -107,7 +107,7 @@ export interface QueryHome_sections_popularCourses_courses {
   cover: QueryHome_sections_popularCourses_courses_cover | null;
   instructor: QueryHome_sections_popularCourses_courses_instructor | null;
   category: QueryHome_sections_popularCourses_courses_category | null;
-  price: number;
+  price: number | null;
   available: boolean;
 }
 
