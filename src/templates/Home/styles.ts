@@ -179,6 +179,12 @@ export const FContent = styled.div`
     padding: 20px 30px;
     margin-bottom: 20px;
   `}
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
 `
 
 export const FTitle = styled.h1`

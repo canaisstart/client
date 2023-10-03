@@ -170,7 +170,7 @@ export interface QueryHome_sections_formationCourses_courses {
   cover: QueryHome_sections_formationCourses_courses_cover | null;
   instructor: QueryHome_sections_formationCourses_courses_instructor | null;
   category: QueryHome_sections_formationCourses_courses_category | null;
-  price: number;
+  price: number | null;
   available: boolean;
   date_course: any | null;
 }

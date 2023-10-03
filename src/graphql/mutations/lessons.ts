@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { gql } from '@apollo/client'
 
 export const CREATE_USERS_LESSON = gql`
@@ -31,3 +32,5 @@ export const CREATE_PROGRESSION_LESSON = gql`
     }
   }
 `
+=======
+>>>>>>> Stashed changes
