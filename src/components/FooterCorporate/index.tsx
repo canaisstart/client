@@ -5,7 +5,7 @@ import { FacebookSquare, InstagramSquare } from '@styled-icons/fa-brands'
 import Link from 'next/link'
 import FormBusiness from 'components/FormBusiness'
 import { Container } from 'components/Container'
-import LogoAbsolute from 'components/LogoAbsolute'
+import { links } from 'configs'
 
 const FooterCorporate = () => {
   return (
@@ -16,10 +16,10 @@ const FooterCorporate = () => {
         </S.FooterHead>
         <S.FooterBody>
           <S.LeftSection>
-            <Heading size="medium">Sobre</Heading>
-            <p>
-              É uma escola de capacitação profissional, mas muito ALÉM disso, É
-              uma <strong>FÁBRICA DE EDUCAÇÃO.</strong>
+            <Heading size="medium">Sobre Nós</Heading>
+            <p id="about-us">
+              Somos uma escola de capacitação profissional, mas muito além
+              disso, somos uma <strong>FÁBRICA DE EDUCAÇÃO.</strong>
             </p>
             <p>
               Com <strong>8 anos de história</strong>, nossa missão é auxiliar
@@ -30,15 +30,12 @@ const FooterCorporate = () => {
             <span>
               Siga as nossas redes sociais:
               <S.Anchors>
-                <Link href="https://www.instagram.com/_escolastart/" passHref>
+                <Link href={links.instagram} passHref>
                   <a target="_blank">
                     <InstagramSquare />
                   </a>
                 </Link>
-                <Link
-                  href="https://www.facebook.com/canaisstart"
-                  passHref={true}
-                >
+                <Link href={links.facebook} passHref={true}>
                   <a target="_blank">
                     <FacebookSquare />
                   </a>

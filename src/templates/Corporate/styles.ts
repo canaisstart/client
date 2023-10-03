@@ -6,7 +6,7 @@ import { Container } from 'components/Container'
 
 export const themeCorporate = {
   colors: {
-    mainBg: 'rgba(40, 46, 65, 1)',
+    mainBg: '#06092B',
     black: 'rgba(1,1,1,1)',
     grey: 'rgba(125, 125, 125, 1)',
     blue: 'rgba(76, 139, 245, 1)',
@@ -33,6 +33,9 @@ export const MenuLinkBtn = styled.div`
   font-size: 16px;
   ${media.greaterThan('medium')`
     font-size: 16px;
+  `}
+  ${media.lessThan('medium')`
+    font-size: 12px;
   `}
 `
 
@@ -104,7 +107,7 @@ export const LandingImage = styled.div`
   top: 3rem;
   z-index: 1;
   width: 100%;
-  height: 80%;
+  height: 100%;
   margin-bottom: 1rem;
 `
 
@@ -115,8 +118,8 @@ export const BackgroundGradient = styled.div`
   width: 100%;
   height: 100%;
 
-  background: linear-gradient(180deg, rgba(40, 46, 65, 0) 0%, #282e41 80.21%);
-  box-shadow: 0px 5px 0px 4px rgba(40, 46, 65, 1);
+  background: linear-gradient(180deg, rgba(6, 9, 43, 0) 0%, #06092b 80.21%);
+  box-shadow: 0px 5px 0px 4px rgba(6, 9, 43, 1);
   position: absolute;
   top: -2px;
   left: 0;
@@ -139,6 +142,9 @@ export const LandingText = styled(Container)`
     font-size: 48px;
     max-width: 832px;
     font-weight: 500;
+    ${media.lessThan('medium')`
+      font-size: 32px;
+    `}
   }
 
   div > p {
@@ -149,6 +155,9 @@ export const LandingText = styled(Container)`
     ${button}
     ${media.greaterThan('medium')`
       font-size: 24px;
+    `}
+    ${media.lessThan('medium')`
+      font-size: 16px;
     `}
     font-size: 28px;
     margin-top: 20px;
@@ -212,6 +221,10 @@ export const Accreditations = styled.div`
       line-height: 55px;
       letter-spacing: 0em;
       text-align: left;
+
+      ${media.lessThan('medium')`
+        font-size: 25px;
+      `}
     }
   }
 `

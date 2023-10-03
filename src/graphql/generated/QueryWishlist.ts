@@ -32,6 +32,7 @@ export interface QueryWishlist_wishlists_courses {
   category: QueryWishlist_wishlists_courses_category | null;
   price: number | null;
   available: boolean;
+  date_course: any | null;
 }
 
 export interface QueryWishlist_wishlists {

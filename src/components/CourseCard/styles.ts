@@ -123,6 +123,10 @@ export const Price = styled.div<PriceProps>`
 `
 
 export const Unavailable = styled.div`
+  display: inline-flex;
+  font-weight: 700;
+  height: 3rem;
+  align-items: center;
   cursor: not-allowed;
   padding: 0.8rem;
   font-size: 1.2rem;

@@ -3,24 +3,6 @@ import media from 'styled-media-query'
 import * as HeadingStyles from 'components/Heading/styles'
 import { Container } from 'components/Container'
 
-export const Cover = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 39.5rem;
-  opacity: 0.18;
-
-  img {
-    object-fit: cover;
-    object-position: top center;
-  }
-
-  ${media.greaterThan('medium')`
-    height: 45rem;
-  `}
-`
-
 export const SectionNews = styled.div`
   ${({ theme }) => css`
     margin-bottom: calc(${theme.spacings.xxlarge} * 2);
@@ -41,13 +23,29 @@ export const SectionNews = styled.div`
     `}
   `}
 `
+export const Cover = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 39.5rem;
+  opacity: 0.2;
+
+  img {
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  ${media.greaterThan('medium')`
+    height: 79rem;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+  `}
+`
 
 export const Landing = styled.div`
   display: flex;
+  height: 611px;
 
-  height: 711px;
-
-  background-color: white;
   background-image: url('img/pngwing2.png');
   background-repeat: no-repeat;
   background-position-x: 62vw;
@@ -71,13 +69,13 @@ export const LandingText = styled.div`
     height: 100%;
 
     > h2 {
-      color: ${theme.colors.mainBg};
+      color: ${theme.colors.white};
       max-width: 515px;
     }
 
     > span {
       display: flex;
-      color: ${theme.colors.mainBg};
+      color: ${theme.colors.secondary};
       max-width: 602px;
     }
   `}

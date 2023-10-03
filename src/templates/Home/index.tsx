@@ -26,6 +26,10 @@ export type HomeTemplateProps = {
   freeCoursesTitle: string
   freeCourses: CourseCardProps[]
   freeHighlight: HighlightProps
+  formationCourses: {
+    title: string
+    courses: CourseCardProps[]
+  }
 }
 
 const Home = ({
@@ -34,7 +38,8 @@ const Home = ({
   mostPopularHighlight,
   mostPopularCourses,
   freeCoursesTitle,
-  freeCourses
+  freeCourses,
+  formationCourses
 }: HomeTemplateProps) => (
   <Base>
     <S.Cover>
@@ -63,10 +68,13 @@ const Home = ({
           <S.FIcon>
             <WorkspacePremium />
           </S.FIcon>
-          <S.FTitle>Capacitação Profissional que cabe no seu bolso.</S.FTitle>
+          <S.FTitle>
+            Educação básica e capacitação profissional de qualidade
+          </S.FTitle>
           <S.FDescription>
-            Contamos com um time de Professores que trazem conhecimento prático
-            vivencial do mercado de trabalho para sala de aula.
+            Desenvolvimento educacional para alunos de instituições públicas do
+            Brasil. Contamos com um time de Professores que trazem conhecimento
+            prático vivencial para sala de aula.
           </S.FDescription>
         </S.FContent>
 
@@ -95,8 +103,9 @@ const Home = ({
     </S.SectionBeneficts>
     <S.SectionClients>
       <S.CTitle>
-        A <strong>Escola START</strong> também leva capacitação profissional
-        para os alunos através das <strong>maiores empresas do país</strong>
+        A <strong>Escola START</strong> leva capacitação profissional para
+        alunos nos níveis fundamental e técnico espalhados{' '}
+        <strong>por todo o Brasil</strong>
       </S.CTitle>
       <S.CSubtitle>Nosso principais clientes e parceiros:</S.CSubtitle>
       <S.CImages>
@@ -159,7 +168,7 @@ const Home = ({
                 <Group />
               </S.NIcon>
               <S.Title>
-                <b>+20.000</b>
+                <b>+22.000</b>
               </S.Title>
               <S.SubTitle>alunos</S.SubTitle>
             </S.NSingleBox>
@@ -168,7 +177,7 @@ const Home = ({
                 <BusinessCenter />
               </S.NIcon>
               <S.Title>
-                <b>+5.000</b>
+                <b>+6.000</b>
               </S.Title>
               <S.SubTitle>inseridos no mercado de trabalho</S.SubTitle>
             </S.NSingleBox>
@@ -191,40 +200,41 @@ const Home = ({
               <S.Title>
                 <b>+300</b>
               </S.Title>
-              <S.SubTitle>back-offices e colaboradores</S.SubTitle>
+              <S.SubTitle css={{ width: 200 }}>
+                back-office e professores
+              </S.SubTitle>
             </S.NSingleBox>
           </S.NBox>
         </S.NContent>
 
         <S.NContent>
           <S.CredBox>
-            <S.CredSingleBox>
-              <Image src="/cred/crea.png" width={140} height={80} />
-            </S.CredSingleBox>
-
-            <S.CredSingleBox>
-              <Image src="/cred/crp.png" width={160} height={50} />
-            </S.CredSingleBox>
-
-            <S.CredSingleBox>
-              <Image src="/cred/cra.png" width={170} height={40} />
-            </S.CredSingleBox>
-          </S.CredBox>
-
-          <S.CredBox>
-            <S.CredSingleBox>
-              <Image src="/cred/crc.png" width={120} height={100} />
-            </S.CredSingleBox>
-
-            <S.CredSingleBox>
-              <Image src="/cred/abed.png" width={130} height={60} />
-            </S.CredSingleBox>
+            {[
+              '/cred/crea.png',
+              '/cred/crp.png',
+              '/cred/cra.png',
+              '/cred/crc.png',
+              '/cred/abed.png'
+            ].map((cred) => (
+              <S.CredSingleBox key={cred}>
+                <Image
+                  src={cred}
+                  objectFit="contain"
+                  width="170px"
+                  height="180px"
+                />
+              </S.CredSingleBox>
+            ))}
           </S.CredBox>
         </S.NContent>
       </S.NWrapper>
     </S.SectionNumbers>
 
     <Showcase title={freeCoursesTitle} courses={freeCourses} />
+    <Showcase
+      title={formationCourses.title}
+      courses={formationCourses.courses}
+    />
   </Base>
 )
 

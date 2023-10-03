@@ -32,6 +32,7 @@ export interface QueryOrders_orders_courses {
   category: QueryOrders_orders_courses_category | null;
   price: number | null;
   available: boolean;
+  date_course: any | null;
 }
 
 export interface QueryOrders_orders {

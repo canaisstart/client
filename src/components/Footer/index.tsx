@@ -9,6 +9,7 @@ import {
   LinkedinBox,
   Youtube
 } from '@styled-icons/remix-fill'
+import { links } from 'configs'
 
 const currentYear = new Date().getFullYear()
 
@@ -35,7 +36,7 @@ const Footer = () => (
         <ul>
           <li>
             <a
-              href="https://www.instagram.com/escolastart"
+              href={links.instagram}
               target="_blank"
               rel="noopenner, noreferrer"
             >
@@ -44,7 +45,7 @@ const Footer = () => (
           </li>
           <li>
             <a
-              href="https://www.facebook.com/escolastart"
+              href={links.facebook}
               target="_blank"
               rel="noopenner, noreferrer"
             >
@@ -52,17 +53,13 @@ const Footer = () => (
             </a>
           </li>
           <li>
-            <a
-              href="https://www.youtube.com/escolastart"
-              target="_blank"
-              rel="noopenner, noreferrer"
-            >
+            <a href={links.youtube} target="_blank" rel="noopenner, noreferrer">
               <Youtube size={24} />
             </a>
           </li>
           <li>
             <a
-              href="https://www.linkedin.com/escolastart"
+              href={links.linkedin}
               target="_blank"
               rel="noopenner, noreferrer"
             >
@@ -78,8 +75,8 @@ const Footer = () => (
         </Heading>
 
         <nav id="institutional">
-          <Link href="/about-us">Sobre a Escola START</Link>
-          <Link href="/about-us#our-time">Nosso Time</Link>
+          <Link href="/">Sobre Nós</Link>
+          <Link href="/">Nosso Time</Link>
         </nav>
       </S.Column>
 
@@ -92,7 +89,7 @@ const Footer = () => (
           <Link href="/">
             <a>Home</a>
           </Link>
-          <Link href="/courses">
+          <Link href="/">
             <a>Cursos</a>
           </Link>
         </nav>
@@ -103,7 +100,7 @@ const Footer = () => (
           Informações
         </Heading>
 
-        <Link href="/faq">
+        <Link href="/">
           <a>Dúvidas Frequentes</a>
         </Link>
         <Link href="/policies">

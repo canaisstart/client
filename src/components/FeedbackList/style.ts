@@ -57,13 +57,13 @@ export const FlexGap = styled.div`
 export const Gradient = styled.div`
   width: 102%;
   height: 100%;
-  background: rgb(40, 46, 65);
+  background: #06092b;
   background: linear-gradient(
     90deg,
-    rgba(40, 46, 65, 1) 0%,
-    rgba(40, 46, 65, 0) 30%,
-    rgba(40, 46, 65, 0) 70%,
-    rgba(40, 46, 65, 1) 100%
+    rgba(6, 9, 43, 1) 0%,
+    rgba(6, 9, 43, 0) 30%,
+    rgba(6, 9, 43, 0) 70%,
+    rgba(6, 9, 43, 1) 100%
   );
 
   position: absolute;

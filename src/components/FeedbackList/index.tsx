@@ -12,8 +12,7 @@ const FeedbackList = () => {
       <Container>
         <S.FlexGap>
           <S.FeedbackHeading>
-            <Heading>Feedback</Heading>
-            <p>O sucesso dos clientes com a Escola Start</p>
+            <Heading>O que nossos clientes dizem sobre nós</Heading>
           </S.FeedbackHeading>
           <S.Relative>
             <Slider settings={settings}>

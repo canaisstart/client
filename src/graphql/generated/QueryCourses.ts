@@ -32,6 +32,7 @@ export interface QueryCourses_courses {
   category: QueryCourses_courses_category | null;
   price: number | null;
   available: boolean;
+  date_course: any | null;
 }
 
 export interface QueryCourses_coursesConnection_values {

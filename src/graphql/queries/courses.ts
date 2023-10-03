@@ -57,6 +57,8 @@ export const QUERY_COURSE_BY_SLUG = gql`
 
       lesson
 
+      date_course
+
       cover {
         url
       }

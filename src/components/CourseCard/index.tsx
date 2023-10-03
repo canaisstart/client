@@ -56,11 +56,13 @@ const CourseCard = ({
         <WishlistButton id={id} />
       </S.FavButton>
       <S.BuyBox>
-        <S.Price>{price === 0 ? 'Grátis' : `${formatPrice(price)}`}</S.Price>
+        {price !== null && (
+          <S.Price>{price === 0 ? 'Grátis' : `${formatPrice(price)}`}</S.Price>
+        )}
         {available ? (
           <CartButton id={id} />
         ) : (
-          <S.Unavailable>Indisponível</S.Unavailable>
+          <S.Unavailable>Em breve</S.Unavailable>
         )}
       </S.BuyBox>
     </S.Content>
