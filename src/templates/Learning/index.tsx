@@ -61,7 +61,7 @@ const Learning = ({ courseInfo, slug, userId }: CourseTemplatePropsVideo) => {
     modules
       .flatMap((module) => module.lessons)
       .find((lesson) => lesson.completed == false) ||
-      modules.flatMap((module) => module.lessons).pop()
+    modules.flatMap((module) => module.lessons).pop()
   )
   const [openedIndex, setOpenedIndex] = useState(
     modules.findIndex(
@@ -244,7 +244,8 @@ const Learning = ({ courseInfo, slug, userId }: CourseTemplatePropsVideo) => {
               <S.VideoBox>
                 <ReactPlayer
                   width="100%"
-                  css={{ height: 'calc((100% / 16) * 9)' }}
+                  height={viewPort > 768 ? viewPort : (viewPort * 9) / 16}
+                  style={{ height: '100%' }}
                   url={selectedLesson?.videoUrl}
                   controls
                   playIcon={<button>Play</button>}
