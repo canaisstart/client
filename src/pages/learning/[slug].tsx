@@ -84,9 +84,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
             name: lesson?.name,
             videoUrl: lesson?.link,
             classtime: lesson?.classtime,
-            completed: lesson?.users_permissions_users.some(
-              (user) => user.id == session.id
-            ),
+            completed: lesson?.users_permissions_users.some((user) => {
+              console.log(user.id, session.id)
+              return user.id == session.id
+            }),
             description: lesson?.description,
             fileUrl: lesson?.file?.url || null,
             module: {
