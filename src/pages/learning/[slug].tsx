@@ -70,6 +70,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const course = data?.courses[0]
 
   const courseInfo = {
+    id: course.id,
     name: course.name,
     category: course.category?.name || null,
     description: course.description,
@@ -83,7 +84,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
             name: lesson?.name,
             videoUrl: lesson?.link,
             classtime: lesson?.classtime,
-            completed: false,
+            completed: lesson?.users_permissions_users.some(
+              (user) => user.id == session.id
+            ),
             description: lesson?.description,
             fileUrl: lesson?.file?.url || null,
             module: {

@@ -26,11 +26,11 @@ export interface QueryCourses_courses {
   __typename: "Course";
   id: string;
   name: string;
-  slug: string;
-  cover: QueryCourses_courses_cover;
-  instructor: QueryCourses_courses_instructor;
-  category: QueryCourses_courses_category;
-  price: number;
+  slug: string | null;
+  cover: QueryCourses_courses_cover | null;
+  instructor: QueryCourses_courses_instructor | null;
+  category: QueryCourses_courses_category | null;
+  price: number | null;
   available: boolean;
   date_course: any | null;
 }

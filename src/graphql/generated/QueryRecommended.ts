@@ -53,7 +53,7 @@ export interface QueryRecommended_recommended_section_courses {
   cover: QueryRecommended_recommended_section_courses_cover | null;
   instructor: QueryRecommended_recommended_section_courses_instructor | null;
   category: QueryRecommended_recommended_section_courses_category | null;
-  price: number;
+  price: number | null;
   available: boolean;
   date_course: any | null;
 }

@@ -30,7 +30,7 @@ export interface CourseFragment {
   cover: CourseFragment_cover | null;
   instructor: CourseFragment_instructor | null;
   category: CourseFragment_category | null;
-  price: number;
+  price: number | null;
   available: boolean;
   date_course: any;
 }

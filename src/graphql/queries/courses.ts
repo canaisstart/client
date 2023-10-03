@@ -147,6 +147,10 @@ export const QUERY_COURSES_BY_SLUB_VIDEO = gql`
 
           description
 
+          users_permissions_users {
+            id
+          }
+
           video {
             url
           }

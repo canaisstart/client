@@ -37,7 +37,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   return {
     props: {
-      items: ordersMapper(data.orders),
+      items: ordersMapper(data.orders).filter(
+        (orders) => orders.status === 'paid'
+      ),
       session
     }
   }

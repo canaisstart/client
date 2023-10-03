@@ -13,10 +13,14 @@ import { Download } from '@styled-icons/remix-fill'
 import Image from 'next/image'
 import ReactPlayer from 'react-player'
 import { useMutation } from '@apollo/client'
-import {
-  CREATE_USERS_LESSON,
-  DELETE_USERS_LESSON
-} from 'graphql/mutations/lessons'
+import { useSession } from 'next-auth/client'
+import { fetcher } from 'utils/stripe/methods'
+import axios from 'axios'
+
+// import {
+//   CREATE_USERS_LESSON,
+//   DELETE_USERS_LESSON
+// } from 'graphql/mutations/lessons'
 
 interface ILesson {
   id: number
@@ -36,6 +40,7 @@ export interface IModule {
 }
 
 interface ICourseInfo {
+  id: number
   name: string
   category: string | null
   description: string
@@ -51,6 +56,7 @@ export type CourseTemplatePropsVideo = {
 const Learning = ({ courseInfo, slug, userId }: CourseTemplatePropsVideo) => {
   const [modules, setModules] = useState<IModule[]>([...courseInfo.modules])
   const [viewPort, setViewPort] = useState(0)
+  const [session] = useSession()
   const [selectedLesson, setSelectedLesson] = useState<ILesson | undefined>(
     modules
       .flatMap((module) => module.lessons)
@@ -63,9 +69,6 @@ const Learning = ({ courseInfo, slug, userId }: CourseTemplatePropsVideo) => {
     )
   )
   const [modalIsOpen, setModalIsOpen] = useState(false)
-
-  const [createUsersLesson] = useMutation(CREATE_USERS_LESSON)
-  const [deleteUsersLesson] = useMutation(DELETE_USERS_LESSON)
 
   const completedTasks = courseInfo.modules.reduce(
     (acc, cur) =>
@@ -83,30 +86,16 @@ const Learning = ({ courseInfo, slug, userId }: CourseTemplatePropsVideo) => {
       oldModules.map((module) => {
         module.lessons.map((lesson) => {
           if (lesson.id == id) {
+            const api = axios.create({
+              baseURL: `${process.env.NEXT_PUBLIC_API_URL}`
+            })
+            api.defaults.headers.common[
+              'Authorization'
+            ] = `Bearer ${session?.jwt}`
             lesson.completed = status
-
-            if (status) {
-              createUsersLesson({
-                variables: {
-                  input: {
-                    data: {
-                      userId: userId,
-                      lesson_id: id
-                    }
-                  }
-                }
-              }).catch((error: Error) => {
-                console.error(error)
-              })
-            } else {
-              deleteUsersLesson({
-                variables: {
-                  input: { where: { userId: userId, lesson_id: id } }
-                }
-              }).catch((error: Error) => {
-                console.error(error)
-              })
-            }
+            api[status ? 'post' : 'delete'](
+              `/progression/${courseInfo.id}/${module.id}/${lesson.id}`
+            )
           }
           return lesson
         })
