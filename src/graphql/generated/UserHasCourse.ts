@@ -11,7 +11,7 @@ export interface UserHasCourse_orders_courses {
   __typename: "Course";
   id: string;
   name: string;
-  slug: string | null;
+  slug: string;
 }
 
 export interface UserHasCourse_orders_user {
@@ -22,7 +22,7 @@ export interface UserHasCourse_orders_user {
 export interface UserHasCourse_orders {
   __typename: "Order";
   courses: UserHasCourse_orders_courses[];
-  user: UserHasCourse_orders_user | null;
+  user: UserHasCourse_orders_user;
 }
 
 export interface UserHasCourse {

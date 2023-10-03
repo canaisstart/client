@@ -26,21 +26,21 @@ export interface QueryOrders_orders_courses {
   __typename: "Course";
   id: string;
   name: string;
-  slug: string | null;
-  cover: QueryOrders_orders_courses_cover | null;
-  instructor: QueryOrders_orders_courses_instructor | null;
-  category: QueryOrders_orders_courses_category | null;
-  price: number | null;
+  slug: string;
+  cover: QueryOrders_orders_courses_cover ;
+  instructor: QueryOrders_orders_courses_instructor;
+  category: QueryOrders_orders_courses_category;
+  price: number;
   available: boolean;
-  date_course: any | null;
+  date_course: any;
 }
 
 export interface QueryOrders_orders {
   __typename: "Order";
   id: string;
   created_at: any;
-  status: string | null;
-  checkout_url: string | null;
+  status: string;
+  checkout_url: string;
   courses: QueryOrders_orders_courses[];
 }
 

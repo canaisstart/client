@@ -20,7 +20,7 @@ export interface QueryCourseBySlug_courses_category {
 export interface QueryCourseBySlug_courses_course_type {
   __typename: 'CourseType'
   name: string
-  slug: string | null
+  slug: string
 }
 
 export interface QueryCourseBySlug_courses_instructor {
@@ -40,34 +40,38 @@ export interface QueryCourseBySlug_courses_curriculum_content_file {
 
 export interface QueryCourseBySlug_courses_curriculum_content {
   __typename: 'ComponentCourseVideos'
+  id: string
+  link: string
+  classtime: string
   name: string
-  description: string | null
+  description: string
   video: QueryCourseBySlug_courses_curriculum_content_video[]
-  file: QueryCourseBySlug_courses_curriculum_content_file | null
-  users_permissions_users: string[]
+  file: QueryCourseBySlug_courses_curriculum_content_file
+  users_permissions_users: {id: string}[]
 }
 
 export interface QueryCourseBySlug_courses_curriculum {
   __typename: 'ComponentCourseCurriculum'
+  id: string
   module: string
-  content: (QueryCourseBySlug_courses_curriculum_content | null)[] | null
+  content: (QueryCourseBySlug_courses_curriculum_content | null)[]
 }
 
 export interface QueryCourseBySlug_courses {
   __typename: 'Course'
   id: string
   name: string
-  slug: string | null
+  slug: string
   short_description: string
   description: string
-  price: number | null
+  price: number
   duration: string
   lesson: number
-  cover: QueryCourseBySlug_courses_cover | null
-  category: QueryCourseBySlug_courses_category | null
-  course_type: QueryCourseBySlug_courses_course_type | null
-  instructor: QueryCourseBySlug_courses_instructor | null
-  curriculum: (QueryCourseBySlug_courses_curriculum | null)[] | null
+  cover: QueryCourseBySlug_courses_cover
+  category: QueryCourseBySlug_courses_category
+  course_type: QueryCourseBySlug_courses_course_type
+  instructor: QueryCourseBySlug_courses_instructor
+  curriculum: (QueryCourseBySlug_courses_curriculum | null)[]
   updated_at: any
 }
 

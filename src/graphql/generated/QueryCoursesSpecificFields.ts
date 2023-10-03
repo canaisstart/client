@@ -39,26 +39,26 @@ export interface QueryCoursesSpecificFields_courses_curriculum_content_file {
 
 export interface QueryCoursesSpecificFields_courses_curriculum_content {
   __typename: "ComponentCourseVideos";
-  link: string | null;
-  classtime: string | null;
+  link: string;
+  classtime: string;
   id: string;
   name: string;
-  description: string | null;
+  description: string;
   users_permissions_users: QueryCoursesSpecificFields_courses_curriculum_content_users_permissions_users[];
   video: QueryCoursesSpecificFields_courses_curriculum_content_video[];
-  file: QueryCoursesSpecificFields_courses_curriculum_content_file | null;
+  file: QueryCoursesSpecificFields_courses_curriculum_content_file;
 }
 
 export interface QueryCoursesSpecificFields_courses_curriculum {
   __typename: "ComponentCourseCurriculum";
   id: string;
   module: string;
-  content: (QueryCoursesSpecificFields_courses_curriculum_content | null)[] | null;
+  content: (QueryCoursesSpecificFields_courses_curriculum_content | null)[];
 }
 
 export interface QueryCoursesSpecificFields_courses {
   __typename: "Course";
-  slug: string | null;
+  slug: string;
   id: string;
   name: string;
   short_description: string;
@@ -66,10 +66,10 @@ export interface QueryCoursesSpecificFields_courses {
   duration: string;
   lesson: number;
   updated_at: any;
-  category: QueryCoursesSpecificFields_courses_category | null;
-  course_type: QueryCoursesSpecificFields_courses_course_type | null;
-  instructor: QueryCoursesSpecificFields_courses_instructor | null;
-  curriculum: (QueryCoursesSpecificFields_courses_curriculum | null)[] | null;
+  category: QueryCoursesSpecificFields_courses_category;
+  course_type: QueryCoursesSpecificFields_courses_course_type;
+  instructor: QueryCoursesSpecificFields_courses_instructor;
+  curriculum: (QueryCoursesSpecificFields_courses_curriculum)[];
 }
 
 export interface QueryCoursesSpecificFields {

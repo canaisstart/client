@@ -26,13 +26,13 @@ export interface QueryCourses_courses {
   __typename: "Course";
   id: string;
   name: string;
-  slug: string | null;
-  cover: QueryCourses_courses_cover | null;
-  instructor: QueryCourses_courses_instructor | null;
-  category: QueryCourses_courses_category | null;
-  price: number | null;
+  slug: string;
+  cover: QueryCourses_courses_cover;
+  instructor: QueryCourses_courses_instructor;
+  category: QueryCourses_courses_category ;
+  price: number;
   available: boolean;
-  date_course: any | null;
+  date_course: any;
 }
 
 export interface QueryCourses_coursesConnection_values {
@@ -42,12 +42,12 @@ export interface QueryCourses_coursesConnection_values {
 
 export interface QueryCourses_coursesConnection {
   __typename: "CourseConnection";
-  values: (QueryCourses_coursesConnection_values | null)[] | null;
+  values: (QueryCourses_coursesConnection_values | null)[];
 }
 
 export interface QueryCourses {
   courses: QueryCourses_courses[];
-  coursesConnection: QueryCourses_coursesConnection | null;
+  coursesConnection: QueryCourses_coursesConnection;
 }
 
 export interface QueryCoursesVariables {
