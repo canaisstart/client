@@ -42,7 +42,8 @@ export async function getStaticProps() {
         slug: course.slug,
         instructor: course.instructor?.name,
         img: `${getImageUrl(course.cover?.url)}`,
-        price: course.price
+        price: course.price,
+        available: course.available
       })),
       freeHighlight: highlightMapper(sections?.freeCourses?.highlight),
       formationCourses: {

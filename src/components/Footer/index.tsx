@@ -30,7 +30,7 @@ const Footer = () => (
           Rua Sacadura Cabral, 379
           <p>Rio de Janeiro CEP 23455-000</p>
         </p>
-        <p>(21) 3234-3234</p>
+        <p>(21) 99566-8151</p>
 
         <a href="mailto:contato@canaisstart.com.br">
           contato@canaisstart.com.br
