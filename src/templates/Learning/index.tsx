@@ -61,7 +61,7 @@ const Learning = ({ courseInfo, slug, userId }: CourseTemplatePropsVideo) => {
     modules
       .flatMap((module) => module.lessons)
       .find((lesson) => lesson.completed == false) ||
-    modules.flatMap((module) => module.lessons).pop()
+      modules.flatMap((module) => module.lessons).pop()
   )
   const [openedIndex, setOpenedIndex] = useState(
     modules.findIndex(
@@ -242,18 +242,22 @@ const Learning = ({ courseInfo, slug, userId }: CourseTemplatePropsVideo) => {
           <S.ContentWrapper>
             {selectedLesson?.videoUrl && (
               <S.VideoBox>
-                <ReactPlayer
-                  width="100%"
-                  height={viewPort > 768 ? viewPort : (viewPort * 9) / 16}
-                  style={{ height: '100%' }}
-                  url={selectedLesson?.videoUrl}
-                  controls
-                  playIcon={<button>Play</button>}
-                  onProgress={(e) =>
-                    e.played > 0.8 &&
-                    handleConcluited(true, selectedLesson?.id, userId)
-                  }
-                />
+                <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
+                  <iframe
+                    src={`https://player.vimeo.com/video/${selectedLesson?.videoUrl}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479`}
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '100%'
+                    }}
+                    title={selectedLesson.name}
+                  ></iframe>
+                </div>
+                <script src="https://player.vimeo.com/api/player.js"></script>
               </S.VideoBox>
             )}
             <S.Controls>
