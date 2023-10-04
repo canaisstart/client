@@ -213,8 +213,9 @@ const Home = ({
               '/cred/crea.png',
               '/cred/crp.png',
               '/cred/cra.png',
-              '/cred/crc.png',
-              '/cred/abed.png'
+              '/cred/abed.png',
+              '/cred/ipma.png',
+              '/cred/crn.png'
             ].map((cred) => (
               <S.CredSingleBox key={cred}>
                 <Image
