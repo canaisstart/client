@@ -71,7 +71,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   })
 
   return {
-    revalidate: 60,
+    revalidate: 900,
     props: {
       slug: params?.slug,
       cover: `${getImageUrl(course.cover?.url)}`,
