@@ -11,6 +11,7 @@ export default function Index(props: HomeTemplateProps) {
 
 export async function getStaticProps() {
   const apolloClient = initializeApollo()
+  await apolloClient.clearStore()
 
   const {
     data: { banners, freeCourses, sections }

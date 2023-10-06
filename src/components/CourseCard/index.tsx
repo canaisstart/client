@@ -49,7 +49,6 @@ const CourseCard = ({
       <Link href={`/course/${slug}`} passHref>
         <S.Info>
           <S.Title>{title}</S.Title>
-          <S.Developer>{category}</S.Developer>
         </S.Info>
       </Link>
       <S.FavButton>

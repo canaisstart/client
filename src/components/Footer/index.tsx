@@ -32,8 +32,8 @@ const Footer = () => (
         </p>
         <p>(21) 99566-8151</p>
 
-        <a href="mailto:contato@canaisstart.com.br">
-          contato@canaisstart.com.br
+        <a href="mailto:atendimento@canaisstart.com.br">
+          atendimento@canaisstart.com.br
         </a>
         <ul>
           <li>

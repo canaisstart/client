@@ -14,13 +14,20 @@ import {
   categoryFields,
   typeCourseFields
 } from 'utils/filter/fields'
+import {
+  QueryOrders,
+  QueryOrdersVariables
+} from 'graphql/generated/QueryOrders'
+import { QUERY_ORDERS } from 'graphql/queries/orders'
+import { getSession } from 'next-auth/client'
 
 export default function CoursePage(props: CoursesTemplateProps) {
   return <CoursesTemplate {...props} />
 }
 
-export async function getServerSideProps({ query }: GetServerSidePropsContext) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const apolloClient = initializeApollo()
+  const session = await getSession(context)
 
   const filterCategories = {
     title: 'Categorias',
@@ -61,10 +68,28 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
     query: QUERY_COURSES,
     variables: {
       limit: 12,
-      where: parseQueryStringToWhere({ queryString: query, filterItems }),
-      sort: query.sort as string | null
+      where: parseQueryStringToWhere({
+        queryString: context.query,
+        filterItems
+      }),
+      sort: context.query.sort as string | null
     }
   })
+
+  if (session) {
+    const { data } = await apolloClient.query<
+      QueryOrders,
+      QueryOrdersVariables
+    >({
+      query: QUERY_ORDERS,
+      variables: {
+        identifier: session?.id as string
+      },
+      fetchPolicy: 'no-cache'
+    })
+
+    console.log(data)
+  }
 
   return {
     props: {

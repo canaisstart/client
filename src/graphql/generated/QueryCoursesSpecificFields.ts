@@ -39,21 +39,21 @@ export interface QueryCoursesSpecificFields_courses_curriculum_content_file {
 
 export interface QueryCoursesSpecificFields_courses_curriculum_content {
   __typename: "ComponentCourseVideos";
-  link: string;
-  classtime: string;
+  link: string | null;
+  classtime: string | null;
   id: string;
   name: string;
-  description: string;
+  description: string | null;
   users_permissions_users: QueryCoursesSpecificFields_courses_curriculum_content_users_permissions_users[];
   video: QueryCoursesSpecificFields_courses_curriculum_content_video[];
-  file: QueryCoursesSpecificFields_courses_curriculum_content_file;
+  file: QueryCoursesSpecificFields_courses_curriculum_content_file | null;
 }
 
 export interface QueryCoursesSpecificFields_courses_curriculum {
   __typename: "ComponentCourseCurriculum";
   id: string;
   module: string;
-  content: (QueryCoursesSpecificFields_courses_curriculum_content | null)[];
+  content: (QueryCoursesSpecificFields_courses_curriculum_content | null)[] | null;
 }
 
 export interface QueryCoursesSpecificFields_courses {

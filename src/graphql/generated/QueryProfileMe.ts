@@ -15,7 +15,7 @@ export interface QueryProfileMe_user {
 }
 
 export interface QueryProfileMe {
-  user: QueryProfileMe_user;
+  user: QueryProfileMe_user | null;
 }
 
 export interface QueryProfileMeVariables {

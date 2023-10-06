@@ -27,6 +27,7 @@ const CoursesList = ({ items = [] }: CoursesListProps) => (
         return order.courses.map((course) => (
           <CourseItem
             key={`${order.id}-${course.id}`}
+            redirectUrl={`/learning/${course.slug}`}
             {...course}
             paymentInfo={order.paymentInfo}
           />

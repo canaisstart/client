@@ -13,9 +13,9 @@ export const sortFields = [
 ]
 
 export const typeCourseFields = [
-  { label: 'Ao vivo', name: 'ao-vivo' },
-  { label: 'Presencial', name: 'presencial' },
-  { label: 'Gravado', name: 'gravado' }
+  { label: 'Online (ao vivo)', name: 'ao-vivo' },
+  { label: 'Online (gravado)', name: 'gravado' },
+  { label: 'Presencial', name: 'presencial' }
 ]
 
 export const categoryFields = [

@@ -18,6 +18,7 @@ export type CartContextData = {
   items: CartItem[]
   quantity: number
   total: string
+  totalInCents: number
   isInCart: (id: string) => boolean
   addToCart: (id: string) => void
   removeFromCart: (id: string) => void
@@ -29,6 +30,7 @@ export const CartContextDefaultValues = {
   items: [],
   quantity: 0,
   total: 'R$0,00',
+  totalInCents: 0,
   isInCart: () => false,
   addToCart: () => null,
   removeFromCart: () => null,
@@ -95,6 +97,7 @@ const CartProvider = ({ children }: CartProviderProps) => {
         items: cartMapper(data?.courses),
         quantity: cartItems.length,
         total: formatPrice(total || 0),
+        totalInCents: total || 0,
         isInCart,
         addToCart,
         removeFromCart,

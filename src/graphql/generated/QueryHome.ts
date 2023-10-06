@@ -191,5 +191,5 @@ export interface QueryHome_sections {
 export interface QueryHome {
   banners: QueryHome_banners[];
   freeCourses: QueryHome_freeCourses[];
-  sections: QueryHome_sections;
+  sections: QueryHome_sections | null;
 }

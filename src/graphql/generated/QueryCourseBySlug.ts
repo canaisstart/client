@@ -54,31 +54,32 @@ export interface QueryCourseBySlug_courses_curriculum {
   __typename: 'ComponentCourseCurriculum'
   id: string
   module: string
-  content: (QueryCourseBySlug_courses_curriculum_content | null)[]
+  content: (QueryCourseBySlug_courses_curriculum_content)[]
 }
 
 export interface QueryCourseBySlug_courses {
-  __typename: 'Course'
-  id: string
-  name: string
-  slug: string
-  short_description: string
-  description: string
-  price: number
-  duration: string
-  lesson: number
-  cover: QueryCourseBySlug_courses_cover
-  category: QueryCourseBySlug_courses_category
-  course_type: QueryCourseBySlug_courses_course_type
-  instructor: QueryCourseBySlug_courses_instructor
-  curriculum: (QueryCourseBySlug_courses_curriculum | null)[]
-  updated_at: any
+  __typename: "Course";
+  id: string;
+  name: string;
+  slug: string;
+  short_description: string;
+  description: string;
+  price: number ;
+  duration: string;
+  lesson: number;
+  date_course: any ;
+  cover: QueryCourseBySlug_courses_cover;
+  category: QueryCourseBySlug_courses_category;
+  course_type: QueryCourseBySlug_courses_course_type;
+  instructor: QueryCourseBySlug_courses_instructor;
+  curriculum: (QueryCourseBySlug_courses_curriculum)[];
+  updated_at: any;
 }
 
 export interface QueryCourseBySlug {
-  courses: QueryCourseBySlug_courses[]
+  courses: QueryCourseBySlug_courses[];
 }
 
 export interface QueryCourseBySlugVariables {
-  slug: string
+  slug: string;
 }

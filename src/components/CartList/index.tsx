@@ -12,7 +12,7 @@ export type CartListProps = {
 }
 
 const CartList = ({ hasButton = false }: CartListProps) => {
-  const { items, total, loading } = useCart()
+  const { items, total, loading, totalInCents } = useCart()
 
   if (loading) {
     return (
@@ -38,7 +38,9 @@ const CartList = ({ hasButton = false }: CartListProps) => {
 
             {hasButton && (
               <Link href="/cart" passHref>
-                <Button as="a">Compre agora</Button>
+                <Button as="a">
+                  {totalInCents == 0 ? 'Resgatar' : 'Compre agora'}
+                </Button>
               </Link>
             )}
           </S.Footer>

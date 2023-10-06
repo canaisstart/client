@@ -24,6 +24,8 @@ export const ImageBox = styled.div`
     width: 9.6rem;
     height: 5.6rem;
 
+    position: relative;
+
     img {
       width: 100%;
       height: 100%;
