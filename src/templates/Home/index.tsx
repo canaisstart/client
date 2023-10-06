@@ -17,6 +17,8 @@ import {
   School,
   WorkspacePremium
 } from '@styled-icons/material-outlined'
+import Countdown from 'components/Countdown'
+import Release from 'components/Release'
 
 export type HomeTemplateProps = {
   banners: BannerProps[]
@@ -45,6 +47,8 @@ const Home = ({
     <S.Cover>
       <Image src="/img/bg01.png" alt="Home background" layout="fill" />
     </S.Cover>
+
+    <Release />
 
     <Container>
       <S.SectionBanner>
@@ -93,10 +97,12 @@ const Home = ({
           <S.FIcon>
             <MenuBook />
           </S.FIcon>
-          <S.FTitle>Material complementar, consultivo e continuado.</S.FTitle>
+          <S.FTitle>Material Didático de Qualidade</S.FTitle>
           <S.FDescription>
-            Nosso material didático permite que você continue estudando e
-            adquirindo conhecimento mesmo após o seu término do curso.
+            Nosso material didático proporciona a você um aprendizado contínuo,
+            elaborado por profissionais conceituados. A START conta com
+            conteúdos exclusivos e frequentemente atualizados. Aqui você tem
+            suporte às mais recentes novidades da plataforma.
           </S.FDescription>
         </S.FContent>
       </S.FWrapper>
