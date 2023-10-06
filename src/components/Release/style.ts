@@ -21,12 +21,14 @@ export const VideoContainer = styled.div`
   overflow: hidden;
   border-radius: 4px;
   box-shadow: 10px 13px 19px -9px rgba(0, 0, 0, 1);
+  z-index: 10;
 `
 
 export const Content = styled.div`
   height: fit-content;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 60px;
 
   > button {

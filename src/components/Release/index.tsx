@@ -29,7 +29,7 @@ const Release = () => {
       <S.VideoContainer>
         <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
           <iframe
-            src={`https://player.vimeo.com/video/871939557`}
+            src={`https://player.vimeo.com/video/871939557?autoplay=1&loop=1&autopause=0`}
             frameBorder="0"
             style={{
               position: 'absolute',
