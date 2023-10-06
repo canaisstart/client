@@ -44,6 +44,7 @@ export const Content = styled.div`
 
     border: none;
     cursor: pointer;
+    width: 243px;
 
     :hover {
       opacity: 0.5;
