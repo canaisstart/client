@@ -17,7 +17,6 @@ import {
   School,
   WorkspacePremium
 } from '@styled-icons/material-outlined'
-import Countdown from 'components/Countdown'
 import Release from 'components/Release'
 
 export type HomeTemplateProps = {
