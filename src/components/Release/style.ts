@@ -8,11 +8,10 @@ export const ReleaseContainer = styled.div`
   left: 0;
   background: linear-gradient(180deg, #282e41 0%, #9400d3 100%);
   z-index: 19;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   display: flex;
-  gap: 64px;
-  padding: 1rem;
+  padding: 2rem;
 `
 
 export const VideoContainer = styled.div`
@@ -27,10 +26,10 @@ export const VideoContainer = styled.div`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   gap: 60px;
   min-height: 80%;
-  padding: 1rem;
+  padding: 0 1rem;
 
   > button {
     background: linear-gradient(180deg, #9747ff 0%, #9400d3 100%);
