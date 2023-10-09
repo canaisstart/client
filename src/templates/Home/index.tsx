@@ -47,8 +47,6 @@ const Home = ({
       <Image src="/img/bg01.png" alt="Home background" layout="fill" />
     </S.Cover>
 
-    <Release />
-
     <Container>
       <S.SectionBanner>
         <BannerSlider items={banners} />
