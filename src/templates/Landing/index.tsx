@@ -9,16 +9,21 @@ import { generateGradients } from 'utils/generateGradients'
 import { WorkspacePremium } from '@styled-icons/material-outlined'
 import { ReactSVG } from 'react-svg'
 import { Color } from '@styled-icons/boxicons-regular'
-import ReactPlayer from 'react-player'
 import { Grid } from 'components/Grid'
+import { useState } from 'react'
 
 export interface LandingTemplateProps {
   banner: {
     url: string
   }
   heading: string
+  promotional_price: number
+  price: number
   description: string
-  course: QueryCourseBySlug
+  course: {
+    name: string
+    demo: string
+  }
   color: string
   learnItems: {
     icon: {
@@ -34,6 +39,11 @@ export interface LandingTemplateProps {
       url: string
     }
   }[]
+  installment: {
+    max_installment: number
+    installment_price: number
+    fees: boolean
+  }
 }
 
 const Landing = ({
@@ -43,9 +53,17 @@ const Landing = ({
   course,
   color,
   learnItems,
-  forYou
+  forYou,
+  installment,
+  promotional_price,
+  price
 }: LandingTemplateProps) => {
   const [gradient1, gradient2] = generateGradients(color)
+  const [values, setValues] = useState({
+    name: '',
+    tellnumber: '',
+    email: ''
+  })
 
   return (
     <S.LandingContainer>
@@ -62,7 +80,7 @@ const Landing = ({
               <S.HeaderLink>A START</S.HeaderLink>
             </Link>
             <Link href="#">
-              <S.HeaderLink>Curso de Excel</S.HeaderLink>
+              <S.HeaderLink>Curso de {course.name}</S.HeaderLink>
             </Link>
           </S.Gap>
           <S.ServiceButton>Falar com atendente</S.ServiceButton>
@@ -138,12 +156,12 @@ const Landing = ({
                 style={{ color }}
               />
             </Home.FIcon>
-            <Home.FTitle>
-              Material complementar, consultivo e continuado.
-            </Home.FTitle>
+            <Home.FTitle>Material Didático de Qualidade</Home.FTitle>
             <Home.FDescription>
-              Nosso material didático permite que você continue estudando e
-              adquirindo conhecimento mesmo após o seu término do curso.
+              Nosso material didático proporciona a você um aprendizado
+              contínuo, elaborado por profissionais conceituados. A START conta
+              com conteúdos exclusivos e frequentemente atualizados. Aqui você
+              tem suporte às mais recentes novidades da plataforma.
             </Home.FDescription>
           </Home.FContent>
         </Home.FWrapper>
@@ -152,7 +170,7 @@ const Landing = ({
         <Container>
           <S.VideoContainer>
             <iframe
-              src="https://player.vimeo.com/video/841243728"
+              src={`https://player.vimeo.com/video/${course.demo}`}
               width="100%"
             />
           </S.VideoContainer>
@@ -188,6 +206,7 @@ const Landing = ({
                 <S.Gap
                   dir="column"
                   alignItems="start"
+                  justify="center"
                   style={{ justifyContent: 'space-between' }}
                 >
                   {item.icon.url && (
@@ -211,6 +230,122 @@ const Landing = ({
           </Grid>
         </Container>
       </S.LearningContainer>
+      <S.DetailsContainer color={color}>
+        <Container>
+          <S.Group>
+            <S.LeftSection>
+              <S.Gap dir="column" alignItems="start" gap="5rem">
+                <S.Text fontSize="50px">
+                  Seu <strong>investimento</strong>
+                </S.Text>
+                <S.Gap dir="column" alignItems="start" gap="0">
+                  {installment.max_installment && (
+                    <S.Text fontSize="24px">
+                      {installment.max_installment}x de
+                    </S.Text>
+                  )}
+                  {installment.installment_price && (
+                    <S.Text fontSize="60px" fontWeight="600" height="60px">
+                      R$
+                      {String(installment.installment_price.toFixed(2)).replace(
+                        '.',
+                        ','
+                      )}
+                    </S.Text>
+                  )}
+                  {installment.fees && (
+                    <S.Text fontSize="24px">sem juros do cartão</S.Text>
+                  )}
+                </S.Gap>
+                <S.Gap justify="space-between" width="100%">
+                  {promotional_price && (
+                    <div>
+                      <S.Text fontSize="24px">
+                        Valor total <strong>com desconto</strong>
+                      </S.Text>
+                      <S.Text fontSize="40px" fontWeight="600">
+                        R$
+                        {String(promotional_price.toFixed(2)).replace('.', ',')}
+                      </S.Text>
+                    </div>
+                  )}
+                  {price && (
+                    <div>
+                      <S.Text fontSize="24px">
+                        Valor <strong>sem desconto</strong>
+                      </S.Text>
+                      <S.Text fontSize="40px" fontWeight="600">
+                        R$
+                        {String(price.toFixed(2)).replace('.', ',')}
+                      </S.Text>
+                    </div>
+                  )}
+                </S.Gap>
+              </S.Gap>
+            </S.LeftSection>
+            <S.RightSection>
+              <S.Form>
+                <S.Gap dir="column" alignItems="start" gap="48px">
+                  <S.Text color="rgba(40, 46, 65, 1)" fontSize="32px">
+                    Faça sua inscrição para o{' '}
+                    <strong>curso de {course.name}</strong>
+                  </S.Text>
+                  <S.Gap
+                    dir="column"
+                    gap="24px"
+                    alignItems="start"
+                    width="100%"
+                  >
+                    <S.InputContainer>
+                      <label htmlFor="name">Nome</label>
+                      <S.Input
+                        name="name"
+                        id="name"
+                        placeholder="Digite seu nome completo"
+                        onChange={(e) =>
+                          setValues((o) => ({ ...o, name: e.target.value }))
+                        }
+                      />
+                    </S.InputContainer>
+                    <S.InputContainer>
+                      <label htmlFor="telnumber">Telefone</label>
+                      <S.Input
+                        name="telnumber"
+                        id="telnumber"
+                        placeholder="(21) 99999-9999"
+                        onChange={(e) =>
+                          setValues((o) => ({
+                            ...o,
+                            tellnumber: e.target.value
+                          }))
+                        }
+                      />
+                    </S.InputContainer>
+                    <S.InputContainer>
+                      <label htmlFor="email">Email</label>
+                      <S.Input
+                        name="email"
+                        id="email"
+                        type="email"
+                        placeholder="Digite seu melhor email aqui"
+                        onChange={(e) =>
+                          setValues((o) => ({ ...o, email: e.target.value }))
+                        }
+                      />
+                    </S.InputContainer>
+                  </S.Gap>
+                  <S.WatchNow
+                    color={gradient1}
+                    style={{ width: '100%', height: '72px' }}
+                  >
+                    Começar agora
+                  </S.WatchNow>
+                </S.Gap>
+              </S.Form>
+            </S.RightSection>
+          </S.Group>
+        </Container>
+      </S.DetailsContainer>
     </S.LandingContainer>
   )
 }

@@ -16,12 +16,8 @@ export const QUERY_LANDING_BY_SLUG = gql`
   query QueryLandingBySlug($slug: String!) {
     landings(where: { slug: $slug }) {
       ...LandingFragment
-      course {
-        ...CourseFragment
-      }
     }
   }
 
   ${LandingFragment}
-  ${CourseFragment}
 `

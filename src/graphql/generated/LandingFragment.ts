@@ -18,7 +18,7 @@ export interface LandingFragment_learnItem_icon {
 }
 
 export interface LandingFragment_learnItem {
-  __typename: "ComponentPageLearnItem";
+  __typename: "ComponentLandingLearnItem";
   icon: LandingFragment_learnItem_icon | null;
   title: string | null;
   description: string | null;
@@ -30,15 +30,26 @@ export interface LandingFragment_forYou_icon {
 }
 
 export interface LandingFragment_forYou {
-  __typename: "ComponentPageForYou";
+  __typename: "ComponentLandingForYou";
   description: string | null;
   highlight: string | null;
   icon: LandingFragment_forYou_icon | null;
 }
 
+export interface LandingFragment_installment {
+  __typename: "ComponentLandingInstallment";
+  max_installment: number | null;
+  installment_price: number | null;
+  fees: boolean | null;
+}
+
 export interface LandingFragment {
   __typename: "Landing";
   id: string;
+  name: string | null;
+  demo: string | null;
+  price: number | null;
+  promotional_price: number | null;
   slug: string | null;
   banner: LandingFragment_banner | null;
   heading: string | null;
@@ -46,4 +57,5 @@ export interface LandingFragment {
   color: string | null;
   learnItem: (LandingFragment_learnItem | null)[] | null;
   forYou: (LandingFragment_forYou | null)[] | null;
+  installment: LandingFragment_installment | null;
 }

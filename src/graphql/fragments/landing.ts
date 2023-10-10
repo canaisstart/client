@@ -3,6 +3,10 @@ import { gql } from '@apollo/client'
 export const LandingFragment = gql`
   fragment LandingFragment on Landing {
     id
+    name
+    demo
+    price
+    promotional_price
     slug
     banner {
       url
@@ -23,6 +27,11 @@ export const LandingFragment = gql`
       icon {
         url
       }
+    }
+    installment {
+      max_installment
+      installment_price
+      fees
     }
   }
 `

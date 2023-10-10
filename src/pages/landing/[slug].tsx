@@ -38,26 +38,32 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     variables: { slug: `${params?.slug}` }
   })
 
-  const landings = data.landings[0]
-
+  const landing = data.landings[0]
   return {
     props: {
-      ...landings,
+      ...landing,
       banner: {
-        url: `${getImageUrl(landings.banner?.url)}`
+        url: `${getImageUrl(landing.banner?.url)}`
       },
-      forYou: landings.forYou?.map((fy) => ({
+      forYou: landing.forYou?.map((fy) => ({
         ...fy,
         icon: {
           url: `${getImageUrl(fy?.icon?.url)}` || ''
         }
       })),
-      learnItems: landings.learnItem?.map((item) => ({
+      learnItems: landing.learnItem?.map((item) => ({
         ...item,
         icon: {
-          url: `${getImageUrl(item?.icon?.url}` || ''
+          url: `${getImageUrl(item?.icon?.url)}` || ''
         }
-      }))
+      })),
+      course: {
+        name: landing.name,
+        demo: landing.demo
+      },
+      installment: {
+        ...landing.installment
+      }
     },
     revalidate: 10800
   }

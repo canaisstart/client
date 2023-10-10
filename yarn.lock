@@ -1657,7 +1657,7 @@
   dependencies:
     regenerator-runtime "^0.13.11"
 
-"@babel/runtime@^7.22.15":
+"@babel/runtime@^7.23.1":
   version "7.23.1"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.23.1.tgz#72741dc4d413338a91dcb044a86f3c0bc402646d"
   integrity sha512-hC2v6p8ZSI/W0HUzh3V8C5g+NwSKzKPtJwSpTjwl0o297GP9+ZLQSkdvHz46CM3LqyoXxq+5G9komY+eSqSO0g==
@@ -3627,12 +3627,12 @@
     ejs "^2.6.1"
     magic-string "^0.25.0"
 
-"@tanem/svg-injector@^10.1.63":
-  version "10.1.64"
-  resolved "https://registry.yarnpkg.com/@tanem/svg-injector/-/svg-injector-10.1.64.tgz#af2a672f66ad74c205ddcbeaa7ddfe7167915099"
-  integrity sha512-hfpZHO71x3/UtrjG4KOF3UU5D0ynMNjgeosK/4EuW2QEIcF6EVyQ6VEbbjm5RRDhvzTrvpNnQN1Kze9+2YT6cw==
+"@tanem/svg-injector@^10.1.65":
+  version "10.1.66"
+  resolved "https://registry.yarnpkg.com/@tanem/svg-injector/-/svg-injector-10.1.66.tgz#29a6853b474f84b1e4b6cbedb6987eb0532a8fed"
+  integrity sha512-AQOZBnZyTAmCknGzSDNXENPqXOUvgAaFDeCyUADRsaTSxf2OEaLmEpYmc/ZOsR2QxhQM/sqNUW14x/ZY8wNvig==
   dependencies:
-    "@babel/runtime" "^7.22.15"
+    "@babel/runtime" "^7.23.1"
     content-type "^1.0.5"
     tslib "^2.6.2"
 
@@ -4078,10 +4078,10 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
   integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
 
-"@types/prop-types@^15.7.6":
-  version "15.7.7"
-  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.7.tgz#f9361f7b87fd5d8188b2c998db0a1f47e9fb391a"
-  integrity sha512-FbtmBWCcSa2J4zL781Zf1p5YUBXQomPEcep9QZCfRfQgTxz3pJWiDFLebohZ9fFntX5ibzOkSsrJ0TEew8cAog==
+"@types/prop-types@^15.7.8":
+  version "15.7.8"
+  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.8.tgz#805eae6e8f41bd19e88917d2ea200dc992f405d3"
+  integrity sha512-kMpQpfZKSCBqltAJwskgePRaYRFukDkm1oItcAbC3gNELR20XIBcN9VRgg4+m8DKsTfkWeA4m4Imp4DDuWy7FQ==
 
 "@types/qs@^6.9.5":
   version "6.9.6"
@@ -4108,6 +4108,13 @@
   integrity sha512-vXoIy4GUfB7/YgqubR4H7RALo+pRdMYCeLgWwV3MPwl5pggTlEkFBTF19R7u+LJc85uMqC7RfsbkqPLMQ4ab+A==
   dependencies:
     "@types/react" "*"
+
+"@types/react-svg@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-svg/-/react-svg-5.0.0.tgz#32c9b5e987cadff2797468bbee0abd265f44b75c"
+  integrity sha512-SKvgyw45ZaZX91uulrA1dgENZ0tC6D3owupmZKOuJFffkHJvp8lvfjbb+5juC3z4qCYoqESgxkkiS6owa+gemg==
+  dependencies:
+    react-svg "*"
 
 "@types/react-syntax-highlighter@11.0.5":
   version "11.0.5"
@@ -14939,14 +14946,14 @@ react-slick@^0.28.1:
     lodash.debounce "^4.0.8"
     resize-observer-polyfill "^1.5.0"
 
-react-svg@^16.1.26:
-  version "16.1.26"
-  resolved "https://registry.yarnpkg.com/react-svg/-/react-svg-16.1.26.tgz#01da79fe4a932ebc7ba786aeb49515bc8809e157"
-  integrity sha512-jH06DNCKQ3kMRT1VYAzE6xpFLqIKBF9TojuCfpUrZ080kvfv5gtjTPMCsKrla8cKa0zteM2cYNrnji5xm6xWmQ==
+react-svg@*, react-svg@^16.1.28:
+  version "16.1.28"
+  resolved "https://registry.yarnpkg.com/react-svg/-/react-svg-16.1.28.tgz#cb3ecd72d47efbcf06b7dd51a5e0025eb8a1733f"
+  integrity sha512-MUzgwvxceLGBUuhX6Fqk2osO+Q17lV4RCiqxvcVZtbmD+STsaaX/AQ+xPfthaHPxBBVzyfDs5BG3MafFzEemBA==
   dependencies:
-    "@babel/runtime" "^7.22.15"
-    "@tanem/svg-injector" "^10.1.63"
-    "@types/prop-types" "^15.7.6"
+    "@babel/runtime" "^7.23.1"
+    "@tanem/svg-injector" "^10.1.65"
+    "@types/prop-types" "^15.7.8"
     prop-types "^15.8.1"
 
 react-syntax-highlighter@^13.5.3:

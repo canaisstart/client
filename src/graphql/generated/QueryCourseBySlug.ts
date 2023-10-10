@@ -39,13 +39,11 @@ export interface QueryCourseBySlug_courses_curriculum_content_file {
 }
 
 export interface QueryCourseBySlug_courses_curriculum_content {
-<<<<<<< Updated upstream
   __typename: 'ComponentCourseVideos'
   name: string
   description: string | null
   video: QueryCourseBySlug_courses_curriculum_content_video[]
   file: QueryCourseBySlug_courses_curriculum_content_file | null
-  users_permissions_users: string[]
 }
 
 export interface QueryCourseBySlug_courses_curriculum {
@@ -64,44 +62,13 @@ export interface QueryCourseBySlug_courses {
   price: number | null
   duration: string
   lesson: number
+  date_course: any | null
   cover: QueryCourseBySlug_courses_cover | null
   category: QueryCourseBySlug_courses_category | null
   course_type: QueryCourseBySlug_courses_course_type | null
   instructor: QueryCourseBySlug_courses_instructor | null
   curriculum: (QueryCourseBySlug_courses_curriculum | null)[] | null
   updated_at: any
-=======
-  __typename: "ComponentCourseVideos";
-  name: string;
-  description: string | null;
-  video: QueryCourseBySlug_courses_curriculum_content_video[];
-  file: QueryCourseBySlug_courses_curriculum_content_file | null;
-}
-
-export interface QueryCourseBySlug_courses_curriculum {
-  __typename: "ComponentCourseCurriculum";
-  module: string;
-  content: (QueryCourseBySlug_courses_curriculum_content | null)[] | null;
-}
-
-export interface QueryCourseBySlug_courses {
-  __typename: "Course";
-  id: string;
-  name: string;
-  slug: string | null;
-  short_description: string;
-  description: string;
-  price: number | null;
-  duration: string;
-  lesson: number;
-  date_course: any | null;
-  cover: QueryCourseBySlug_courses_cover | null;
-  category: QueryCourseBySlug_courses_category | null;
-  course_type: QueryCourseBySlug_courses_course_type | null;
-  instructor: QueryCourseBySlug_courses_instructor | null;
-  curriculum: (QueryCourseBySlug_courses_curriculum | null)[] | null;
-  updated_at: any;
->>>>>>> Stashed changes
 }
 
 export interface QueryCourseBySlug {

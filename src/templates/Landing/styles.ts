@@ -2,9 +2,58 @@ import { Container } from 'components/Container'
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
+const generateImgBackground = (
+  width: number,
+  height: number,
+  rotate: number,
+  position: {
+    top?: string | number
+    left?: string | number
+    bottom?: string | number
+    right?: string | number
+  },
+  overflow = false
+) => {
+  const top = position?.top
+  const left = position?.left
+  const bottom = position?.bottom
+  const right = position?.right
+  return css`
+    overflow: ${overflow ? 'unset' : 'hidden'};
+    position: relative;
+
+    ::before {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      width: ${width}px;
+      height: ${height}px;
+      background-image: url('/img/logo-white.svg');
+      background-repeat: no-repeat;
+      transform: rotate(${rotate}deg);
+      ${top != undefined &&
+      css`
+        top: ${top};
+      `}
+      ${left != undefined &&
+      css`
+        left: ${left};
+      `}
+    ${right != undefined &&
+      css`
+        right: ${right};
+      `}
+    ${bottom != undefined &&
+      css`
+        bottom: ${bottom};
+      `}
+    }
+  `
+}
+
 export const Header = styled.div`
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   top: 0;
   height: 94px;
   width: 100%;
@@ -76,14 +125,17 @@ type GapTypes = {
   gap?: string
   dir?: 'column' | 'row'
   alignItems?: 'center' | 'start'
-  justify?: 'beetween'
+  justify?: 'space-between' | 'center'
+  width?: string
 }
 
 export const Gap = styled.div<GapTypes>`
   display: flex;
   gap: ${({ gap }) => gap || '1rem'};
+  justify-content: ${({ justify }) => justify || 'auto'};
   flex-direction: ${({ dir }) => dir || 'row'};
   align-items: ${({ alignItems }) => alignItems || 'center'};
+  width: ${({ width }) => width || 'auto'};
 `
 
 export const Banner = styled.div`
@@ -125,6 +177,7 @@ type TextProps = {
   fontWeight?: string
   color?: string
   align?: 'start' | 'center' | 'end'
+  height?: string
 }
 
 export const Text = styled.p<TextProps>`
@@ -132,6 +185,7 @@ export const Text = styled.p<TextProps>`
   font-weight: ${({ fontWeight }) => fontWeight || '400'};
   color: ${({ color }) => color || 'white'};
   text-align: ${({ align }) => align || 'start'};
+  line-height: ${({ height }) => height || 'auto'};
 
   > strong {
     font-weight: 600;
@@ -186,6 +240,7 @@ export const VideoContainer = styled.div`
   padding-bottom: 56.25%;
   border-radius: 4px;
   overflow: hidden;
+  z-index: 2;
 
   iframe {
     position: absolute;
@@ -199,6 +254,7 @@ export const VideoContainer = styled.div`
 export const ForYou = styled.div`
   padding-top: 80px;
   background-color: black;
+  overflow: hidden;
 `
 
 export const ForYouContent = styled.div`
@@ -208,6 +264,15 @@ export const ForYouContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 1;
+  ${generateImgBackground(
+    944,
+    831,
+    346,
+    { bottom: '-150px', left: '-2rem' },
+    true
+  )}
 `
 
 export const ForYouList = styled.div`
@@ -217,11 +282,11 @@ export const ForYouList = styled.div`
   gap: 2.5rem;
 `
 
-type ForYouCardProps = {
+type ApiProps = {
   color: string
 }
 
-export const ForYouCard = styled.div<ForYouCardProps>`
+export const ForYouCard = styled.div<ApiProps>`
   background-color: ${({ color }) => color};
   gap: 2rem;
   padding: 2rem;
@@ -233,3 +298,68 @@ export const ForYouCard = styled.div<ForYouCardProps>`
 export const LearningContainer = styled.div``
 
 export const LearningCard = styled.div``
+
+export const DetailsContainer = styled.div<ApiProps>`
+  padding: 8rem 0;
+  background-color: ${({ color }) => color};
+  overflow: hidden;
+`
+
+export const Group = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2.75rem;
+  position: relative;
+  z-index: 1;
+
+  ${media.greaterThan('medium')` 
+  flex-direction: row;
+  `}
+
+  ${generateImgBackground(1040, 916, 260, { bottom: '0' }, true)}
+`
+
+export const LeftSection = styled.div`
+  width: 100%;
+  position: relative;
+  z-index: 2;
+
+  ${media.greaterThan('medium')` 
+    width: 50%;
+  `}
+`
+
+export const RightSection = styled.div`
+  width: 100%;
+  position: relative;
+  z-index: 2;
+
+  ${media.greaterThan('medium')` 
+    width: 50%;
+  `}
+`
+
+export const Form = styled.form`
+  padding: 60px 40px;
+  background-color: rgba(250, 250, 250, 1);
+  border-radius: 8px;
+  color: rgba(40, 46, 65, 1);
+`
+
+export const Input = styled.input`
+  width: 100%;
+  border: 1px solid rgba(139, 137, 137, 1);
+  height: 70px;
+  border-radius: 4px;
+  padding: 10px 18px;
+  font-size: 16px;
+`
+
+export const InputContainer = styled.div`
+  width: 100%;
+
+  > label {
+    font-size: 24px;
+    line-height: 50px;
+  }
+`
