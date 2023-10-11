@@ -44,14 +44,8 @@ const Home = ({
 }: HomeTemplateProps) => (
   <Base>
     <S.Cover>
-      <Image src="/img/bg01.png" alt="Home background" layout="fill" />
+      <Image src="/img/bg02.png" alt="Home background" layout="fill" />
     </S.Cover>
-
-    <Container>
-      <S.SectionBanner>
-        <BannerSlider items={banners} />
-      </S.SectionBanner>
-    </Container>
 
     <S.SectionBeneficts>
       <S.SubTitle>Educação ao alcance de todos</S.SubTitle>

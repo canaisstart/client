@@ -72,17 +72,16 @@ const Menu = ({ username, loading }: MenuProps) => {
             </S.IconWrapper>
             <MediaMatch greaterThan="medium">
               {!username ? (
-                <>
+                <S.Gap>
                   <Link href="/sign-in" passHref>
                     <Button as="a">Entrar</Button>
                   </Link>
-                  &nbsp;
                   <Link href="/sign-up" passHref>
                     <Button as="a" outline>
                       Cadastrar
                     </Button>
                   </Link>
-                </>
+                </S.Gap>
               ) : (
                 <UserDropdown username={username} />
               )}
@@ -101,7 +100,6 @@ const Menu = ({ username, loading }: MenuProps) => {
               <Link href="/courses" passHref>
                 <S.MenuLink>Cursos</S.MenuLink>
               </Link>
-
               {/* <Link href="/corporate" passHref>
                 <S.MenuLink>Para Empresas</S.MenuLink>
               </Link> */}
@@ -119,21 +117,15 @@ const Menu = ({ username, loading }: MenuProps) => {
                   </Link>
                 </>
               )}
+              {!username && (
+                <>
+                  <Link href="/sign-in" passHref>
+                    <S.MenuLink>Entrar</S.MenuLink>
+                  </Link>
+                </>
+              )}
             </S.MenuNav>
 
-            {!username && (
-              <S.RegisterBox>
-                <Link href="/sign-in" passHref>
-                  <Button fullWidth size="large" as="a">
-                    Entrar
-                  </Button>
-                </Link>
-                <span>ou</span>
-                <Link href="/sign-up" passHref>
-                  <S.CreateAccount title="Cadastrar">Cadastrar</S.CreateAccount>
-                </Link>
-              </S.RegisterBox>
-            )}
           </S.MenuFull>
         </>
       )}

@@ -1,8 +1,8 @@
+import { Container } from 'components/Container'
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
 export const Wrapper = styled.div`
-  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -25,13 +25,25 @@ export const SectionFooter = styled.section`
 
     ${media.greaterThan('medium')`
       padding-top: calc(${theme.spacings.xxlarge} * 2);
-      clip-path: polygon(0 15%, 100% 0%, 100% 100%, 0 100%);
       background-position: bottom;
       background-size: cover;
     `}
 
     ${media.lessThan('medium')`
-      padding-top: rem;
+      padding-top: rem; 
     `}
+  `}
+`
+
+export const HeaderContainer = styled.div`
+  ${({ theme }) => css`
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    border-bottom: 3px solid #00cd08;
+    background-color: rgba(40, 46, 65, 0.8);
+    backdrop-filter: blur(60px);
   `}
 `

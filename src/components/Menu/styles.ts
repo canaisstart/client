@@ -35,10 +35,7 @@ export const MenuGroup = styled.div`
     justify-content: flex-end;
     align-items: center;
     z-index: ${theme.layers.menu} + 1;
-
-    > div {
-      margin-left: ${theme.spacings.xsmall};
-    }
+    gap: 10px;
   `}
 `
 
@@ -161,4 +158,9 @@ export const CreateAccount = styled.a`
     color: ${theme.colors.primary};
     border-bottom: 0.2rem solid ${theme.colors.primary};
   `}
+`
+
+export const Gap = styled.div`
+  display: flex;
+  gap: 10px;
 `
