@@ -31,6 +31,7 @@ const generateImgBackground = (
       background-image: url('/img/logo-white.svg');
       background-repeat: no-repeat;
       transform: rotate(${rotate}deg);
+      opacity: 0.3;
       ${top != undefined &&
       css`
         top: ${top};
@@ -60,6 +61,7 @@ export const Header = styled.div`
   background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
+  backdrop-filter: blur(60px);
 `
 
 export const LandingContainer = styled.div`
@@ -287,6 +289,8 @@ type ApiProps = {
 }
 
 export const ForYouCard = styled.div<ApiProps>`
+  position: relative;
+  z-index: 10;
   background-color: ${({ color }) => color};
   gap: 2rem;
   padding: 2rem;
