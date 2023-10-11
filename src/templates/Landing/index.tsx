@@ -10,7 +10,8 @@ import { WorkspacePremium } from '@styled-icons/material-outlined'
 import { ReactSVG } from 'react-svg'
 import { Color } from '@styled-icons/boxicons-regular'
 import { Grid } from 'components/Grid'
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
+import { RDStation, defaultValuesRDStation } from 'utils/RDStation/api'
 
 export interface LandingTemplateProps {
   banner: {
@@ -61,9 +62,33 @@ const Landing = ({
   const [gradient1, gradient2] = generateGradients(color)
   const [values, setValues] = useState({
     name: '',
-    tellnumber: '',
+    personal_phone: '',
     email: ''
   })
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    await RDStation.post('/deals', {
+      ...defaultValuesRDStation,
+      contacts: {
+        emails: [{ email: values.email }],
+        phones: [
+          {
+            phone: values.personal_phone,
+            type: 'cellphone'
+          }
+        ]
+      },
+      deal_products: [
+        {
+          amount: 1,
+          name: course.name,
+          price: promotional_price || price
+        }
+      ]
+    })
+  }
 
   return (
     <S.LandingContainer>
@@ -284,7 +309,7 @@ const Landing = ({
               </S.Gap>
             </S.LeftSection>
             <S.RightSection>
-              <S.Form>
+              <S.Form onSubmit={(e) => handleSubmit(e)}>
                 <S.Gap dir="column" alignItems="start" gap="48px">
                   <S.Text color="rgba(40, 46, 65, 1)" fontSize="32px">
                     Faça sua inscrição para o{' '}
@@ -308,15 +333,15 @@ const Landing = ({
                       />
                     </S.InputContainer>
                     <S.InputContainer>
-                      <label htmlFor="telnumber">Telefone</label>
+                      <label htmlFor="personal_phone">Telefone</label>
                       <S.Input
-                        name="telnumber"
-                        id="telnumber"
+                        name="personal_phone"
+                        id="personal_phone"
                         placeholder="(21) 99999-9999"
                         onChange={(e) =>
                           setValues((o) => ({
                             ...o,
-                            tellnumber: e.target.value
+                            personal_phone: e.target.value
                           }))
                         }
                       />
@@ -337,6 +362,7 @@ const Landing = ({
                   <S.WatchNow
                     color={gradient1}
                     style={{ width: '100%', height: '72px' }}
+                    type="submit"
                   >
                     Começar agora
                   </S.WatchNow>
