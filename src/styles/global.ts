@@ -4,6 +4,7 @@ import {
   DefaultTheme,
   GlobalStyleComponent
 } from 'styled-components'
+import media from 'styled-media-query'
 
 type GlobalStylesProps = {
   removeBg?: boolean
@@ -56,6 +57,12 @@ const GlobalStyles: GlobalStyleComponent<
   ${({ theme, removeBg }) => css`
     html {
       font-size: 62.5%;
+    }
+
+    .removeScrollMobile {
+      ${media.lessThan('medium')`
+        overflow-y: hidden !important;
+      `}
     }
 
     body {

@@ -11,13 +11,7 @@ export const Wrapper = styled.menu<MenuFullProps>`
   `}
 `
 
-export const LogoWrapper = styled.div`
-  ${media.lessThan('medium')`
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  `}
-`
+export const LogoWrapper = styled.div``
 
 export const IconWrapper = styled.div`
   ${({ theme }) => css`
@@ -50,7 +44,7 @@ export const MenuNav = styled.div`
 export const MenuLink = styled.a`
   ${({ theme }) => css`
     position: relative;
-    color: ${theme.colors.white};
+    color: ${theme.colors.white} !important;
     font-size: ${theme.font.sizes.medium};
     margin: 0.3rem ${theme.spacings.small} 0;
     text-decoration: none;
@@ -89,7 +83,7 @@ export const MenuFull = styled.nav<MenuFullProps>`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: ${theme.colors.white};
+    background: rgba(0, 0, 0, 0.85);
     position: fixed;
     z-index: ${theme.layers.menu};
     top: 0;
@@ -97,21 +91,12 @@ export const MenuFull = styled.nav<MenuFullProps>`
     left: 0;
     right: 0;
     height: 100vh;
+    padding: 20px;
     overflow: hidden;
     transition: opacity 0.3s ease-in-out;
     opacity: ${isOpen ? 1 : 0};
     pointer-events: ${isOpen ? 'all' : 'none'};
     visibility: ${isOpen ? 'visible' : 'hidden'};
-
-    > svg {
-      position: absolute;
-      top: 0;
-      right: 0;
-      margin: ${theme.spacings.xsmall};
-      cursor: pointer;
-      width: 2.4rem;
-      height: 2.4rem;
-    }
 
     ${MenuNav} {
       display: flex;
@@ -163,4 +148,31 @@ export const CreateAccount = styled.a`
 export const Gap = styled.div`
   display: flex;
   gap: 10px;
+`
+
+export const Content = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    ${media.lessThan('medium')`
+    
+      border: 1.5px solid ${theme.colors.primary};
+      background: rgba(0, 0, 0, 1);
+    `}
+
+    > svg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: ${theme.spacings.xsmall};
+      cursor: pointer;
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+  `}
 `
