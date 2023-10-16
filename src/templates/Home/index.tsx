@@ -6,6 +6,7 @@ import { Container } from 'components/Container'
 import BannerSlider from 'components/BannerSlider'
 import Showcase from 'components/Showcase'
 import Image from 'next/image'
+import Play from '../../../public/img/start-playbtn.svg'
 
 import * as S from './styles'
 import {
@@ -17,7 +18,7 @@ import {
   School,
   WorkspacePremium
 } from '@styled-icons/material-outlined'
-import Release from 'components/Release'
+import Link from 'next/link'
 
 export type HomeTemplateProps = {
   banners: BannerProps[]
@@ -43,12 +44,30 @@ const Home = ({
   formationCourses
 }: HomeTemplateProps) => (
   <Base>
-    <S.Cover>
-      <Image src="/img/bg02.png" alt="Home background" layout="fill" />
-    </S.Cover>
+    <S.SectionBanner>
+      <S.Cover>
+        <Image src="/img/bg02.png" alt="Home background" layout="fill" />
+      </S.Cover>
+      <S.BannerImage>
+        <S.BannerText>
+          <S.Title>EDUCAÇÃO AO ALCANCE DE TODOS</S.Title>
+          <S.Description>
+            Lorem Ipsum é simplesmente uma simulação de texto da indústria
+            tipográfica e de impressos, e vem sendo utilizado desde o século XVI,
+            quando um impressor
+          </S.Description>
+          <Link href="/courses" passHref>
+            <a>
+              Ver cursos
+              <Image src={Play} />
+            </a>
+          </Link>
+        </S.BannerText>
+      </S.BannerImage>
+      <S.Fill />
+    </S.SectionBanner>
 
     <S.SectionBeneficts>
-      <S.SubTitle>Educação ao alcance de todos</S.SubTitle>
       <S.Title>
         As vantagens de estudar na <strong>Escola START</strong>
       </S.Title>

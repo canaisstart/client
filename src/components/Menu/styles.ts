@@ -8,6 +8,11 @@ export const Wrapper = styled.menu<MenuFullProps>`
     padding: ${theme.spacings.small} 0;
     position: relative;
     z-index: ${isOpen ? theme.layers.menu : `calc(${theme.layers.menu} - 1)`};
+
+    ${media.lessThan('medium')`
+      justify-content: space-between;
+      flex-direction: row-reverse;
+    `}
   `}
 `
 
@@ -30,6 +35,10 @@ export const MenuGroup = styled.div`
     align-items: center;
     z-index: ${theme.layers.menu} + 1;
     gap: 10px;
+
+    ${media.lessThan('medium')`
+      display: none;
+    `}
   `}
 `
 

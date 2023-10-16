@@ -6,13 +6,130 @@ import { Container } from 'components/Container'
 
 export const SectionBanner = styled.section`
   ${({ theme }) => css`
-    margin: 0 calc(-${theme.grid.gutter} / 2) ${theme.spacings.large};
+    width: 100%;
+    height: 800px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    position: relative;
 
     ${media.greaterThan('medium')`
-      margin-bottom: ${theme.spacings.large};
-      position: relative;
-      z-index: ${theme.layers.base};
+    //margin-bottom: ${theme.spacings.large};
+      margin-top: -73px;  
+      z-index: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     `}
+
+    ${media.lessThan('medium')`
+      height: fit-content;
+      gap: 2.25rem;
+    `}
+  `}
+`
+
+export const BannerImage = styled(Container)`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  ${media.greaterThan('medium')`
+    height: 100%;
+  
+  `}
+  ${media.greaterThan('large')`
+    height: 100%;
+    background-image: url('/img/bannerHome.png');
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    z-index: 1;
+  `}
+`
+
+export const BannerText = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    ${media.lessThan('medium')`
+      gap: 0px;
+    `}
+    color: white;
+    max-width: 602px;
+    position: relative;
+    z-index: 3;
+
+    ${media.greaterThan('medium')`
+      margin-top: -12.75rem;
+    `}
+
+    > h1,
+    h4 {
+      width: 100%;
+      text-align: left !important;
+      background-color: transparent;
+    }
+
+    h1 {
+      font-weight: ${theme.font.bold + 100};
+      font-size: 60px;
+      line-height: 60px;
+      ${media.lessThan('medium')`
+        font-size: 30px;
+        line-height: 30px;
+      `}
+    }
+
+    h4 {
+      font-weight: ${theme.font.normal};
+      font-size: ${theme.font.sizes.xsmall};
+      ${media.lessThan('medium')`
+        font-size: calc(${theme.font.sizes.xsmall} - 2px);
+      `}
+    }
+
+    > a {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      padding: 0.625rem 2rem;
+      color: white;
+      width: fit-content;
+      font-size: ${theme.font.sizes.xlarge};
+      font-weight: ${theme.font.bold};
+      border-radius: 8px;
+      background: linear-gradient(180deg, #9747ff 0%, #9400d3 100%);
+      box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
+      border: none;
+      cursor: pointer;
+      margin-top: 2rem;
+      ${media.lessThan('medium')`
+        margin: 10px;
+        padding: 0.3rem 1rem; 
+      `}
+    }
+  `}
+
+  > button::hover {
+    opacity: 0.1;
+  }
+`
+
+export const Fill = styled.div`
+  display: none;
+  ${media.greaterThan('medium')`
+    display: flex;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(40, 46, 65, 0.6);
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15));
   `}
 `
 
@@ -44,17 +161,19 @@ export const SectionBeneficts = styled.div`
     background-color: ${theme.colors.lightBg};
 
     ${media.greaterThan('large')`
-      margin-top: -13rem;
       padding-top: 5rem;
-      clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 85%);
+      clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 100%);
     `}
 
     ${media.greaterThan('medium')`
+      margin-top: -13rem;
       margin-bottom: 0;
       padding-top: 15rem;
       padding-bottom: 10rem;
       height: 75rem;
       background-color: ${theme.colors.lightBg};
+      clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 100%);
+
     `}
 
     ${media.lessThan('medium')`
@@ -73,7 +192,7 @@ export const Title = styled.h1`
     justify-content: center;
     text-align: center;
     max-width: 720px;
-    font-weight: ${theme.font.normal};
+    font-weight: ${theme.font.bold};
     margin: {
       left: auto;
       right: auto;
@@ -126,7 +245,7 @@ export const Description = styled.h4`
     text-align: center;
     max-width: 720px;
     font-weight: ${theme.font.light};
-    font-size: ${theme.font.sizes.xsmall};
+    font-size: ${theme.font.sizes.small};
 
     ${media.lessThan('medium')`
       padding-top: 1rem;
@@ -139,21 +258,29 @@ export const Description = styled.h4`
 `
 
 export const Cover = styled.div`
-  position: absolute;
+  display: flex;
+  position: sticky;
+  z-index: -1;
   top: 0;
   right: 0;
   left: 0;
   height: 39.5rem;
   opacity: 0.18;
+  width: 100%;
+  height: 40vh;
 
   img {
     object-fit: cover;
-    object-position: top center;
+    object-position: center;
   }
 
+  ${media.lessThan('medium')`
+    clip-path: polygon(0 0, 100% 15%, 100% 100%, 0% 100%);
+  `}
+
   ${media.greaterThan('medium')`
+    position: absolute;
     height: 80rem;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
   `}
 `
 
