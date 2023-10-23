@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import * as S from './style'
 import Image from 'next/image'
-import ReactConfetti from 'react-confetti'
 
 const Release = () => {
   const [show, setShow] = useState(true)
@@ -63,7 +62,7 @@ const Release = () => {
         </S.Gap>
         <button onClick={() => setShow(false)}>Acesse a plataforma</button>
       </S.Content>
-      <ReactConfetti width={width} height={height} gravity={0.08} />
+      {/*<ReactConfetti width={width} height={height} gravity={0.08} />*/}
     </S.ReleaseContainer>
   )
 }

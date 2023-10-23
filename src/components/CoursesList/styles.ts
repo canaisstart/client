@@ -8,3 +8,9 @@ export const Wrapper = styled.div`
     }
   }
 `
+
+export const RenderCourses = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+`

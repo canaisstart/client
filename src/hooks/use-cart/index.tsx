@@ -1,4 +1,6 @@
-import { useQueryCourses } from 'graphql/queries/courses'
+import { useQueryCourses, useQueryUserHasCourse } from 'graphql/queries/courses'
+import { useQueryUserOrders } from 'graphql/queries/orders'
+import { useSession } from 'next-auth/client'
 import { useContext, createContext, useState, useEffect } from 'react'
 import formatPrice from 'utils/format-price'
 import { getStorageItem, setStorageItem } from 'utils/localStorage'
@@ -48,14 +50,31 @@ export type CartProviderProps = {
 
 const CartProvider = ({ children }: CartProviderProps) => {
   const [cartItems, setCartItems] = useState<string[]>([])
+  const session = useSession()
+
+  const userOrders = useQueryUserOrders({
+    skip: !session[0]?.id as boolean,
+    variables: {
+      identifier: session[0]?.id as string
+    }
+  })
 
   useEffect(() => {
-    const data = getStorageItem(CART_KEY)
+    const data = getStorageItem(CART_KEY) as string[]
 
     if (data) {
-      setCartItems(data)
+      // Filtrar os cursos que não estão nas userOrders
+      const coursesNotInUserOrders = data.filter((courseId) => {
+        const courseIdInUserOrders = userOrders.data?.orders.some((order) =>
+            order.courses.some((course) => course.id === courseId) &&
+            order.status === 'paid'
+        )
+        return !courseIdInUserOrders
+      })
+
+      setCartItems(coursesNotInUserOrders)
     }
-  }, [])
+  }, [userOrders])
 
   const { data, loading } = useQueryCourses({
     skip: !cartItems?.length,
@@ -102,7 +121,7 @@ const CartProvider = ({ children }: CartProviderProps) => {
         addToCart,
         removeFromCart,
         clearCart,
-        loading
+        loading: loading && userOrders.loading
       }}
     >
       {children}

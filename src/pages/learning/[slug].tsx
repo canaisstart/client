@@ -33,27 +33,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     return { props: {} }
   }
 
-  const { data: verifyUser } = await apolloClient.query<
-    UserHasCourse,
-    UserHasCourseVariables
-  >({
-    query: USER_HAS_COURSES,
-    variables: {
-      userId: session.id as string,
-      slug: context.params?.slug as string
-    },
-    fetchPolicy: 'no-cache'
-  })
-
-  if (!verifyUser.orders[0]?.courses[0]) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false
-      }
-    }
-  }
-
   const { data } = await apolloClient.query<
     QueryCourseBySlug,
     QueryCourseBySlugVariables
@@ -68,6 +47,28 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   }
 
   const course = data?.courses[0]
+
+  const { data: verifyUser } = await apolloClient.query<
+    UserHasCourse,
+    UserHasCourseVariables
+  >({
+    query: USER_HAS_COURSES,
+    variables: {
+      userId: session.id as string,
+      slug: data.courses[0].id as string,
+      status: 'paid'
+    },
+    fetchPolicy: 'no-cache'
+  })
+
+  if (!verifyUser.orders[0]?.courses[0]) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    }
+  }
 
   const courseInfo = {
     id: course.id,
@@ -84,10 +85,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
             name: lesson?.name,
             videoUrl: lesson?.link,
             classtime: lesson?.classtime,
-            completed: lesson?.users_permissions_users.some((user) => {
-              console.log(user.id, session.id)
-              return user.id == session.id
-            }),
+            completed: lesson?.users_permissions_users.some(
+              (user) => user.id == session.id
+            ),
             description: lesson?.description,
             fileUrl: lesson?.file?.url || null,
             module: {

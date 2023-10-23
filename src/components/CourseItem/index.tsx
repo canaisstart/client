@@ -6,6 +6,7 @@ import Link from 'next/dist/client/link'
 import { useRouter } from 'next/router'
 import { Play } from '@styled-icons/remix-fill'
 import { useState } from 'react'
+import theme from 'styles/theme'
 
 export type PaymentInfoProps = {
   number: string
@@ -23,6 +24,7 @@ export type CourseItemProps = {
   promotionalPrice?: string
   paymentInfo?: PaymentInfoProps
   redirectUrl?: string
+  concluited?: number
 }
 
 const CourseItem = ({
@@ -31,7 +33,8 @@ const CourseItem = ({
   title,
   price,
   paymentInfo,
-  redirectUrl
+  redirectUrl,
+  concluited
 }: CourseItemProps) => {
   const { isInCart, removeFromCart } = useCart()
   const [hover, setHover] = useState(false)
@@ -62,6 +65,19 @@ const CourseItem = ({
             <Play color="white" width="48px" height="48px"></Play>
           </div>
         )}
+        <div
+          style={{
+            backgroundColor: theme.colors.secondary,
+            width: `${concluited}%`,
+            zIndex: 1,
+            height: '0.5rem',
+            position: 'absolute',
+            bottom: '0',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        />
         <Image src={img} alt={title} width={150} height={70} />
       </S.ImageBox>
 

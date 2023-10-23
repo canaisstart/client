@@ -6,6 +6,10 @@ import {
   QueryCourses,
   QueryCoursesVariables
 } from 'graphql/generated/QueryCourses'
+import {
+  UserHasCourse,
+  UserHasCourseVariables
+} from 'graphql/generated/UserHasCourse'
 
 export const QUERY_COURSES = gql`
   query QueryCourses($limit: Int, $start: Int, $where: JSON, $sort: String) {
@@ -24,8 +28,10 @@ export const QUERY_COURSES = gql`
 `
 
 export const USER_HAS_COURSES = gql`
-  query UserHasCourse($userId: ID!, $slug: String!) {
-    orders(where: { user: { id: $userId }, courses: { slug: $slug } }) {
+  query UserHasCourse($userId: ID!, $slug: String!, $status: String!) {
+    orders(
+      where: { user: { id: $userId }, courses: { id: $slug }, status: $status }
+    ) {
       courses {
         id
         name
@@ -34,6 +40,7 @@ export const USER_HAS_COURSES = gql`
       user {
         id
       }
+      status
     }
   }
 `
@@ -54,6 +61,8 @@ export const QUERY_COURSE_BY_SLUG = gql`
       price
 
       duration
+
+      available
 
       lesson
 
@@ -168,4 +177,13 @@ export function useQueryCourses(
   options?: QueryHookOptions<QueryCourses, QueryCoursesVariables>
 ) {
   return useQuery<QueryCourses, QueryCoursesVariables>(QUERY_COURSES, options)
+}
+
+export function useQueryUserHasCourse(
+  options?: QueryHookOptions<UserHasCourse, UserHasCourseVariables>
+) {
+  return useQuery<UserHasCourse, UserHasCourseVariables>(
+    USER_HAS_COURSES,
+    options
+  )
 }

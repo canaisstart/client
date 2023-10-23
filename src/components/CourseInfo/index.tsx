@@ -12,6 +12,7 @@ export type CourseInfoProps = {
   description: string
   price: number
   promotionalPrice?: number
+  available: boolean
 }
 
 const CourseInfo = ({
@@ -19,7 +20,8 @@ const CourseInfo = ({
   title,
   description,
   price,
-  promotionalPrice
+  promotionalPrice,
+  available
 }: CourseInfoProps) => (
   <S.Wrapper data-cy="game-info">
     <Heading color="black" lineBottom>
@@ -32,7 +34,7 @@ const CourseInfo = ({
       <Ribbon color="secondary">
         {price != null
           ? price === 0
-            ? 'FREE'
+            ? 'GRÁTIS'
             : `${formatPrice(promotionalPrice || price)}`
           : 'Em breve'}
       </Ribbon>
@@ -41,7 +43,7 @@ const CourseInfo = ({
     <S.Description>{description}</S.Description>
 
     <S.ButtonsWrapper>
-      <CartButton id={id} size="large" hasText />
+      {available && <CartButton id={id} size="large" hasText />}
       <WishlistButton id={id} hasText size="large" />
     </S.ButtonsWrapper>
   </S.Wrapper>

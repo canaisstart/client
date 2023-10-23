@@ -52,7 +52,10 @@ export const cartMapper = (courses: QueryCourses_courses[] | undefined) => {
     : []
 }
 
-export const ordersMapper = (orders: QueryOrders_orders[] | undefined) => {
+export const ordersMapper = (
+  orders: QueryOrders_orders[] | undefined,
+  id?: string
+) => {
   return orders
     ? orders.map((order) => {
         const messages: {
@@ -76,13 +79,29 @@ export const ordersMapper = (orders: QueryOrders_orders[] | undefined) => {
               year: 'numeric'
             }).format(new Date(order.created_at))}`
           },
-          courses: order.courses.map((course) => ({
-            id: course.id,
-            title: course.name,
-            img: `${getImageUrl(course.cover?.url)}`,
-            price: formatPrice(course.price || 0),
-            slug: course.slug
-          }))
+          courses: order.courses.map((course) => {
+            const totalLessons =
+              course.curriculum?.flatMap((curriculum) => curriculum?.content)
+                .length || 0
+
+            const completed = course.curriculum?.reduce((acc, cur) => {
+              return (
+                acc +
+                cur?.content
+                  ?.flatMap((e) => e?.users_permissions_users)
+                  ?.filter((e) => e?.id == id).length
+              )
+            }, 0)
+
+            return {
+              id: course.id,
+              title: course.name,
+              img: `${getImageUrl(course.cover?.url)}`,
+              price: formatPrice(course.price || 0),
+              slug: course.slug,
+              concluited: (completed / totalLessons) * 100
+            }
+          })
         }
       })
     : []

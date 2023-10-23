@@ -1,14 +1,13 @@
-import Base from 'templates/Base'
 import { BannerProps } from 'components/Banner'
-import { CourseCardProps } from 'components/CourseCard'
-import { HighlightProps } from 'components/Highlight'
-import { Container } from 'components/Container'
 import BannerSlider from 'components/BannerSlider'
+import Button from 'components/Button'
+import { Container } from 'components/Container'
+import { CourseCardProps } from 'components/CourseCard'
+import Feature from 'components/Feature'
+import Heading from 'components/Heading'
 import Showcase from 'components/Showcase'
-import Image from 'next/image'
-
-import * as S from './styles'
 import {
+  ArrowRightAlt,
   BusinessCenter,
   Group,
   Groups2,
@@ -17,151 +16,129 @@ import {
   School,
   WorkspacePremium
 } from '@styled-icons/material-outlined'
-import Release from 'components/Release'
+import Image from 'next/image'
+import Link from 'next/link'
+import Base from '../Base'
+
+import * as S from './styles'
 
 export type HomeTemplateProps = {
   banners: BannerProps[]
-  mostPopularCoursesTitle: string
-  mostPopularHighlight: HighlightProps
-  mostPopularCourses: CourseCardProps[]
-  freeCoursesTitle: string
+  popularCourses: CourseCardProps[]
   freeCourses: CourseCardProps[]
-  freeHighlight: HighlightProps
-  formationCourses: {
-    title: string
-    courses: CourseCardProps[]
-  }
 }
 
-const Home = ({
-  banners,
-  mostPopularCoursesTitle,
-  mostPopularHighlight,
-  mostPopularCourses,
-  freeCoursesTitle,
-  freeCourses,
-  formationCourses
-}: HomeTemplateProps) => (
+const Home = ({ banners, freeCourses }: HomeTemplateProps) => (
   <Base>
     <S.Cover>
-      <Image src="/img/bg01.png" alt="Home background" layout="fill" />
+      <Image src="/img/bg-2.png" alt="home" layout="fill" />
     </S.Cover>
 
-    <Container>
-      <S.SectionBanner>
-        <BannerSlider items={banners} />
-      </S.SectionBanner>
-    </Container>
+    <S.Landing>
+      <Container>
+        <S.LandingText>
+          <Heading size="huge">EDUCAÇÃO AO ALCANCE DE TODOS</Heading>
+          <p>
+            Nossa missão é tornar a educação acessível a cada indivíduo,
+            independentemente de sua localização, idade ou recursos. Queremos
+            que todos tenham a oportunidade de aprender, crescer e alcançar seus
+            objetivos pessoais e profissionais.
+          </p>
+          <span>
+            <Link href="/courses" passHref>
+              <Button size="large" color="secondary" icon={<ArrowRightAlt />}>
+                Ver cursos
+              </Button>
+            </Link>
+          </span>
+        </S.LandingText>
+      </Container>
+    </S.Landing>
 
-    <S.SectionBeneficts>
-      <S.SubTitle>Educação ao alcance de todos</S.SubTitle>
-      <S.Title>
+    <S.SectionBeneficies>
+      <S.BTitle>
         As vantagens de estudar na <strong>Escola START</strong>
-      </S.Title>
-      <S.Description>
+      </S.BTitle>
+      <S.BDescription>
         Você determina sua maneira de estudar. A START se adapta as suas
         necessidades com formatos que atendem a realidade do aluno através dos
-        nossos cursos
-      </S.Description>
+        nossos cursos.
+      </S.BDescription>
 
       <S.FWrapper>
-        <S.FContent>
-          <S.FIcon>
-            <WorkspacePremium />
-          </S.FIcon>
-          <S.FTitle>
-            Educação básica e capacitação profissional de qualidade
-          </S.FTitle>
-          <S.FDescription>
-            Desenvolvimento educacional para alunos de instituições públicas do
-            Brasil. Contamos com um time de Professores que trazem conhecimento
-            prático vivencial para sala de aula.
-          </S.FDescription>
-        </S.FContent>
+        <Feature icon={<WorkspacePremium />} title="Capacitação Profissional que cabe no seu bolso." description="Contamos com um time de Professores que trazem conhecimento prático
+            vivencial do mercado de trabalho para sala de aula." />
 
-        <S.FContent>
-          <S.FIcon>
-            <School />
-          </S.FIcon>
-          <S.FTitle>Você vai aprender com profissionais do mercado.</S.FTitle>
-          <S.FDescription>
-            Educação de qualidade a um preço que você pode pagar. Fique ligado
-            na nossa plataforma e obtenha descontos e benefícios.
-          </S.FDescription>
-        </S.FContent>
+        <Feature icon={<School />} title="Você vai aprender com profissionais do mercado." description="Educação de qualidade a um preço que você pode pagar. Fique ligado
+            na nossa plataforma e obtenha descontos e benefícios." />
 
-        <S.FContent>
-          <S.FIcon>
-            <MenuBook />
-          </S.FIcon>
-          <S.FTitle>Material Didático de Qualidade</S.FTitle>
-          <S.FDescription>
-            Nosso material didático proporciona a você um aprendizado contínuo,
-            elaborado por profissionais conceituados. A START conta com
-            conteúdos exclusivos e frequentemente atualizados. Aqui você tem
-            suporte às mais recentes novidades da plataforma.
-          </S.FDescription>
-        </S.FContent>
+        <Feature icon={<MenuBook />} title="Material complementar, consultivo e continuado." description="Nosso material didático permite que você continue estudando e
+            adquirindo conhecimento mesmo após o seu término do curso." />
       </S.FWrapper>
-    </S.SectionBeneficts>
+    </S.SectionBeneficies>
+
     <S.SectionClients>
       <S.CTitle>
-        A <strong>Escola START</strong> leva capacitação profissional para
-        alunos nos níveis fundamental e técnico espalhados{' '}
-        <strong>por todo o Brasil</strong>
+        A <strong>Escola START</strong> também leva capacitação profissional
+        para os alunos através das <strong>maiores empresas do país</strong>.
       </S.CTitle>
-      <S.CSubtitle>Nosso principais clientes e parceiros:</S.CSubtitle>
+      <S.CSubtitle>Nossos principais clientes e parceiros</S.CSubtitle>
       <S.CImages>
         <S.CImagesCard>
-          <Image src="/clients/atacfire.png" width={180} height={50} />
+          <Image src="/clients/atacfire.png" width={180} height={50} alt="" />
         </S.CImagesCard>
         <S.CImagesCard>
-          <Image src="/clients/abrasel.png" width={120} height={60} />
+          <Image src="/clients/abrasel.png" width={120} height={60} alt="" />
         </S.CImagesCard>
         <S.CImagesCard>
-          <Image src="/clients/sebrae.png" width={100} height={60} />
+          <Image src="/clients/sebrae.png" width={100} height={60} alt="" />
         </S.CImagesCard>
         <S.CImagesCard>
-          <Image src="/clients/novotec.png" width={120} height={50} />
+          <Image src="/clients/novotec.png" width={120} height={50} alt="" />
         </S.CImagesCard>
         <S.CImagesCard>
-          <Image src="/clients/gov_federal.png" width={140} height={60} />
+          <Image src="/clients/gov_federal.png" width={140} height={60} alt="" />
         </S.CImagesCard>
         <S.CImagesCard>
-          <Image src="/clients/rio_prefeitura.png" width={90} height={50} />
+          <Image src="/clients/rio_prefeitura.png" width={90} height={50} alt="" />
         </S.CImagesCard>
         <S.CImagesCard>
-          <Image src="/clients/sindrio.png" width={230} height={50} />
+          <Image src="/clients/sindrio.png" width={230} height={50} alt="" />
         </S.CImagesCard>
         <S.CImagesCard>
-          <Image src="/clients/min_defesa.png" width={80} height={95} />
+          <Image src="/clients/min_defesa.png" width={80} height={95} alt="" />
         </S.CImagesCard>
         <S.CImagesCard>
-          <Image src="/clients/fieb.png" width={150} height={59} />
+          <Image src="/clients/fieb.png" width={150} height={59} alt="" />
         </S.CImagesCard>
         <S.CImagesCard>
-          <Image src="/clients/sesc.png" width={100} height={40} />
+          <Image src="/clients/sesc.png" width={100} height={40} alt="" />
         </S.CImagesCard>
         <S.CImagesCard>
-          <Image src="/clients/scgas.png" width={170} height={45} />
+          <Image src="/clients/scgas.png" width={170} height={45} alt="" />
         </S.CImagesCard>
         <S.CImagesCard>
-          <Image src="/clients/gov_sp.png" width={160} height={85} />
+          <Image src="/clients/gov_sp.png" width={160} height={85} alt="" />
         </S.CImagesCard>
       </S.CImages>
     </S.SectionClients>
 
-    <Showcase
-      title={mostPopularCoursesTitle}
-      highlight={mostPopularHighlight}
-      courses={mostPopularCourses}
-    />
+    <Container>
+      <S.SectionBanner>
+        <S.PopularCourseTitle>
+          <Heading lineLeft lineColor="secondary">
+            Cursos Populares
+          </Heading>
+        </S.PopularCourseTitle>
+        <BannerSlider items={banners} />
+      </S.SectionBanner>
+    </Container>
 
     <S.SectionNumbers>
-      <S.SubTitle>Nossos credenciamentos</S.SubTitle>
-      <S.Title>
+      <S.BTitle>
         Números de realizações da <strong>Escola START</strong>
-      </S.Title>
+      </S.BTitle>
+      <S.BSubTitle>e Nossos credenciamentos</S.BSubTitle>
 
       <S.NWrapper>
         <S.NContent>
@@ -170,19 +147,19 @@ const Home = ({
               <S.NIcon>
                 <Group />
               </S.NIcon>
-              <S.Title>
+              <S.BTitle>
                 <b>+22.000</b>
-              </S.Title>
-              <S.SubTitle>alunos</S.SubTitle>
+              </S.BTitle>
+              <S.BSubTitle>alunos</S.BSubTitle>
             </S.NSingleBox>
             <S.NSingleBox>
               <S.NIcon>
                 <BusinessCenter />
               </S.NIcon>
-              <S.Title>
+              <S.BTitle>
                 <b>+6.000</b>
-              </S.Title>
-              <S.SubTitle>inseridos no mercado de trabalho</S.SubTitle>
+              </S.BTitle>
+              <S.BSubTitle>inseridos no mercado de trabalho</S.BSubTitle>
             </S.NSingleBox>
           </S.NBox>
 
@@ -191,21 +168,19 @@ const Home = ({
               <S.NIcon>
                 <QueryStats />
               </S.NIcon>
-              <S.Title>
+              <S.BTitle>
                 <b>77</b>
-              </S.Title>
-              <S.SubTitle>nps</S.SubTitle>
+              </S.BTitle>
+              <S.BSubTitle>Nota de Pesquisa e Satisfação</S.BSubTitle>
             </S.NSingleBox>
             <S.NSingleBox>
               <S.NIcon>
                 <Groups2 />
               </S.NIcon>
-              <S.Title>
+              <S.BTitle>
                 <b>+300</b>
-              </S.Title>
-              <S.SubTitle css={{ width: 200 }}>
-                back-office e professores
-              </S.SubTitle>
+              </S.BTitle>
+              <S.BSubTitle>colaboradores</S.BSubTitle>
             </S.NSingleBox>
           </S.NBox>
         </S.NContent>
@@ -213,20 +188,15 @@ const Home = ({
         <S.NContent>
           <S.CredBox>
             {[
-              '/cred/crea.png',
-              '/cred/crp.png',
-              '/cred/cra.png',
-              '/cred/abed.png',
-              '/cred/ipma.png',
-              '/cred/crn.png'
+              '/cred/crea2.png',
+              '/cred/crp2.png',
+              '/cred/cra2.png',
+              '/cred/abed2.png',
+              '/cred/ipma2.png',
+              '/cred/crn2.png'
             ].map((cred) => (
               <S.CredSingleBox key={cred}>
-                <Image
-                  src={cred}
-                  objectFit="contain"
-                  width="170px"
-                  height="180px"
-                />
+                <Image src={cred} objectFit="contain" width={170} height={140} alt="" />
               </S.CredSingleBox>
             ))}
           </S.CredBox>
@@ -234,11 +204,7 @@ const Home = ({
       </S.NWrapper>
     </S.SectionNumbers>
 
-    <Showcase title={freeCoursesTitle} courses={freeCourses} />
-    <Showcase
-      title={formationCourses.title}
-      courses={formationCourses.courses}
-    />
+    <Showcase title="Cursos Gratuitos" courses={freeCourses} />
   </Base>
 )
 

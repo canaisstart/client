@@ -61,7 +61,7 @@ const Learning = ({ courseInfo, slug, userId }: CourseTemplatePropsVideo) => {
     modules
       .flatMap((module) => module.lessons)
       .find((lesson) => lesson.completed == false) ||
-      modules.flatMap((module) => module.lessons).pop()
+    modules.flatMap((module) => module.lessons).pop()
   )
   const [openedIndex, setOpenedIndex] = useState(
     modules.findIndex(
@@ -156,14 +156,11 @@ const Learning = ({ courseInfo, slug, userId }: CourseTemplatePropsVideo) => {
       <S.Head>
         <S.Title onClick={() => viewPort < 768 && setModalIsOpen(true)}>
           {viewPort > 768
-            ? 'Seu aprendizado'
+            ? 'Sala de Aula'
             : selectedLesson?.module.name || 'Selecione uma Aula'}
           <ArrowDropDown size={32} />
         </S.Title>
-        <ProgressCircle
-          course={courseInfo.name}
-          percent={Number(porcentage.toFixed())}
-        />
+        <ProgressCircle percent={Number(porcentage.toFixed())} />
       </S.Head>
       <S.Wrapper>
         <NextSeo

@@ -56,6 +56,7 @@ export const Footer = styled.div`
     font-size: 16px;
     line-height: 24px;
     color: #282e41;
+    cursor: pointer;
     text-decoration: underline;
   }
 

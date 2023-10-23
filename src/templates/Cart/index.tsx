@@ -41,9 +41,9 @@ const Cart = ({ session, recommendedTitle, recommendedCourses }: CartProps) => {
         <S.Text>
           <Info size={18} /> Sua compra é protegida por uma conexão segura da
           plataforma{' '}
-          <Link href="https://www.stripe.com">
+          <Link href="https://pagar.me">
             <a target="_blank" rel="noreferrer">
-              Stripe . Ao comprar em nossa loja você concorda com nossos{' '}
+              Pagar.me . Ao comprar em nossa loja você concorda com nossos{' '}
             </a>
           </Link>
           <Link href="/terms" passHref>

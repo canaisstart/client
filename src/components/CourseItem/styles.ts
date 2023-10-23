@@ -15,6 +15,7 @@ export const Wrapper = styled.div`
 export const GameContent = styled.div`
   display: flex;
   width: 100%;
+  justify-content: space-between;
 `
 
 export const ImageBox = styled.div`
