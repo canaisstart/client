@@ -36,7 +36,7 @@ export const Payment = ({ session }: { session: Session }) => {
           </S.Details>
         </S.Resume>
         <S.Footer>
-          <Link href="/courses" passHref css={{ cursor: 'pointer' }}>
+          <Link href="/courses" passHref>
             <span>Continuar comprando</span>
           </Link>
           <button onClick={() => handleSubmit()}>

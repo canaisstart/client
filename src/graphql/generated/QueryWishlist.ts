@@ -8,18 +8,18 @@
 // ====================================================
 
 export interface QueryWishlist_wishlists_courses_cover {
-  __typename: 'UploadFile'
-  url: string
+  __typename: "UploadFile";
+  url: string;
 }
 
 export interface QueryWishlist_wishlists_courses_instructor {
-  __typename: 'Instructor'
-  name: string
+  __typename: "Instructor";
+  name: string;
 }
 
 export interface QueryWishlist_wishlists_courses_category {
-  __typename: 'Category'
-  name: string
+  __typename: "Category";
+  name: string;
 }
 
 export interface QueryWishlist_wishlists_courses {
@@ -46,5 +46,5 @@ export interface QueryWishlist {
 }
 
 export interface QueryWishlistVariables {
-  identifier: string
+  identifier: string;
 }

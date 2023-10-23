@@ -66,6 +66,7 @@ export interface QueryCourseBySlug_courses {
   description: string;
   price: number ;
   duration: string;
+  available: boolean;
   lesson: number;
   date_course: any ;
   cover: QueryCourseBySlug_courses_cover;

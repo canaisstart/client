@@ -5,6 +5,7 @@ import CourseItem, {
 } from 'components/CourseItem'
 import Heading from 'components/Heading'
 import * as S from './styles'
+import PlayCourse from 'components/PlayCourse'
 
 type OrderProps = {
   id: string
@@ -22,18 +23,20 @@ const CoursesList = ({ items = [] }: CoursesListProps) => (
       Meus cursos
     </Heading>
 
-    {items.length ? (
-      items.map((order) => {
-        return order.courses.map((course) => (
-          <CourseItem
-            key={`${order.id}-${course.id}`}
-            redirectUrl={`/learning/${course.slug}`}
-            {...course}
-            paymentInfo={order.paymentInfo}
-          />
-        ))
-      })
-    ) : (
+    <S.RenderCourses>
+      {items.length &&
+        items.map((order) => {
+          return order.courses.map((course) => (
+            <PlayCourse
+              key={`${order.id}-${course.id}`}
+              redirectUrl={`/learning/${course.slug}`}
+              concluited={course.concluited || 0}
+              {...course}
+            />
+          ))
+        })}
+    </S.RenderCourses>
+    {!items.length && (
       <Empty
         title="Você ainda não tem cursos"
         description="Volte para a loja e explore os ótimos cursos e ofertas"

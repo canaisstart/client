@@ -84,7 +84,7 @@ const Footer = () => (
 
       <S.Column aria-labelledby="resources">
         <Heading color="black" lineColor="secondary" lineBottom size="small">
-          Links
+          Acesse
         </Heading>
 
         <nav id="resources">

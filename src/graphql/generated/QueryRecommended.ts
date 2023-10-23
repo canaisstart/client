@@ -23,11 +23,11 @@ export interface QueryRecommended_recommended_section_highlight {
   __typename: "ComponentPageHighlight";
   title: string;
   subtitle: string;
-  background: QueryRecommended_recommended_section_highlight_background;
-  floatImage: QueryRecommended_recommended_section_highlight_floatImage;
+  background: QueryRecommended_recommended_section_highlight_background | null;
+  floatImage: QueryRecommended_recommended_section_highlight_floatImage | null;
   buttonLabel: string;
   buttonLink: string;
-  alignment: ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT;
+  alignment: ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT | null;
 }
 
 export interface QueryRecommended_recommended_section_courses_cover {
