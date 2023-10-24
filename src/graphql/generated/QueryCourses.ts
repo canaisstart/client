@@ -29,9 +29,10 @@ export interface QueryCourses_courses {
   slug: string;
   cover: QueryCourses_courses_cover;
   instructor: QueryCourses_courses_instructor;
-  category: QueryCourses_courses_category;
+  category: QueryCourses_courses_category ;
   price: number;
   available: boolean;
+  date_course: any;
 }
 
 export interface QueryCourses_coursesConnection_values {
@@ -41,12 +42,12 @@ export interface QueryCourses_coursesConnection_values {
 
 export interface QueryCourses_coursesConnection {
   __typename: "CourseConnection";
-  values: (QueryCourses_coursesConnection_values | null)[] | null;
+  values: (QueryCourses_coursesConnection_values | null)[];
 }
 
 export interface QueryCourses {
   courses: QueryCourses_courses[];
-  coursesConnection: QueryCourses_coursesConnection | null;
+  coursesConnection: QueryCourses_coursesConnection;
 }
 
 export interface QueryCoursesVariables {

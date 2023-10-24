@@ -46,36 +46,62 @@ export const cartMapper = (courses: QueryCourses_courses[] | undefined) => {
         id: course.id,
         img: `${getImageUrl(course.cover?.url)}`,
         title: course.name,
-        price: formatPrice(course.price),
+        price: formatPrice(course?.price || 0),
         slug: course.slug
       }))
     : []
 }
 
-export const ordersMapper = (orders: QueryOrders_orders[] | undefined) => {
+export const ordersMapper = (
+  orders: QueryOrders_orders[] | undefined,
+  id?: string
+) => {
   return orders
     ? orders.map((order) => {
+        const messages: {
+          paid: string
+          pending: string
+          canceled: string
+        } = {
+          paid: 'Compra paga em',
+          pending: 'Compra em processamento',
+          canceled: 'Compra negada'
+        }
         return {
           id: order.id,
+          status: order.status,
           paymentInfo: {
-            flag: order.card_brand,
-            img: order.card_brand ? `/img/cards/${order.card_brand}.png` : null,
-            number: order.card_last4
-              ? `**** **** **** ${order.card_last4}`
-              : 'Curso gratuito',
-            purchaseDate: `Compra feita em ${new Intl.DateTimeFormat('pt-BR', {
+            purchaseDate: `${
+              messages[(order.status as keyof typeof messages) || 'pending']
+            } ${new Intl.DateTimeFormat('pt-BR', {
               day: 'numeric',
               month: 'numeric',
               year: 'numeric'
             }).format(new Date(order.created_at))}`
           },
-          courses: order.courses.map((course) => ({
-            id: course.id,
-            title: course.name,
-            img: `${getImageUrl(course.cover?.url)}`,
-            price: formatPrice(course.price),
-            slug: course.slug
-          }))
+          courses: order.courses.map((course) => {
+            const totalLessons =
+              course.curriculum?.flatMap((curriculum) => curriculum?.content)
+                .length || 0
+
+            const completed = course.curriculum?.reduce((acc, cur) => {
+              return (
+                acc +
+                cur?.content
+                  ?.flatMap((e) => e?.users_permissions_users)
+                  ?.filter((e) => e?.id == id).length
+              )
+            }, 0)
+
+            return {
+              id: course.id,
+              title: course.name,
+              img: `${getImageUrl(course.cover?.url)}`,
+              price: formatPrice(course.price || 0),
+              slug: course.slug,
+              concluited: (completed / totalLessons) * 100
+            }
+          })
         }
       })
     : []

@@ -67,13 +67,13 @@ export const LeftSection = styled.div`
   > p {
     max-width: 498px;
     font-weight: 300;
-    font-size: 20px;
+    font-size: 18px;
     color: white;
   }
 
   > p > strong {
     color: white;
-    font-weight: 500;
+    font-weight: 700;
   }
 
   > span {
@@ -82,7 +82,7 @@ export const LeftSection = styled.div`
     gap: 1rem;
 
     color: rgba(250, 250, 250, 1);
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
   }
 

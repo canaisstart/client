@@ -26,10 +26,11 @@ export interface CourseFragment {
   __typename: "Course";
   id: string;
   name: string;
-  slug: string | null;
-  cover: CourseFragment_cover | null;
-  instructor: CourseFragment_instructor | null;
-  category: CourseFragment_category | null;
+  slug: string;
+  cover: CourseFragment_cover;
+  instructor: CourseFragment_instructor;
+  category: CourseFragment_category;
   price: number;
   available: boolean;
+  date_course: any;
 }

@@ -1,13 +1,13 @@
 import * as S from './style'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import ProgressSVG from '../../../public/img/progressIcon.svg'
 
 type ProgressCircle = {
   percent: number
-  course: string
 }
 
-const ProgressCircle = ({ percent, course }: ProgressCircle) => {
+const ProgressCircle = ({ percent }: ProgressCircle) => {
   const [offset, setOffset] = useState(0)
 
   useEffect(() => {
@@ -41,16 +41,13 @@ const ProgressCircle = ({ percent, course }: ProgressCircle) => {
           />
         </S.ProgressRing>
         <S.Icon>
-          <Image src="/img/progressIcon.svg" width="48" height="48" />
+          <Image src={ProgressSVG} width="48" height="48" />
         </S.Icon>
       </S.Loader>
       <S.Content>
         <h2>Seu Progresso</h2>
         <div>
           <p>{percent}%</p>
-          <span>
-            {simplyfyString(course, 40)} <strong>&gt;</strong>
-          </span>
         </div>
       </S.Content>
     </S.Container>

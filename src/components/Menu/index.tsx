@@ -46,9 +46,9 @@ const Menu = ({ username, loading }: MenuProps) => {
             <S.MenuLink>Cursos</S.MenuLink>
           </Link>
 
-          <Link href="/corporate" passHref>
+          {/* <Link href="/corporate" passHref>
             <S.MenuLink>Para Empresas</S.MenuLink>
-          </Link>
+          </Link> */}
         </S.MenuNav>
       </MediaMatch>
 
@@ -102,9 +102,9 @@ const Menu = ({ username, loading }: MenuProps) => {
                 <S.MenuLink>Cursos</S.MenuLink>
               </Link>
 
-              <Link href="/for_business" passHref>
+              {/* <Link href="/corporate" passHref>
                 <S.MenuLink>Para Empresas</S.MenuLink>
-              </Link>
+              </Link> */}
 
               {!!username && (
                 <>

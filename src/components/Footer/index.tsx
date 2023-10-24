@@ -9,6 +9,7 @@ import {
   LinkedinBox,
   Youtube
 } from '@styled-icons/remix-fill'
+import { links } from 'configs'
 
 const currentYear = new Date().getFullYear()
 
@@ -29,13 +30,15 @@ const Footer = () => (
           Rua Sacadura Cabral, 379
           <p>Rio de Janeiro CEP 23455-000</p>
         </p>
-        <p>(21) 3234-3234</p>
+        <p>(21) 99566-8151</p>
 
-        <a href="mailto:sac@portalescolastart.com">saa@escolastart.plus</a>
+        <a href="mailto:atendimento@canaisstart.com.br">
+          atendimento@canaisstart.com.br
+        </a>
         <ul>
           <li>
             <a
-              href="https://www.instagram.com/escolastart"
+              href={links.instagram}
               target="_blank"
               rel="noopenner, noreferrer"
             >
@@ -44,7 +47,7 @@ const Footer = () => (
           </li>
           <li>
             <a
-              href="https://www.facebook.com/escolastart"
+              href={links.facebook}
               target="_blank"
               rel="noopenner, noreferrer"
             >
@@ -52,17 +55,13 @@ const Footer = () => (
             </a>
           </li>
           <li>
-            <a
-              href="https://www.youtube.com/escolastart"
-              target="_blank"
-              rel="noopenner, noreferrer"
-            >
+            <a href={links.youtube} target="_blank" rel="noopenner, noreferrer">
               <Youtube size={24} />
             </a>
           </li>
           <li>
             <a
-              href="https://www.linkedin.com/escolastart"
+              href={links.linkedin}
               target="_blank"
               rel="noopenner, noreferrer"
             >
@@ -74,18 +73,18 @@ const Footer = () => (
 
       <S.Column aria-labelledby="social-media">
         <Heading color="black" lineColor="secondary" lineBottom size="small">
-          Intitucional
+          Institucional
         </Heading>
 
         <nav id="institutional">
-          <Link href="/about-us">Sobre a Escola START</Link>
-          <Link href="/about-us#our-time">Nosso Time</Link>
+          <Link href="/about-us">Sobre Nós</Link>
+          <Link href="/">Nosso Time</Link>
         </nav>
       </S.Column>
 
       <S.Column aria-labelledby="resources">
         <Heading color="black" lineColor="secondary" lineBottom size="small">
-          Links
+          Acesse
         </Heading>
 
         <nav id="resources">

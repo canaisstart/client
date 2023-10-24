@@ -41,9 +41,9 @@ const Success = ({
 
           <S.Text>
             Aguarde seus dados de pagamento por email. Seu curso já está
-            disponível na sua{' '}
-            <Link href="/profile/orders">
-              <a>lista de compras</a>
+            disponível na sua aba{' '}
+            <Link href="/profile/courses">
+              <a>Meus Cursos</a>
             </Link>
             . Bom estudo!
           </S.Text>

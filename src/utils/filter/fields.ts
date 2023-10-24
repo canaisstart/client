@@ -1,10 +1,9 @@
 export const priceFields = [
-  { label: 'Gratuito', name: 0 },
-  { label: 'Abaixo de R$50', name: 50 },
-  { label: 'Abaixo de R$100', name: 100 },
-  { label: 'Abaixo de R$150', name: 150 },
-  { label: 'Abaixo de R$250', name: 250 },
-  { label: 'Abaixo de R$500', name: 500 }
+  { label: 'Até R$99', name: 99 },
+  { label: 'Até R$299', name: 299 },
+  { label: 'Até R$499', name: 499 },
+  { label: 'Até R$999', name: 999 },
+  { label: '+R$1000', name: 1000 }
 ]
 
 export const sortFields = [
@@ -13,9 +12,9 @@ export const sortFields = [
 ]
 
 export const typeCourseFields = [
-  { label: 'Ao vivo', name: 'ao-vivo' },
-  { label: 'Presencial', name: 'presencial' },
-  { label: 'Gravado', name: 'gravado' }
+  { label: 'Online (ao vivo)', name: 'ao-vivo' },
+  { label: 'Online (gravado)', name: 'gravado' },
+  { label: 'Presencial', name: 'presencial' }
 ]
 
 export const categoryFields = [

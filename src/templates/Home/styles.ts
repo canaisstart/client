@@ -4,9 +4,105 @@ import media from 'styled-media-query'
 import * as HeadingStyles from 'components/Heading/styles'
 import { Container } from 'components/Container'
 
+export const Cover = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 39.5rem;
+  opacity: 0.1;
+
+  img {
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  ${media.greaterThan('medium')`
+    height: 90rem;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+  `}
+
+  ${media.lessThan('medium')`
+    height: 45rem;
+  `}
+`
+
+export const Landing = styled.div`
+  display: flex;
+  height: 611px;
+
+  background-image: url('img/bg-woman-1.png');
+  background-size: 520px;
+  background-repeat: no-repeat;
+  background-position-x: 52vw;
+  background-position-y: 100%;
+
+  ${media.greaterThan('medium')`
+
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+  `}
+
+  ${media.lessThan('medium')`
+    margin-top: 5rem;
+    background-image: initial;
+    height: 400px;
+  `}
+`
+
+export const LandingText = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 100%;
+
+    > h2 {
+      margin-top: -15rem;
+      color: ${theme.colors.white};
+      max-width: 515px;
+    }
+
+    > p {
+      color: ${theme.colors.white};
+      font-size: ${theme.font.sizes.small};
+      max-width: 515px;
+      margin-bottom: 4rem;
+    }
+
+    > span {
+      display: flex;
+      max-width: 602px;
+
+      ${media.lessThan('medium')`
+        justify-content: center;
+      `}
+    }
+  `}
+`
+
+export const Heading = styled(Container)`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.huge};
+    color: ${theme.colors.white};
+    text-align: center;
+    height: 100%;
+    background-color: white;
+
+    ${media.greaterThan('medium')`
+      margin-bottom: 0;
+      padding-top: 14rem;
+    `}
+
+    strong {
+      color: ${theme.colors.primary};
+    }
+  `}
+`
+
 export const SectionBanner = styled.section`
   ${({ theme }) => css`
-    margin: 0 calc(-${theme.grid.gutter} / 2) ${theme.spacings.large};
+    margin: 0 calc(-${theme.grid.gutter} / 2)  ${theme.spacings.large};
 
     ${media.greaterThan('medium')`
       margin-bottom: ${theme.spacings.large};
@@ -16,9 +112,14 @@ export const SectionBanner = styled.section`
   `}
 `
 
-export const SectionNews = styled.div`
+export const PopularCourseTitle = styled.div`
+  margin-bottom: 3rem;
+`
+
+export const SectionBeneficies = styled.div`
   ${({ theme }) => css`
     margin-bottom: calc(${theme.spacings.xxlarge} * 2);
+    background-color: ${theme.colors.lightBg};
 
     ${media.greaterThan('large')`
       margin-top: -13rem;
@@ -28,45 +129,24 @@ export const SectionNews = styled.div`
       margin-bottom: 0;
       padding-top: 14rem;
       padding-bottom: 10rem;
-      background-color: ${theme.colors.lightBg};
       clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 85%);
-
       ${HeadingStyles.Wrapper} {
         color: ${theme.colors.black};
       }
     `}
-  `}
-`
 
-export const SectionBeneficts = styled.div`
-  ${({ theme }) => css`
-    margin-bottom: calc(${theme.spacings.xxlarge} * 2);
-    background-color: ${theme.colors.lightBg};
-
-    ${media.greaterThan('large')`
-      margin-top: -13rem;
-      padding-top: 5rem;
-      clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 85%);
-    `}
-
-    ${media.greaterThan('medium')`
-      margin-bottom: 0;
-      padding-top: 15rem;
-      padding-bottom: 10rem;
-      height: 75rem;
-      background-color: ${theme.colors.lightBg};
+    ${media.between('medium','large')`
+        margin-top: -5rem;
+        clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 85%);
     `}
 
     ${media.lessThan('medium')`
-      height: 95rem;
-      padding-left: 1rem;
-      padding-right: 1rem;
-      background-color: ${theme.colors.lightBg};
+      padding-bottom: 3rem;
     `}
   `}
 `
 
-export const Title = styled.h1`
+export const BTitle = styled.h1`
   ${({ theme }) => css`
     margin-left: auto;
     margin-right: auto;
@@ -75,6 +155,7 @@ export const Title = styled.h1`
     text-align: center;
     max-width: 720px;
     font-weight: ${theme.font.normal};
+    font-size: ${theme.font.sizes.xxlarge};
     margin: {
       left: auto;
       right: auto;
@@ -86,6 +167,7 @@ export const Title = styled.h1`
     }
 
     ${media.lessThan('medium')`
+      padding-top: 2rem;
       padding-left: 1rem;
       padding-bottom: 1rem;
       background-color: ${theme.colors.lightBg};
@@ -94,7 +176,7 @@ export const Title = styled.h1`
   `}
 `
 
-export const SubTitle = styled.h3`
+export const BSubTitle = styled.h3`
   ${({ theme }) => css`
     text-transform: uppercase;
     color: ${theme.colors.secondary};
@@ -114,47 +196,32 @@ export const SubTitle = styled.h3`
       background-color: ${theme.colors.lightBg};
       font-size: ${theme.font.sizes.xsmall};
     `}
+
+    ${media.between('medium','large')`
+        margin-top: -8rem;
+    `}
   `}
 `
 
-export const Description = styled.h4`
+export const BDescription = styled.h4`
   ${({ theme }) => css`
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
     align-items: center;
     justify-content: center;
     text-align: center;
-    max-width: 720px;
+    max-width: 600px;
     font-weight: ${theme.font.light};
     font-size: ${theme.font.sizes.xsmall};
 
     ${media.lessThan('medium')`
-      padding-top: 1rem;
       padding-left: 1rem;
       padding-bottom: 1rem;
       background-color: ${theme.colors.lightBg};
-      font-size: ${theme.font.sizes.xsmall};
+      font-size: ${theme.font.sizes.xxsmall};
+      max-width: 400px;
     `}
-  `}
-`
-
-export const Cover = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 39.5rem;
-  opacity: 0.18;
-
-  img {
-    object-fit: cover;
-    object-position: top center;
-  }
-
-  ${media.greaterThan('medium')`
-    height: 80rem;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
   `}
 `
 
@@ -164,65 +231,6 @@ export const FWrapper = styled(Container)`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: ${theme.grid.gutter};
-    `}
-  `}
-`
-
-export const FContent = styled.div`
-  margin-bottom: 30px;
-  border-radius: 10px;
-  padding: 40px 30px;
-  background-color: #f9f9f9;
-  transition: $transition;
-  border-bottom: 2px solid #eee;
-
-  ${media.lessThan('medium')`
-    padding: 20px 30px;
-    margin-bottom: 20px;
-  `}
-`
-
-export const FTitle = styled.h1`
-  ${({ theme }) => css`
-    font-size: ${theme.font.sizes.xlarge};
-    line-height: ${theme.font.sizes.xlarge};
-    font-weight: ${theme.font.bold};
-    color: ${theme.colors.black};
-
-    ${media.lessThan('medium')`
-      font-size: ${theme.font.sizes.medium};
-    `}
-  `}
-`
-
-export const FIcon = styled.div`
-  ${({ theme }) => css`
-    color: ${theme.colors.primary};
-    right: 1rem;
-    top: -0.5rem;
-    padding-bottom: 1rem;
-    svg {
-      width: 6.5rem;
-    }
-
-    ${media.lessThan('medium')`
-      svg {
-        width: 3.5rem;
-      }
-    `}
-  `}
-`
-
-export const FDescription = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: ${theme.spacings.xxsmall};
-    color: ${theme.colors.gray};
-
-    ${media.lessThan('medium')`
-      font-size: ${theme.font.sizes.small};
     `}
   `}
 `
@@ -273,9 +281,14 @@ export const CTitle = styled.h1`
     }
 
     ${media.lessThan('medium')`
+      margin-top: -5rem;
       padding-left: 1rem;
       padding-bottom: 1rem;
       font-size: ${theme.font.sizes.large};
+    `}
+
+    ${media.between('medium', 'large')`
+      margin-top: -10rem;
     `}
   `}
 `
@@ -343,7 +356,6 @@ export const SectionNumbers = styled.div`
 
     ${media.lessThan('medium')`
       margin-bottom: 5rem;
-      height: 135rem;
       padding-left: 1rem;
       padding-right: 1rem;
       background-color: ${theme.colors.lightBg};
@@ -401,7 +413,6 @@ export const CredBox = styled.div`
     `}
 
     ${media.lessThan('medium')`
-      background-color: white;
       svg {
         width: 3.5rem;
       }
@@ -420,25 +431,19 @@ export const NSingleBox = styled.div`
   `}
 
   ${media.lessThan('medium')`
-    ${({ theme }) => css`
       margin-bottom: 1rem;
       svg {
         width: 3.5rem;
       }
-      background-color: ${theme.colors.white};
-    `}
     `}
 `
 
 export const CredSingleBox = styled.div`
-  border-radius: 1rem;
   transition: $transition;
   position: relative;
 
   ${media.lessThan('medium')`
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    background-color: white;
+    background-color: #f2f2f2;
       svg {
         width: 3.5rem;
       }
@@ -462,3 +467,4 @@ export const NIcon = styled.div`
     `}
   `}
 `
+

@@ -28,12 +28,13 @@ export interface MutationCreateWishlist_createWishlist_wishlist_courses {
   __typename: "Course";
   id: string;
   name: string;
-  slug: string | null;
-  cover: MutationCreateWishlist_createWishlist_wishlist_courses_cover | null;
-  instructor: MutationCreateWishlist_createWishlist_wishlist_courses_instructor | null;
-  category: MutationCreateWishlist_createWishlist_wishlist_courses_category | null;
+  slug: string;
+  cover: MutationCreateWishlist_createWishlist_wishlist_courses_cover;
+  instructor: MutationCreateWishlist_createWishlist_wishlist_courses_instructor;
+  category: MutationCreateWishlist_createWishlist_wishlist_courses_category;
   price: number;
   available: boolean;
+  date_course: any;
 }
 
 export interface MutationCreateWishlist_createWishlist_wishlist {
@@ -44,11 +45,11 @@ export interface MutationCreateWishlist_createWishlist_wishlist {
 
 export interface MutationCreateWishlist_createWishlist {
   __typename: "createWishlistPayload";
-  wishlist: MutationCreateWishlist_createWishlist_wishlist | null;
+  wishlist: MutationCreateWishlist_createWishlist_wishlist;
 }
 
 export interface MutationCreateWishlist {
-  createWishlist: MutationCreateWishlist_createWishlist | null;
+  createWishlist: MutationCreateWishlist_createWishlist;
 }
 
 export interface MutationCreateWishlistVariables {

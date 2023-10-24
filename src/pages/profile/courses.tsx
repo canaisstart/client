@@ -27,8 +27,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     return { props: {} }
   }
 
-  console.log(session?.id, 'a')
-
   const { data } = await apolloClient.query<QueryOrders, QueryOrdersVariables>({
     query: QUERY_ORDERS,
     variables: {
@@ -39,7 +37,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   return {
     props: {
-      items: ordersMapper(data.orders),
+      items: ordersMapper(data.orders, session.id as string).filter(
+        (orders) => orders.status === 'paid'
+      ),
       session
     }
   }

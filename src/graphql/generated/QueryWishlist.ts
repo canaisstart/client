@@ -23,25 +23,26 @@ export interface QueryWishlist_wishlists_courses_category {
 }
 
 export interface QueryWishlist_wishlists_courses {
-  __typename: "Course";
-  id: string;
-  name: string;
-  slug: string;
-  cover: QueryWishlist_wishlists_courses_cover;
-  instructor: QueryWishlist_wishlists_courses_instructor;
-  category: QueryWishlist_wishlists_courses_category;
-  price: number;
-  available: boolean;
+  __typename: 'Course'
+  id: string
+  name: string
+  slug: string
+  cover: QueryWishlist_wishlists_courses_cover
+  instructor: QueryWishlist_wishlists_courses_instructor
+  category: QueryWishlist_wishlists_courses_category
+  price: number
+  available: boolean
+  date_course: any
 }
 
 export interface QueryWishlist_wishlists {
-  __typename: "Wishlist";
-  id: string;
-  courses: QueryWishlist_wishlists_courses[];
+  __typename: 'Wishlist'
+  id: string
+  courses: QueryWishlist_wishlists_courses[]
 }
 
 export interface QueryWishlist {
-  wishlists: QueryWishlist_wishlists[];
+  wishlists: QueryWishlist_wishlists[]
 }
 
 export interface QueryWishlistVariables {

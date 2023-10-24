@@ -1,13 +1,34 @@
 import styled, { css, DefaultTheme } from 'styled-components'
 
-export const Wrapper = styled.article`
-  ${({ theme }) => css`
+type IWrapperProps = {
+  available: boolean
+}
+
+export const Wrapper = styled.article<IWrapperProps>`
+  ${({ theme, available }) => css`
     position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
     background-color: ${theme.colors.white};
+
+    ${!available &&
+    css`
+      ::before {
+        content: '';
+        cursor: not-allowed;
+
+        position: absolute;
+
+        width: 100%;
+        height: 100%;
+
+        z-index: 10;
+
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+    `}
   `}
 `
 
@@ -122,11 +143,21 @@ export const Price = styled.div<PriceProps>`
   `}
 `
 
-export const Unavailable = styled.div`
-  cursor: not-allowed;
-  padding: 0.8rem;
-  font-size: 1.2rem;
-  color: rgba(250, 250, 250);
-  background-color: #757575;
-  border-radius: calc(0.8rem / 2);
+type IUnavailable = {
+  watch: boolean
+}
+
+export const Unavailable = styled.div<IUnavailable>`
+  ${({ theme, watch }) => css`
+    display: inline-flex;
+    font-weight: 700;
+    height: 3rem;
+    align-items: center;
+    cursor: ${watch ? 'pointer' : 'not-allowed'};
+    padding: 0.8rem;
+    font-size: 1.2rem;
+    color: rgba(250, 250, 250);
+    background-color: ${watch ? theme.colors.primary : '#757575'};
+    border-radius: calc(0.8rem / 2);
+  `}
 `

@@ -4,6 +4,9 @@ import { useCart } from 'hooks/use-cart'
 import * as S from './styles'
 import Link from 'next/dist/client/link'
 import { useRouter } from 'next/router'
+import { Play } from '@styled-icons/remix-fill'
+import { useState } from 'react'
+import theme from 'styles/theme'
 
 export type PaymentInfoProps = {
   number: string
@@ -20,6 +23,8 @@ export type CourseItemProps = {
   slug: string
   promotionalPrice?: string
   paymentInfo?: PaymentInfoProps
+  redirectUrl?: string
+  concluited?: number
 }
 
 const CourseItem = ({
@@ -28,23 +33,58 @@ const CourseItem = ({
   title,
   price,
   paymentInfo,
-  slug
+  redirectUrl,
+  concluited
 }: CourseItemProps) => {
   const { isInCart, removeFromCart } = useCart()
+  const [hover, setHover] = useState(false)
   const router = useRouter()
 
-  const openInNewTab = router.pathname.startsWith('/profile')
+  const isInOrders = router.pathname.startsWith('/profile/orders')
+  const isInProfile = router.pathname.startsWith('/profile/courses')
 
   const content = (
-    <S.GameContent>
+    <S.GameContent
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
       <S.ImageBox>
+        {hover && isInProfile && (
+          <div
+            style={{
+              backgroundColor: 'rgba(0, 0, 0, 0.8)',
+              width: '100%',
+              zIndex: 1,
+              height: '100%',
+              position: 'absolute',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            <Play color="white" width="48px" height="48px"></Play>
+          </div>
+        )}
+        <div
+          style={{
+            backgroundColor: theme.colors.secondary,
+            width: `${concluited}%`,
+            zIndex: 1,
+            height: '0.5rem',
+            position: 'absolute',
+            bottom: '0',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        />
         <Image src={img} alt={title} width={150} height={70} />
       </S.ImageBox>
 
       <S.Content>
         <S.Title>{title}</S.Title>
         <S.Group>
-          <S.Price>{price}</S.Price>
+          {isInOrders && <S.Price>{price}</S.Price>}
 
           {isInCart(id) && (
             <S.Remove onClick={() => removeFromCart(id)}>Remover</S.Remove>
@@ -56,11 +96,11 @@ const CourseItem = ({
 
   return (
     <S.Wrapper data-cy="game-item">
-      {openInNewTab ? (
-        <Link href={`/learning/${slug}`} passHref>
+      {redirectUrl ? (
+        <Link href={redirectUrl} passHref>
           <a
             style={{ textDecoration: 'none' }}
-            target={openInNewTab && '_blank'}
+            target={redirectUrl && '_blank'}
             rel="noopener noreferrer"
           >
             {content}
@@ -70,7 +110,7 @@ const CourseItem = ({
         content
       )}
 
-      {!!paymentInfo && (
+      {!!paymentInfo && isInOrders && (
         <S.PaymentContent>
           <p>{paymentInfo.purchaseDate}</p>
           <S.CardInfo>

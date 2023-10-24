@@ -11,6 +11,7 @@ export default function Index(props: HomeTemplateProps) {
 
 export async function getStaticProps() {
   const apolloClient = initializeApollo()
+  await apolloClient.clearStore()
 
   const {
     data: { banners, freeCourses, sections }
@@ -20,7 +21,7 @@ export async function getStaticProps() {
   })
 
   return {
-    revalidate: 10,
+    revalidate: 3600,
     props: {
       banners: bannerMapper(banners),
       mostPopularCoursesTitle: sections?.popularCourses?.title,
@@ -42,9 +43,22 @@ export async function getStaticProps() {
         slug: course.slug,
         instructor: course.instructor?.name,
         img: `${getImageUrl(course.cover?.url)}`,
-        price: course.price
+        price: course.price,
+        available: course.available
       })),
-      freeHighlight: highlightMapper(sections?.freeCourses?.highlight)
+      freeHighlight: highlightMapper(sections?.freeCourses?.highlight),
+      formationCourses: {
+        courses:
+          sections?.formationCourses?.courses.map((course) => ({
+            id: course.id,
+            title: course.name,
+            slug: course.slug,
+            instructor: course.instructor?.name,
+            img: `${getImageUrl(course.cover?.url)}`,
+            price: null
+          })) || null,
+        title: sections?.formationCourses?.title || null
+      }
     }
   }
 }

@@ -41,9 +41,11 @@ export async function getStaticPaths() {
     variables: { limit: 9 }
   })
 
-  const paths = data.courses.map(({ slug }) => ({
-    params: { slug }
-  }))
+  const paths = data.courses
+    .filter((course) => course.available)
+    .map(({ slug }) => ({
+      params: { slug }
+    }))
 
   return { paths, fallback: true }
 }
@@ -71,7 +73,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   })
 
   return {
-    revalidate: 60,
+    revalidate: 900,
     props: {
       slug: params?.slug,
       cover: `${getImageUrl(course.cover?.url)}`,
@@ -79,7 +81,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         id: course.id,
         title: course.name,
         price: course.price,
-        description: course.short_description
+        description: course.short_description,
+        available: course.available
       },
       description: course.description,
       details: {

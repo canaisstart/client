@@ -26,21 +26,6 @@ export default function Index(props: CourseTemplatePropsVideo) {
   return <Learning {...props} />
 }
 
-// export async function getStaticPaths() {
-//   const { data } = await apolloClient.query<
-//     QueryCourses,
-//     QueryCoursesVariables
-//   >({
-//     query: QUERY_COURSES
-//   })
-
-//   const paths = data.courses.map(({ slug }) => ({
-//     params: { slug }
-//   }))
-
-//   return { paths, fallback: true }
-// }
-
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await protectedRoutes(context)
 
@@ -48,29 +33,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     return { props: {} }
   }
 
-  const { data: verifyUser } = await apolloClient.query<
-    UserHasCourse,
-    UserHasCourseVariables
-  >({
-    query: USER_HAS_COURSES,
-    variables: {
-      userId: session.id as string,
-      slug: context.params?.slug as string
-    },
-    fetchPolicy: 'no-cache'
-  })
-
-  console.log(verifyUser.orders[0]?.courses[0])
-  if (!verifyUser.orders[0]?.courses[0]) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false
-      }
-    }
-  }
-
-  // Get course data
   const { data } = await apolloClient.query<
     QueryCourseBySlug,
     QueryCourseBySlugVariables
@@ -86,7 +48,30 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   const course = data?.courses[0]
 
+  const { data: verifyUser } = await apolloClient.query<
+    UserHasCourse,
+    UserHasCourseVariables
+  >({
+    query: USER_HAS_COURSES,
+    variables: {
+      userId: session.id as string,
+      slug: data.courses[0].id as string,
+      status: 'paid'
+    },
+    fetchPolicy: 'no-cache'
+  })
+
+  if (!verifyUser.orders[0]?.courses[0]) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    }
+  }
+
   const courseInfo = {
+    id: course.id,
     name: course.name,
     category: course.category?.name || null,
     description: course.description,
@@ -100,7 +85,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
             name: lesson?.name,
             videoUrl: lesson?.link,
             classtime: lesson?.classtime,
-            completed: false,
+            completed: lesson?.users_permissions_users.some(
+              (user) => user.id == session.id
+            ),
             description: lesson?.description,
             fileUrl: lesson?.file?.url || null,
             module: {
@@ -116,7 +103,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   return {
     props: {
       courseInfo,
-      slug: context.params?.slug
+      slug: context.params?.slug,
+      userId: session.id
     }
   }
 }

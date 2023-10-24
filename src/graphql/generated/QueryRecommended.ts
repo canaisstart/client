@@ -49,26 +49,27 @@ export interface QueryRecommended_recommended_section_courses {
   __typename: "Course";
   id: string;
   name: string;
-  slug: string | null;
-  cover: QueryRecommended_recommended_section_courses_cover | null;
-  instructor: QueryRecommended_recommended_section_courses_instructor | null;
-  category: QueryRecommended_recommended_section_courses_category | null;
+  slug: string ;
+  cover: QueryRecommended_recommended_section_courses_cover ;
+  instructor: QueryRecommended_recommended_section_courses_instructor;
+  category: QueryRecommended_recommended_section_courses_category ;
   price: number;
   available: boolean;
+  date_course: any;
 }
 
 export interface QueryRecommended_recommended_section {
   __typename: "ComponentPagePopularGames";
   title: string;
-  highlight: QueryRecommended_recommended_section_highlight | null;
+  highlight: QueryRecommended_recommended_section_highlight ;
   courses: QueryRecommended_recommended_section_courses[];
 }
 
 export interface QueryRecommended_recommended {
   __typename: "Recommended";
-  section: QueryRecommended_recommended_section | null;
+  section: QueryRecommended_recommended_section;
 }
 
 export interface QueryRecommended {
-  recommended: QueryRecommended_recommended | null;
+  recommended: QueryRecommended_recommended ;
 }

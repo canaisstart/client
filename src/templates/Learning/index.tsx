@@ -12,9 +12,18 @@ import { ArrowDropDown } from '@styled-icons/material-outlined'
 import { Download } from '@styled-icons/remix-fill'
 import Image from 'next/image'
 import ReactPlayer from 'react-player'
+import { useMutation } from '@apollo/client'
+import { useSession } from 'next-auth/client'
+import { fetcher } from 'utils/stripe/methods'
+import axios from 'axios'
+
+// import {
+//   CREATE_USERS_LESSON,
+//   DELETE_USERS_LESSON
+// } from 'graphql/mutations/lessons'
 
 interface ILesson {
-  id: string
+  id: number
   name: string
   videoUrl: string
   completed: boolean
@@ -31,6 +40,7 @@ export interface IModule {
 }
 
 interface ICourseInfo {
+  id: number
   name: string
   category: string | null
   description: string
@@ -40,16 +50,18 @@ interface ICourseInfo {
 export type CourseTemplatePropsVideo = {
   slug: string
   courseInfo: ICourseInfo
+  userId: string
 }
 
-const Learning = ({ courseInfo, slug }: CourseTemplatePropsVideo) => {
+const Learning = ({ courseInfo, slug, userId }: CourseTemplatePropsVideo) => {
   const [modules, setModules] = useState<IModule[]>([...courseInfo.modules])
   const [viewPort, setViewPort] = useState(0)
+  const [session] = useSession()
   const [selectedLesson, setSelectedLesson] = useState<ILesson | undefined>(
     modules
       .flatMap((module) => module.lessons)
       .find((lesson) => lesson.completed == false) ||
-      modules.flatMap((module) => module.lessons).pop()
+    modules.flatMap((module) => module.lessons).pop()
   )
   const [openedIndex, setOpenedIndex] = useState(
     modules.findIndex(
@@ -65,12 +77,25 @@ const Learning = ({ courseInfo, slug }: CourseTemplatePropsVideo) => {
     0
   )
 
-  const handleConcluited = (status: boolean, id: string) => {
+  const handleConcluited = async (
+    status: boolean,
+    id: number,
+    userId: string
+  ) => {
     setModules((oldModules) =>
       oldModules.map((module) => {
         module.lessons.map((lesson) => {
           if (lesson.id == id) {
+            const api = axios.create({
+              baseURL: `${process.env.NEXT_PUBLIC_API_URL}`
+            })
+            api.defaults.headers.common[
+              'Authorization'
+            ] = `Bearer ${session?.jwt}`
             lesson.completed = status
+            api[status ? 'post' : 'delete'](
+              `/progression/${courseInfo.id}/${module.id}/${lesson.id}`
+            )
           }
           return lesson
         })
@@ -131,14 +156,11 @@ const Learning = ({ courseInfo, slug }: CourseTemplatePropsVideo) => {
       <S.Head>
         <S.Title onClick={() => viewPort < 768 && setModalIsOpen(true)}>
           {viewPort > 768
-            ? 'Seu aprendizado'
+            ? 'Sala de Aula'
             : selectedLesson?.module.name || 'Selecione uma Aula'}
           <ArrowDropDown size={32} />
         </S.Title>
-        <ProgressCircle
-          course={courseInfo.name}
-          percent={Number(porcentage.toFixed())}
-        />
+        <ProgressCircle percent={Number(porcentage.toFixed())} />
       </S.Head>
       <S.Wrapper>
         <NextSeo
@@ -173,7 +195,7 @@ const Learning = ({ courseInfo, slug }: CourseTemplatePropsVideo) => {
                         setModalIsOpen(false)
                       }}
                       onCompleted={(status) =>
-                        handleConcluited(status, lesson.id)
+                        handleConcluited(status, lesson.id, userId)
                       }
                     />
                   ))}
@@ -204,7 +226,7 @@ const Learning = ({ courseInfo, slug }: CourseTemplatePropsVideo) => {
                         setModalIsOpen(false)
                       }}
                       onCompleted={(status) =>
-                        handleConcluited(status, lesson.id)
+                        handleConcluited(status, lesson.id, userId)
                       }
                     />
                   ))}
@@ -217,17 +239,22 @@ const Learning = ({ courseInfo, slug }: CourseTemplatePropsVideo) => {
           <S.ContentWrapper>
             {selectedLesson?.videoUrl && (
               <S.VideoBox>
-                <ReactPlayer
-                  width="100%"
-                  css={{ height: 'calc((100% / 16) * 9)' }}
-                  url={selectedLesson?.videoUrl}
-                  controls
-                  playIcon={<button>Play</button>}
-                  onProgress={(e) =>
-                    e.played > 0.8 &&
-                    handleConcluited(true, selectedLesson?.id as string)
-                  }
-                />
+                <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
+                  <iframe
+                    src={`https://player.vimeo.com/video/${selectedLesson?.videoUrl}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479`}
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '100%'
+                    }}
+                    title={selectedLesson.name}
+                  ></iframe>
+                </div>
+                <script src="https://player.vimeo.com/api/player.js"></script>
               </S.VideoBox>
             )}
             <S.Controls>
@@ -255,7 +282,7 @@ const Learning = ({ courseInfo, slug }: CourseTemplatePropsVideo) => {
                   onClick={() => {
                     changeVideo()?.next &&
                       selectedLesson &&
-                      handleConcluited(true, selectedLesson?.id)
+                      handleConcluited(true, selectedLesson?.id, userId)
                     changeVideo()?.next &&
                       setSelectedLesson(changeVideo()?.next)
                   }}

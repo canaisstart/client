@@ -26,7 +26,6 @@ export const SectionFooter = styled.section`
     ${media.greaterThan('medium')`
       padding-top: calc(${theme.spacings.xxlarge} * 2);
       clip-path: polygon(0 15%, 100% 0%, 100% 100%, 0 100%);
-      background-image: url('img/footerImg.svg');
       background-position: bottom;
       background-size: cover;
     `}

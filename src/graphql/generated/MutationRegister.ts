@@ -11,7 +11,7 @@ import { UsersPermissionsRegisterInput } from "./globalTypes";
 
 export interface MutationRegister_register {
   __typename: "UsersPermissionsLoginPayload";
-  jwt: string | null;
+  jwt: string;
 }
 
 export interface MutationRegister {

@@ -147,7 +147,7 @@ export const ControlsText = styled.div`
 export const CourseHeading = styled.div`
   ${({ theme }) => css`
     color: ${theme.colors.white};
-    font-size: clamp(16px, 2.22vw, 32px);
+    font-size: clamp(16px, 2vw, 28px);
     font-weight: 300;
     p > strong {
       font-size: clamp(20px, 2.22vw, 28px) !important;

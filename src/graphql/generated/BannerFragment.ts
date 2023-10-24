@@ -23,15 +23,15 @@ export interface BannerFragment_button {
 export interface BannerFragment_ribbon {
   __typename: "ComponentPageRibbon";
   text: string | null;
-  color: ENUM_COMPONENTPAGERIBBON_COLOR | null;
-  size: ENUM_COMPONENTPAGERIBBON_SIZE | null;
+  color: ENUM_COMPONENTPAGERIBBON_COLOR;
+  size: ENUM_COMPONENTPAGERIBBON_SIZE;
 }
 
 export interface BannerFragment {
   __typename: "Banner";
-  image: BannerFragment_image | null;
+  image: BannerFragment_image;
   title: string;
   subtitle: string;
-  button: BannerFragment_button | null;
-  ribbon: BannerFragment_ribbon | null;
+  button: BannerFragment_button;
+  ribbon: BannerFragment_ribbon;
 }

@@ -15,6 +15,7 @@ export const Wrapper = styled.div`
 export const GameContent = styled.div`
   display: flex;
   width: 100%;
+  justify-content: space-between;
 `
 
 export const ImageBox = styled.div`
@@ -23,6 +24,8 @@ export const ImageBox = styled.div`
     margin-right: 1.2rem;
     width: 9.6rem;
     height: 5.6rem;
+
+    position: relative;
 
     img {
       width: 100%;
