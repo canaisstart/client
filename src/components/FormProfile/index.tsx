@@ -33,6 +33,24 @@ const FormProfile = ({ email, username }: FormProfileProps) => (
         disabled
       />
 
+      <TextField
+        name="email"
+        type="email"
+        placeholder="12345678909"
+        initialValue={''}
+        label="CPF"
+        disabled
+      />
+
+      <TextField
+        name="email"
+        type="email"
+        placeholder="21940028922"
+        initialValue={''}
+        label="Número de celular"
+        disabled
+      />
+
       <S.ButtonContainer>
         <Link href={`/forgot-password?email=${email}`} passHref>
           <Button minimal size="medium" as="a">
