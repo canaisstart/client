@@ -188,12 +188,12 @@ const Home = ({ banners, freeCourses }: HomeTemplateProps) => (
         <S.NContent>
           <S.CredBox>
             {[
-              '/cred/crea2.png',
-              '/cred/crp2.png',
-              '/cred/cra2.png',
-              '/cred/abed2.png',
-              '/cred/ipma2.png',
-              '/cred/crn2.png'
+              '/cred/crea.png',
+              '/cred/crp.png',
+              '/cred/cra.png',
+              '/cred/abed.png',
+              '/cred/ipma.png',
+              '/cred/crn.png'
             ].map((cred) => (
               <S.CredSingleBox key={cred}>
                 <Image src={cred} objectFit="contain" width={170} height={140} alt="" />
